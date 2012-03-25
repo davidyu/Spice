@@ -17,9 +17,11 @@ class cGame : public iApplication
         virtual bool Terminate();
         virtual void MainLoop();
 
+        STATE::cGameStateManager& GetStateManager();
+
     protected:
         bool m_running;
-        cGameStateManager m_state_manager;
+        STATE::cGameStateManager m_state_manager;
 };
 
 }

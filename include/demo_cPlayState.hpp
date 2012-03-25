@@ -1,18 +1,31 @@
 #ifndef DEMO_CPLAYSTATE_H
 #define DEMO_CPLAYSTATE_H
 
+#include "STATE_iGameState.hpp"
 
-class demo_cPlayState
+namespace CORE
+{
+    class cGame;
+}
+
+//static STATE::iGameState* CreateInstance() {}
+
+class cPlayState : public STATE::iGameState
 {
     public:
-        demo_cPlayState() {}
-        virtual ~demo_cPlayState() {}
+        cPlayState() {}
+        virtual ~cPlayState() {}
 
-        bool OnEnter() {};
-        bool OnExit() {};
+        static STATE::iGameState* CreateInstance() { return new cPlayState; }
+        virtual STATE::iGameState* Clone() { return new cPlayState; } // Ideally this function should return a copy, not a blank instance
 
-        void Update(iApplication* game, float delta) {};
-        void Render(float percent_tick) {};
+        bool OnEnter() {}
+        bool OnExit() {}
+        void Pause() {}
+        void Resume() {}
+
+        void Update(CORE::cGame* game, float delta) {}
+        void Render(float percent_tick) {}
 
         void HandleInput() {}
     private:

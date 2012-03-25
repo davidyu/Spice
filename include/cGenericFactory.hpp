@@ -20,11 +20,12 @@ class cGenericFactory
         typedef T* (*tObject)(); // Typedef for a function. News to me!
         typedef std::map<std::string, tObject> tObjectMap;
 
+        // First param is string key associated with object type
+        // Second param is function pointer to a function that returns a new instance of that object
         bool RegisterClass(const char *p_type, tObject aObject)
         {
             string str = string(p_type);
             return m_objects.insert(std::pair<std::string, tObject>(str, aObject)).second;
-
         }
 
         T* CreateObject(const char* p_type)
