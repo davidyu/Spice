@@ -5,5 +5,4 @@ Instruction
 to build, 
 
 make -C . -f Spice.cbp.mak
-
-This version will crash due to null pointer derefernce. Will fix soon.
+WARNING: Make file is old. Will not build
