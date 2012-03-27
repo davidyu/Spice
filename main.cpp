@@ -3,15 +3,16 @@
 
 using namespace CORE;
 
-iApplication* create() { return new cGame(); }
-
-int main()
+// Main function must have these params for SDL... kinda lame for encapsulation here..
+int main(int argc, char* args[])
 {
     iApplication* game = new cGame();
 
     game->Initialise();
     game->MainLoop();
     game->Terminate();
+
+    delete game;
 
     return 0;
 }

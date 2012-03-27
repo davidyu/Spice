@@ -5,15 +5,15 @@
 #include "STATE_iGameState.hpp"
 #include "demo_cPlayState.hpp"
 
-/*temp*/ #include <iostream>
 
+/*temp*/ #include <iostream>
+         #include <cassert>
 
 using namespace CORE;
 using namespace STATE;
 
 cGame::cGame()
 {
-    //ctor
 }
 
 cGame::~cGame()
@@ -26,6 +26,8 @@ bool cGame::Initialise()
     SDL_Init( SDL_INIT_EVERYTHING );
     SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
 
+    m_input.Initialise();
+
     cGenericFactory<iGameState> state_factory; // FIXME:Should be declared elsewhere
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance);
@@ -35,7 +37,7 @@ bool cGame::Initialise()
 
 bool cGame::Terminate()
 {
-
+    m_running = false;
 }
 
 void cGame::MainLoop()
@@ -45,15 +47,32 @@ void cGame::MainLoop()
 
     while (m_running)
     {
-        state = m_state_manager.GetCurrent(); // ERROR: State is NULL
+        SDL_Event event;
+        while(SDL_PollEvent(&event))
+        {
+            if(event.type == SDL_QUIT)
+            {
+                Terminate();
+            }
+        }
+        // Update Input-- set old keystates and current ones
+        m_input.Tick();
+
+        // Game Loop
+        state = m_state_manager.GetCurrent();
+        /*DEBUG*/assert(state!=0);
         state->Update(this, delta);
         state->Render(percent_tick);
-
-        m_running = false; // Temp statement to make program exit
     }
 }
 
+CORE::Input& cGame::GetInput()
+{
+    return m_input;
+}
 cGameStateManager& cGame::GetStateManager()
 {
     return m_state_manager;
 }
+
+

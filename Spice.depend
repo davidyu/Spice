@@ -26,36 +26,52 @@
 	<map>
 	<string>
 
-1332692278 source:d:\programming\spice\src\core_cgame.cpp
+1332819037 source:d:\programming\spice\src\core_cgame.cpp
 	"SDL/SDL.h"
 	"CORE_cGame.hpp"
+	"cGenericFactory.hpp"
 	"STATE_iGameState.hpp"
+	"demo_cPlayState.hpp"
+	<cassert>
 
-1332692278 d:\programming\spice\include\core_cgame.hpp
+1332813284 d:\programming\spice\include\core_cgame.hpp
 	"CORE_iApplication.hpp"
+	"CORE_Input.hpp"
 	"STATE_cGameStateManager.hpp"
 
 1332634986 d:\programming\spice\include\core_iapplication.hpp
 
-1332692083 d:\programming\spice\include\state_cgamestatemanager.hpp
+1332788146 d:\programming\spice\include\state_cgamestatemanager.hpp
 	<stack>
 
 1332693064 d:\programming\spice\include\state_igamestate.hpp
 
-1332692392 source:d:\programming\spice\src\state_cgamestatemanager.cpp
+1332788143 source:d:\programming\spice\src\state_cgamestatemanager.cpp
 	"STATE_cGameStateManager.hpp"
 	"STATE_iGameState.hpp"
 	"STATE_cGameTransition.hpp"
 
-1332641788 source:d:\programming\spice\main.cpp
+1332788466 source:d:\programming\spice\main.cpp
 	<iostream>
-	"cGenericFactory.hpp"
 	"CORE_cGame.hpp"
 
 1332688245 d:\programming\spice\include\cgenericfactory.hpp
 	<map>
 	<string>
 
-1332692478 d:\programming\spice\include\state_cgametransition.hpp
+1332804940 d:\programming\spice\include\state_cgametransition.hpp
 	"CORE_cGame.hpp"
+
+1332801945 source:d:\programming\spice\src\core_input.cpp
+	"CORE_Input.hpp"
+
+1332819229 d:\programming\spice\include\core_input.hpp
+	<algorithm>
+	"SDL/SDL.h"
+	"CORE_keycodes.hpp"
+
+1332818719 d:\programming\spice\include\demo_cplaystate.hpp
+	"STATE_iGameState.hpp"
+
+1318621801 d:\programming\spice\include\core_keycodes.hpp
 

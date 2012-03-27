@@ -14,14 +14,13 @@ cGameStateManager::~cGameStateManager()
     Clear();
 }
 
-iGameState* cGameStateManager::SwapState(iGameState* new_state, cGameTransition* transition)
+void cGameStateManager::SwapState(iGameState* new_state, cGameTransition* transition)
 {
     // So ugly code T_T
     if (transition!=0)
     {
         transition->SetOldAndNewState(new_state->Clone(), m_states.top()->Clone());
     }
-
     if(!m_states.empty())
     {
         DeleteTop();
@@ -45,7 +44,10 @@ void cGameStateManager::PushState(iGameState* new_state, cGameTransition* transi
     {
         transition->SetOldAndNewState(new_state->Clone(), m_states.top()->Clone());
     }
-
+    if (!m_states.empty())
+    {
+        m_states.top()->Pause();
+    }
     m_states.push(new_state);
     m_states.top()->OnEnter();
 
@@ -62,9 +64,12 @@ iGameState* cGameStateManager::PopState(cGameTransition* transition)
     {
         transition->SetOldAndNewState(0, m_states.top()->Clone());
     }
-
     DeleteTop();
 
+    if (!m_states.empty())
+    {
+        m_states.top()->Resume();
+    }
     if (transition!=0)
     {
         m_states.top()->Pause(); // Pause new_state as we are transitioning
