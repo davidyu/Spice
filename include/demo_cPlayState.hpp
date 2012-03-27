@@ -2,10 +2,13 @@
 #define DEMO_CPLAYSTATE_H
 
 #include "STATE_iGameState.hpp"
+//#include "CORE_Input.hpp"
+/*temp*/#include <iostream>
 
 namespace CORE
 {
     class cGame;
+    class Input;
 }
 
 //static STATE::iGameState* CreateInstance() {}
@@ -24,7 +27,10 @@ class cPlayState : public STATE::iGameState
         void Pause() {}
         void Resume() {}
 
-        void Update(CORE::cGame* game, float delta) {}
+        void Update(CORE::cGame* game, float delta)
+        {
+            if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->Terminate();
+        }
         void Render(float percent_tick) {}
 
         void HandleInput() {}
