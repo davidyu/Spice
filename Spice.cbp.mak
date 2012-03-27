@@ -66,15 +66,15 @@ clean :
 # Debug_target
 
 Debug_target.BIN = bin\Debug\Spice.exe
-Debug_target.OBJ = main.o src\CORE_cGame.o src\cGameStateManager.o 
-DEP_FILES += main.d src\CORE_cGame.d src\cGameStateManager.d 
+Debug_target.OBJ = main.o src\CORE_cGame.o src\STATE_cGameStateManager.o 
+DEP_FILES += main.d src\CORE_cGame.d src\STATE_cGameStateManager.d 
 clean.OBJ += $(Debug_target.BIN) $(Debug_target.OBJ)
 
 Debug_target : Debug_target.before $(Debug_target.BIN) Debug_target.after_always
-Debug_target : CFLAGS += -g  -Os
+Debug_target : CFLAGS += -Wall -pg -g  -Os
 Debug_target : INCLUDES += -Iinclude 
 Debug_target : RCFLAGS += 
-Debug_target : LDFLAGS += -lmingw32 -lSDLmain -lSDL   
+Debug_target : LDFLAGS += -pg -lgmon -lmingw32 -lSDLmain -lSDL   
 Debug_target : T_LDLIBS = 
 ifdef LMAKE
 Debug_target : CFLAGS -= -O1 -O2 -g -pipe
@@ -94,8 +94,8 @@ $(Debug_target.BIN) : $(Debug_target.OBJ)
 # Release_target
 
 Release_target.BIN = bin\Release\Spice.exe
-Release_target.OBJ = main.o src\CORE_cGame.o src\cGameStateManager.o 
-DEP_FILES += main.d src\CORE_cGame.d src\cGameStateManager.d 
+Release_target.OBJ = main.o src\CORE_cGame.o src\STATE_cGameStateManager.o 
+DEP_FILES += main.d src\CORE_cGame.d src\STATE_cGameStateManager.d 
 clean.OBJ += $(Release_target.BIN) $(Release_target.OBJ)
 
 Release_target : Release_target.before $(Release_target.BIN) Release_target.after_always
@@ -115,7 +115,7 @@ Release_target.after_always : $(Release_target.BIN)
 	
 $(Release_target.BIN) : $(Release_target.OBJ)
 	$(call MKDIR,$(dir $@))
-	$(LINK_con)
+	$(LINK_exe)
 	
 
 # -----------------------------------------
