@@ -29,7 +29,7 @@ class cPlayState : public STATE::iGameState
 
         void Update(CORE::cGame* game, float delta)
         {
-            if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->Terminate();
+            if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->EndGame();
         }
         void Render(float percent_tick) {}
 

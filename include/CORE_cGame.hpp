@@ -18,6 +18,7 @@ class cGame : public iApplication
         bool                        Initialise();
         bool                        Terminate();
         void                        MainLoop();
+        void                        EndGame();
 
         CORE::Input&                GetInput();
         STATE::cGameStateManager&   GetStateManager();

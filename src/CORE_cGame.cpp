@@ -47,7 +47,6 @@ bool cGame::Initialise()
 
 bool cGame::Terminate()
 {
-    m_running = false;
     SDL_GL_DeleteContext(ctx);
     SDL_DestroyWindow(win);
     SDL_Quit();
@@ -65,7 +64,7 @@ void cGame::MainLoop()
         {
             if(event.type == SDL_QUIT)
             {
-                Terminate();
+                EndGame();
             }
         }
         // Update Input-- set old keystates and current ones
@@ -77,6 +76,11 @@ void cGame::MainLoop()
         state->Update(this, delta);
         state->Render(percent_tick);
     }
+}
+
+void cGame::EndGame()
+{
+    m_running = false;
 }
 
 CORE::Input& cGame::GetInput()
