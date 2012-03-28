@@ -3,7 +3,7 @@
 
 // Headers
 #include <algorithm>
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 #include "CORE_keycodes.hpp"
 
 namespace

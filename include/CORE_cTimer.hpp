@@ -2,22 +2,22 @@
 #define CTIMER_H
 
 // Headers
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 
 namespace CORE
 {
 
-class CTimer
+class cTimer
 {
     public:
         //Initializes variables
-                                CTimer()
+                                cTimer() :
                                     m_ticks_since_start(0),
-                                    m_m_is_pausedticks(0),
+                                    m_ticks_since_pause(0),
                                     m_is_paused(false),
                                     m_is_started(false) {}
 
-        virtual                 ~CTimer() {}
+        virtual                 ~cTimer() {}
 
         //The various clock actions
         void                    Start()
@@ -52,7 +52,7 @@ class CTimer
                                     if(m_is_started == true)
                                     {
                                         if(m_is_paused == true) { return m_ticks_since_pause; }
-                                        else                    { return SDL_GetTicks() - m_start_ticks; }
+                                        else                    { return SDL_GetTicks() - m_ticks_since_start; }
                                     }
                                     return 0;
                                 }
@@ -66,9 +66,9 @@ class CTimer
                                         {
                                             Uint32 delta;
 
-                                            m_start_ticks = SDL_GetTicks();
-                                            delta = m_start_ticks - old_ticks_;
-                                            old_ticks_ = m_start_ticks;
+                                            m_ticks_since_start = SDL_GetTicks();
+                                            delta = m_ticks_since_start - m_old_ticks;
+                                            m_old_ticks = m_ticks_since_start;
                                             return delta;
                                         }
                                     }
@@ -76,8 +76,8 @@ class CTimer
                                 }
 
         //Checks the status of the timer
-        bool                    IsStarted() { return m_started; }
-        bool                    IsPaused()  { return m_paused; }
+        bool                    IsStarted() { return m_is_started; }
+        bool                    IsPaused()  { return m_is_paused; }
 
     private:
         //The clock time when the timer started

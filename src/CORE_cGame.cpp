@@ -1,4 +1,4 @@
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 
 #include "CORE_cGame.hpp"
 #include "cGenericFactory.hpp"
@@ -21,10 +21,20 @@ cGame::~cGame()
     //dtor
 }
 
+static SDL_Window *win;
+static SDL_GLContext ctx;
+
 bool cGame::Initialise()
 {
     SDL_Init( SDL_INIT_EVERYTHING );
-    SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
+    win = SDL_CreateWindow("Hello SDL",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        640 , 480,
+        SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+
+    ctx = SDL_GL_CreateContext(win);
+    SDL_GL_SetSwapInterval(1);
 
     m_input.Initialise();
 
@@ -38,6 +48,9 @@ bool cGame::Initialise()
 bool cGame::Terminate()
 {
     m_running = false;
+    SDL_GL_DeleteContext(ctx);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
 }
 
 void cGame::MainLoop()

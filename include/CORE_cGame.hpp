@@ -3,6 +3,7 @@
 
 #include "CORE_iApplication.hpp"
 #include "CORE_Input.hpp"
+#include "CORE_cTimer.hpp"
 #include "STATE_cGameStateManager.hpp"
 
 namespace CORE
@@ -25,7 +26,7 @@ class cGame : public iApplication
         bool m_running;
         STATE::cGameStateManager    m_state_manager;
         CORE::Input                 m_input;
-        CORE::CTimer                m_timer;
+        CORE::cTimer                m_timer;
 };
 
 }
