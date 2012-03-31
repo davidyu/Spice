@@ -26,26 +26,27 @@
 	<map>
 	<string>
 
-1332907630 source:d:\programming\spice\src\core_cgame.cpp
-	"SDL2/SDL.h"
+1333159287 source:d:\programming\spice\src\core_cgame.cpp
 	"CORE_cGame.hpp"
-	"cGenericFactory.hpp"
 	"STATE_iGameState.hpp"
 	"demo_cPlayState.hpp"
 	<cassert>
 
-1332907604 d:\programming\spice\include\core_cgame.hpp
+1333157773 d:\programming\spice\include\core_cgame.hpp
+	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
+	"CORE_cSDLState.hpp"
 	"CORE_Input.hpp"
 	"CORE_cTimer.hpp"
 	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
 
 1332634986 d:\programming\spice\include\core_iapplication.hpp
 
 1332820457 d:\programming\spice\include\state_cgamestatemanager.hpp
 	<stack>
 
-1332820689 d:\programming\spice\include\state_igamestate.hpp
+1333159244 d:\programming\spice\include\state_igamestate.hpp
 
 1332788143 source:d:\programming\spice\src\state_cgamestatemanager.cpp
 	"STATE_cGameStateManager.hpp"
@@ -69,16 +70,25 @@
 1332801945 source:d:\programming\spice\src\core_input.cpp
 	"CORE_Input.hpp"
 
-1332898342 d:\programming\spice\include\core_input.hpp
+1333135867 d:\programming\spice\include\core_input.hpp
 	<algorithm>
 	"SDL2/SDL.h"
 	"CORE_keycodes.hpp"
 
-1332907635 d:\programming\spice\include\demo_cplaystate.hpp
+1333159275 d:\programming\spice\include\demo_cplaystate.hpp
 	"STATE_iGameState.hpp"
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
-1332898526 d:\programming\spice\include\core_ctimer.hpp
+1333135494 d:\programming\spice\include\core_ctimer.hpp
 	"SDL2/SDL.h"
+
+1333142219 source:d:\programming\spice\src\core_ctimer.cpp
+	"CORE_cTimer.hpp"
+
+1333157239 d:\programming\spice\include\core_csdlstate.hpp
+	<SDL2/SDL.h>
+
+1333157370 source:d:\programming\spice\src\core_csdlstate.cpp
+	"CORE_CSDLState.hpp"
 

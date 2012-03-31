@@ -2,7 +2,7 @@
 #define DEMO_CPLAYSTATE_H
 
 #include "STATE_iGameState.hpp"
-//#include "CORE_Input.hpp"
+//
 /*temp*/#include <iostream>
 
 namespace CORE
@@ -16,24 +16,22 @@ namespace CORE
 class cPlayState : public STATE::iGameState
 {
     public:
-        cPlayState() {}
-        virtual ~cPlayState() {}
+        cPlayState();
+        virtual ~cPlayState();
 
-        static STATE::iGameState* CreateInstance() { return new cPlayState; }
-        virtual STATE::iGameState* Clone() { return new cPlayState; } // Ideally this function should return a copy, not a blank instance
+        static STATE::iGameState* CreateInstance();
+        virtual STATE::iGameState* Clone(); // Ideally this function should return a copy, not a blank instance
 
-        bool OnEnter() {}
-        bool OnExit() {}
-        void Pause() {}
-        void Resume() {}
+        bool OnEnter();
+        bool OnExit();
+        void Pause();
+        void Resume();
 
-        void Update(CORE::cGame* game, float delta)
-        {
-            if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->EndGame();
-        }
-        void Render(float percent_tick) {}
+        void Update(CORE::cGame* game, float delta);
 
-        void HandleInput() {}
+        void Render(CORE::cGame* game, float percent_tick);
+
+        void HandleInput();
     private:
 };
 

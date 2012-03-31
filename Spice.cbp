@@ -19,7 +19,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg -lgmon" />
-					<Add option="-lmingw32 -lSDLmain -lSDL" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -38,8 +37,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2" />
+		</Linker>
 		<Unit filename="include\CORE_Input.hpp" />
 		<Unit filename="include\CORE_cGame.hpp" />
+		<Unit filename="include\CORE_cSDLState.hpp" />
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
 		<Unit filename="include\STATE_cGameStateManager.hpp" />
@@ -49,7 +52,10 @@
 		<Unit filename="include\demo_cPlayState.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src\CORE_cGame.cpp" />
+		<Unit filename="src\CORE_cSDLState.cpp" />
+		<Unit filename="src\CORE_cTimer.cpp" />
 		<Unit filename="src\STATE_cGameStateManager.cpp" />
+		<Unit filename="src\demo_cPlayState.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

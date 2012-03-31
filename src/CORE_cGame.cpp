@@ -1,18 +1,18 @@
-#include "SDL2/SDL.h"
-
 #include "CORE_cGame.hpp"
-#include "cGenericFactory.hpp"
+
 #include "STATE_iGameState.hpp"
 #include "demo_cPlayState.hpp"
 
 
 /*temp*/ #include <iostream>
          #include <cassert>
+        using namespace std;
 
 using namespace CORE;
 using namespace STATE;
 
-cGame::cGame()
+cGame::cGame() :
+    m_sdl_state(0)
 {
 }
 
@@ -21,24 +21,28 @@ cGame::~cGame()
     //dtor
 }
 
-static SDL_Window *win;
-static SDL_GLContext ctx;
-
 bool cGame::Initialise()
 {
     SDL_Init( SDL_INIT_EVERYTHING );
-    win = SDL_CreateWindow("Hello SDL",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        640 , 480,
+
+    // Setup SDL Window and Render
+    m_sdl_state = new cSDLState();
+    m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
+        m_sdl_state->window_x,
+        m_sdl_state->window_y,
+        m_sdl_state->window_w , m_sdl_state->window_h,
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
-    ctx = SDL_GL_CreateContext(win);
+    // Fullscreen?
+    SDL_SetWindowFullscreen(m_sdl_state->window, m_sdl_state->is_fullscreen);
+    // Renderer
+    m_sdl_state->renderer = SDL_CreateRenderer(m_sdl_state->window,
+                                    0, m_sdl_state->render_flags);
+    // GL Context
+    m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
     SDL_GL_SetSwapInterval(1);
 
     m_input.Initialise();
-
-    cGenericFactory<iGameState> state_factory; // FIXME:Should be declared elsewhere
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance);
     m_state_manager.PushState(state_factory.CreateObject("game"));
@@ -47,8 +51,23 @@ bool cGame::Initialise()
 
 bool cGame::Terminate()
 {
-    SDL_GL_DeleteContext(ctx);
-    SDL_DestroyWindow(win);
+    if (m_sdl_state) {
+
+        if (m_sdl_state->renderer) {
+            SDL_DestroyRenderer(m_sdl_state->renderer);
+            SDL_free(m_sdl_state->renderer);
+        }
+        if (m_sdl_state->glctx)    {
+            SDL_GL_DeleteContext(m_sdl_state->glctx);
+            SDL_free(m_sdl_state->glctx);
+        }
+        if (m_sdl_state->window)   {
+            SDL_DestroyWindow(m_sdl_state->window);
+            SDL_free(m_sdl_state->window);
+        }
+        SDL_free(m_sdl_state);
+    }
+
     SDL_Quit();
 }
 
@@ -68,13 +87,14 @@ void cGame::MainLoop()
             }
         }
         // Update Input-- set old keystates and current ones
-        m_input.Tick();
+        m_input.Update();
 
         // Game Loop
         state = m_state_manager.GetCurrent();
         /*DEBUG*/assert(state!=0);
         state->Update(this, delta);
-        state->Render(percent_tick);
+        state->Render(this, percent_tick);
+        SDL_RenderPresent(m_sdl_state->renderer);
     }
 }
 

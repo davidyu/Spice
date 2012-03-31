@@ -10,74 +10,25 @@ namespace CORE
 class cTimer
 {
     public:
-        //Initializes variables
-                                cTimer() :
-                                    m_ticks_since_start(0),
-                                    m_ticks_since_pause(0),
-                                    m_is_paused(false),
-                                    m_is_started(false) {}
+        // Initialises variables
+                                cTimer();
 
-        virtual                 ~cTimer() {}
+        virtual                 ~cTimer();
 
-        //The various clock actions
-        void                    Start()
-                                {
-                                        m_is_started = true;
-                                        m_is_paused = false;
-                                        m_ticks_since_start = SDL_GetTicks();
-                                }
-        void                    Stop()      { m_is_paused = m_is_started = false; }
+        // The various clock actions
+        void                    Start();
+        void                    Stop();
+        void                    Pause();
+        void                    Unpause();
 
-        void                    Pause()
-                                {
-                                    if ((m_is_started == true) && (m_is_paused == false))
-                                    {
-                                        m_is_paused = true;
-                                        m_ticks_since_pause = SDL_GetTicks() - m_ticks_since_start;
-                                    }
-                                }
-        void                    Unpause()
-                                {
-                                    if(m_is_paused == true)
-                                    {
-                                        m_is_paused = false;
-                                        m_ticks_since_start = SDL_GetTicks() - m_ticks_since_pause;
-                                        m_ticks_since_pause = 0;
-                                    }
-                                }
+        // Gets the timer's time
+        Uint32                  GetTicksSinceStart();
+        // Get ticks since last call to this function
+        Uint32                  GetTicksDelta();
 
-        //Gets the timer's time
-        Uint32                  GetTicksSinceStart()
-                                {
-                                    if(m_is_started == true)
-                                    {
-                                        if(m_is_paused == true) { return m_ticks_since_pause; }
-                                        else                    { return SDL_GetTicks() - m_ticks_since_start; }
-                                    }
-                                    return 0;
-                                }
-
-        Uint32                  GetTicksDelta()
-                                {
-                                    if(m_is_started == true)
-                                    {
-                                        if(m_is_paused == true) { return m_ticks_since_pause; }
-                                        else
-                                        {
-                                            Uint32 delta;
-
-                                            m_ticks_since_start = SDL_GetTicks();
-                                            delta = m_ticks_since_start - m_old_ticks;
-                                            m_old_ticks = m_ticks_since_start;
-                                            return delta;
-                                        }
-                                    }
-                                    return 0;
-                                }
-
-        //Checks the status of the timer
-        bool                    IsStarted() { return m_is_started; }
-        bool                    IsPaused()  { return m_is_paused; }
+        // Checks the status of the timer
+        bool                    IsStarted();
+        bool                    IsPaused();
 
     private:
         //The clock time when the timer started
