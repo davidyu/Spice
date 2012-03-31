@@ -1,7 +1,9 @@
+#include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL_image.h>
 #include "CORE_cGame.hpp"
-
 #include "STATE_iGameState.hpp"
 #include "demo_cPlayState.hpp"
+
 
 
 /*temp*/ #include <iostream>
@@ -24,7 +26,7 @@ cGame::~cGame()
 bool cGame::Initialise()
 {
     SDL_Init( SDL_INIT_EVERYTHING );
-
+    IMG_Init( IMG_INIT_PNG );
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
     m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
@@ -40,7 +42,18 @@ bool cGame::Initialise()
                                     0, m_sdl_state->render_flags);
     // GL Context
     m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
-    SDL_GL_SetSwapInterval(1);
+    SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
+
+    SDL_GL_SetSwapInterval(0); // 1 for Vsync?
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-2.0, 2.0, -2.0, 2.0, -20.0, 20.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glShadeModel(GL_SMOOTH);
 
     m_input.Initialise();
 
@@ -69,6 +82,7 @@ bool cGame::Terminate()
     }
 
     SDL_Quit();
+    IMG_Quit();
 }
 
 void cGame::MainLoop()
@@ -93,8 +107,12 @@ void cGame::MainLoop()
         state = m_state_manager.GetCurrent();
         /*DEBUG*/assert(state!=0);
         state->Update(this, delta);
+
+
         state->Render(this, percent_tick);
-        SDL_RenderPresent(m_sdl_state->renderer);
+
+        SDL_GL_SwapWindow(m_sdl_state->window);
+        SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow
     }
 }
 
@@ -103,7 +121,7 @@ void cGame::EndGame()
     m_running = false;
 }
 
-CORE::Input& cGame::GetInput()
+Input& cGame::GetInput()
 {
     return m_input;
 }

@@ -22,7 +22,7 @@ class cTimer
         void                    Unpause();
 
         // Gets the timer's time
-        Uint32                  GetTicksSinceStart();
+        Uint32                  GetTicksSinceStart() const;
         // Get ticks since last call to this function
         Uint32                  GetTicksDelta();
 

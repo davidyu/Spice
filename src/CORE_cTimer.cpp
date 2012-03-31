@@ -36,7 +36,7 @@ void cTimer::Unpause()
 }
 
 //Gets the timer's time
-Uint32 cTimer::GetTicksSinceStart()
+Uint32 cTimer::GetTicksSinceStart() const
 {
     if(m_is_started == true)
     {

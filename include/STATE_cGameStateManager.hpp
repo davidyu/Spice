@@ -25,7 +25,7 @@ class cGameStateManager
         // WARNING: If transition is provided, a full clone of new_state will be allocated and deleted (performance issue?)
         iGameState*         PopState(cGameTransition* transition=0);
 
-        iGameState*         GetCurrent();
+        iGameState*         GetCurrent() const;
 
         // Performs each state's OnExit, and deletes the state.
         void                Clear();

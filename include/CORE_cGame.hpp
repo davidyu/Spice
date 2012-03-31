@@ -27,7 +27,7 @@ class cGame : public iApplication
         CORE::Input&                GetInput();
         STATE::cGameStateManager&   GetStateManager();
 
-        inline SDL_Renderer*        GetRenderer() { return m_sdl_state->renderer; }
+        inline SDL_Renderer*        GetRenderer() const{ return m_sdl_state->renderer; }
     protected:
         bool m_running;
         STATE::cGameStateManager    m_state_manager;
