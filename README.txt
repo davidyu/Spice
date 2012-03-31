@@ -1,11 +1,81 @@
 Game Components Library
 
 Instruction
+-----------
+Need to compile the latest build of SDL-1.3 (and SDL_image) from the SDL Mercurial Repo
 
-to build, 
-
-make -C . -f Spice.cbp.mak
-WARNING: Make file is old. Will not build
 Linker options:
--lmingw32 (for windows) -lSDLmain -lSDL
+-lmingw32 (for windows) -lSDL2main -lSDL2 -lopengl32 -lSDL2_image
 HI!
+
+
+
+GAME COMPONENTS
+
+Progress so far
+---------------
+CORE
+{
+	iApplication
+	cGame
+}
+STATE
+{
+	cGameStateManager
+	cGameTransition
+	iGameState
+}
+
+Misc:
+	cGenericFactory
+	
+Next Steps:
+	cTimer
+	Maths
+	Textures/Sprites
+
+	
+	
+	
+Main Components:
+Application
+Containers
+Maths
+Text Processing
+Graphics
+Collision
+Resources
+Physics
+Networking
+Audio
+Input
+
+
+
+
+Containers:
+Tree class?
+
+Maths:
+Vectors
+Matricies
+Plane
+Polygon
+Quaternion
+Interpolators
+Integrators
+Geometry
+
+Graphics:
+Scene/Model/Renderer?
+Primitives
+Cameras
+Texture
+Image
+Graphics2D:
+	sprite
+	animation
+	texture atlas
+	sprite batch
+	tiles
+	
