@@ -1,7 +1,7 @@
 #ifndef CGAMESTATEMANAGER_H
 #define CGAMESTATEMANAGER_H
 
-#include <stack>
+#include <vector>
 
 namespace STATE
 {
@@ -15,15 +15,14 @@ class cGameStateManager
                             cGameStateManager();
         virtual ~           cGameStateManager();
 
-        // Exchanges the current state with a new one, using a transition state if provided.
-        // WARNING: If transition is provided, a full clone of new_state will be allocated and deleted (performance issue?)
-        void                SwapState(iGameState* new_state, cGameTransition* transition=0);
+        void                ReplaceState(iGameState* new_state);
+        void                ReplaceStateUsingTransition(iGameState* new_state, cGameTransition* transition);
 
-        // WARNING: If transition is provided, a full clone of new_state will be allocated and deleted (performance issue?)
-        void                PushState(iGameState* new_state, cGameTransition* transition=0);
+        void                PushState(iGameState* new_state);
+        void                PushStateUsingTransition(iGameState* new_state, cGameTransition* transition);
 
-        // WARNING: If transition is provided, a full clone of new_state will be allocated and deleted (performance issue?)
-        iGameState*         PopState(cGameTransition* transition=0);
+        iGameState*         PopState();
+        iGameState*         PopStateUsingTransition(cGameTransition* transition);
 
         iGameState*         GetCurrent() const;
 
@@ -32,10 +31,10 @@ class cGameStateManager
     private:
         // Methods
         // Pops the current state and deletes the state from heap
-        void                DeleteTop();
+        void                PopAndDelete();
 
         // Members
-        std::stack<iGameState*> m_states;
+        std::vector<iGameState*> m_states;
 
 }; // class cGameStateManager
 

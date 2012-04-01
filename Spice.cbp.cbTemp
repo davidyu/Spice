@@ -38,14 +38,13 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lSDL2_image" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2" />
 		</Linker>
 		<Unit filename="include\CORE_Input.hpp" />
 		<Unit filename="include\CORE_cGame.hpp" />
 		<Unit filename="include\CORE_cSDLState.hpp" />
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
-		<Unit filename="include\GFX_cImage.hpp" />
 		<Unit filename="include\STATE_cGameStateManager.hpp" />
 		<Unit filename="include\STATE_cGameTransition.hpp" />
 		<Unit filename="include\STATE_iGameState.hpp" />
@@ -55,7 +54,6 @@
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />
-		<Unit filename="src\GFX_cImage.cpp" />
 		<Unit filename="src\STATE_cGameStateManager.cpp" />
 		<Unit filename="src\demo_cPlayState.cpp" />
 		<Extensions>
