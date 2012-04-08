@@ -1,6 +1,9 @@
+#include <SDL2/SDL_opengl.h>
 #include "demo_cPlayState.hpp"
 #include "CORE_cGame.hpp"
-#include "SDL2/SDL_opengl.h"
+#include "GFX_cTexture.hpp"
+
+using namespace GFX;
 
 cPlayState::cPlayState() {}
 cPlayState::~cPlayState() {}
@@ -14,8 +17,18 @@ STATE::iGameState* cPlayState::Clone()
     return new cPlayState;
 }
 
-bool cPlayState::OnEnter() {}
-bool cPlayState::OnExit() {}
+cTexture* p_tex = 0;
+
+bool cPlayState::OnEnter()
+{
+    p_tex = new cTexture("test.bmp");
+    p_tex->RegisterGL();
+}
+bool cPlayState::OnExit()
+{
+    delete p_tex;
+    p_tex = 0;
+}
 void cPlayState::Pause() {}
 void cPlayState::Resume() {}
 
@@ -151,6 +164,19 @@ Rander()
     glRotatef(0.001, 1.0, 1.0, 1.0);
 }
 
+
+void RenderTexture(const cTexture& tex)
+{
+    glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texture
+    glBegin(GL_QUADS);
+        // Front Face
+        glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
+        glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
+        glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
+        glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
+    glEnd();
+}
+
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
     SDL_Rect viewport, temp_rect;
@@ -159,11 +185,12 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
 
-    temp_rect.x = temp_rect.y = 0;
-    temp_rect.w = temp_rect.h = 50;
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
 
-    SDL_RenderFillRect(renderer, &temp_rect);
-    Rander();
+    RenderTexture(*p_tex);
+    //Rander();
 
 }
 

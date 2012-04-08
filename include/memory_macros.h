@@ -15,7 +15,6 @@
 
 // Headers
 #include <string.h>
-#include "mytypes.h"
 
 #undef ZeroMemory
 #undef CopyMemory
@@ -26,25 +25,25 @@
 	//!	\fn         Clears a buffer.
 	//!	\param		addr	[in] buffer address
 	//!	\param		size	[in] buffer length
-	inline void ZeroMemory(void* addr, uint size)					    { memset(addr, 0, size);		}
+	inline void ZeroMemory(void* addr, unsigned int size)					    { memset(addr, 0, size);		}
 
 	//!	\fn         Fills a buffer with a given byte.
 	//!	\param		addr	[in] buffer address
 	//!	\param		size	[in] buffer length
 	//!	\param		val		[in] the byte value
-	inline void FillMemory(void* dest, uint size, ubyte val)			{ memset(dest, val, size);		}
+	inline void FillMemory(void* dest, unsigned int size, unsigned char val)			{ memset(dest, val, size);		}
 
 	//! \fn         Copies a buffer.
 	//!	\param		addr	[in] destination buffer address
 	//!	\param		addr	[in] source buffer address
 	//!	\param		size	[in] buffer length
-	inline void CopyMemory(void* dest, const void* src, uint size)	    { memcpy(dest, src, size);		}
+	inline void CopyMemory(void* dest, const void* src, unsigned int size)	    { memcpy(dest, src, size);		}
 
 	//!	\fn         Moves a buffer.
 	//!	\param		addr	[in] destination buffer address
 	//!	\param		addr	[in] source buffer address
 	//!	\param		size	[in] buffer length
-	inline void MoveMemory(void* dest, const void* src, uint size)	    { memmove(dest, src, size);		}
+	inline void MoveMemory(void* dest, const void* src, unsigned int size)	    { memmove(dest, src, size);		}
 
     #define DELETESINGLE(x)		if (x) { delete x;      x = 0; }		//!< Deletes an instance of a class.
 	#define DELETEARRAY(x)		if (x) { delete []x;    x = 0; }		//!< Deletes an array.

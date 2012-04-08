@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL2/SDL_image.h>
 
+using namespace GFX;
 using std::cout;
 using std::endl;
 

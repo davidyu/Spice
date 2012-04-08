@@ -27,11 +27,8 @@ class cGameStateManager
         iGameState*         GetCurrent() const;
 
         // Performs each state's OnExit, and deletes the state.
-        void                Clear();
+        void                ClearAll();
     private:
-        // Methods
-        // Pops the current state and deletes the state from heap
-        void                PopAndDelete();
 
         // Members
         std::vector<iGameState*> m_states;

@@ -44,8 +44,9 @@ bool cGame::Initialise()
     m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
     SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
-    SDL_GL_SetSwapInterval(0); // 1 for Vsync?
+    SDL_GL_SetSwapInterval(1); // 1 for Vsync?
 
+    glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-2.0, 2.0, -2.0, 2.0, -20.0, 20.0);
@@ -54,6 +55,9 @@ bool cGame::Initialise()
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
+
+                           // Enable Texture Mapping ( NEW )
+   // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 
     m_input.Initialise();
 
@@ -68,19 +72,15 @@ bool cGame::Terminate()
 
         if (m_sdl_state->renderer) {
             SDL_DestroyRenderer(m_sdl_state->renderer);
-            SDL_free(m_sdl_state->renderer);
         }
         if (m_sdl_state->glctx)    {
             SDL_GL_DeleteContext(m_sdl_state->glctx);
-            SDL_free(m_sdl_state->glctx);
         }
         if (m_sdl_state->window)   {
             SDL_DestroyWindow(m_sdl_state->window);
-            SDL_free(m_sdl_state->window);
         }
         SDL_free(m_sdl_state);
     }
-
     SDL_Quit();
     IMG_Quit();
 }
@@ -93,10 +93,8 @@ void cGame::MainLoop()
     while (m_running)
     {
         SDL_Event event;
-        while(SDL_PollEvent(&event))
-        {
-            if(event.type == SDL_QUIT)
-            {
+        while(SDL_PollEvent(&event)) {
+            if(event.type == SDL_QUIT) {
                 EndGame();
             }
         }
@@ -114,6 +112,7 @@ void cGame::MainLoop()
         SDL_GL_SwapWindow(m_sdl_state->window);
         SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow
     }
+    m_state_manager.ClearAll();
 }
 
 void cGame::EndGame()
