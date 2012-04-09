@@ -22,11 +22,14 @@ cGame::~cGame()
 {
     //dtor
 }
-
+#include <stdlib.h>
 bool cGame::Initialise()
 {
-    SDL_Init( SDL_INIT_EVERYTHING );
-    IMG_Init( IMG_INIT_PNG );
+    if (!SDL_Init( SDL_INIT_EVERYTHING )) { return false; }
+    if (!IMG_Init( IMG_INIT_PNG )){
+        printf("IMG_Init: %s\n", IMG_GetError());
+//        return false ;
+    }
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
     m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
@@ -49,21 +52,25 @@ bool cGame::Initialise()
     glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-2.0, 2.0, -2.0, 2.0, -20.0, 20.0);
+    glOrtho(-3.0, 3.0, 3.0, -3.0, -1.0, 1.0);
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    glClearDepth(1.0f);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
 
                            // Enable Texture Mapping ( NEW )
-   // glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
+
 
     m_input.Initialise();
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance);
     m_state_manager.PushState(state_factory.CreateObject("game"));
 
+    return true;
 }
 
 bool cGame::Terminate()
@@ -110,7 +117,7 @@ void cGame::MainLoop()
         state->Render(this, percent_tick);
 
         SDL_GL_SwapWindow(m_sdl_state->window);
-        SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow
+        //SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow
     }
     m_state_manager.ClearAll();
 }

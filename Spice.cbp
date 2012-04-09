@@ -37,10 +37,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add directory="D:\Programming\spice\test\include" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2  -lSDL2_image -lopengl32" />
-			<Add option="-lglu32" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32" />
+			<Add option="-lglu32 -lSDL_image" />
 		</Linker>
 		<Unit filename="include\CORE_Input.hpp" />
 		<Unit filename="include\CORE_cGame.hpp" />

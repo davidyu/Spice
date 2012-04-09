@@ -45,6 +45,7 @@ void cTexture::RegisterGL()
 	glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	mp_image->ConvertPixelFormat();
+
 	const int w = mp_image->GetWidth();
 	const int h = mp_image->GetHeight();
 

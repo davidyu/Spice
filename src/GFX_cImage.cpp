@@ -36,7 +36,7 @@ void cImage::ConvertPixelFormat()
     Uint32 bmask = 0x00ff0000;
     Uint32 amask = 0xff000000;
 #endif
-	SDL_SetSurfaceAlphaMod(mp_surface, SDL_ALPHA_TRANSPARENT);
+	//SDL_SetSurfaceAlphaMod(mp_surface, SDL_ALPHA_TRANSPARENT);
 	SDL_Surface* p_alphasurface = SDL_CreateRGBSurface(SDL_SWSURFACE, GetWidth(), GetHeight(),
 													  32, rmask, gmask, bmask, amask);
 	SDL_BlitSurface(mp_surface, 0, p_alphasurface, 0);

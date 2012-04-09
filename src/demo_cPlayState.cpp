@@ -21,7 +21,7 @@ cTexture* p_tex = 0;
 
 bool cPlayState::OnEnter()
 {
-    p_tex = new cTexture("test.bmp");
+    p_tex = new cTexture("test.png");
     p_tex->RegisterGL();
 }
 bool cPlayState::OnExit()
@@ -169,12 +169,12 @@ void RenderTexture(const cTexture& tex)
 {
     glBindTexture(GL_TEXTURE_2D, tex.GetID());               // Select Our Texture
     glBegin(GL_QUADS);
-        // Front Face
-        glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad
-    glEnd();
+		// Front Face
+		glTexCoord2f(1.0f, 1.0f); glVertex3f( 2.0f,  2.0f,  1.0f);
+		glTexCoord2f(0.0f, 1.0f); glVertex3f(-2.0f,  2.0f,  1.0f);
+		glTexCoord2f(0.0f, 0.0f); glVertex3f(-2.0f, -2.0f,  1.0f);
+		glTexCoord2f(1.0f, 0.0f); glVertex3f( 2.0f, -2.0f,  1.0f);
+	glEnd();
 }
 
 void cPlayState::Render(CORE::cGame* game, float percent_tick)

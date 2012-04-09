@@ -8,6 +8,7 @@ Linker options:
 -lmingw32 (for windows) -lSDL2main -lSDL2 -lopengl32 -lSDL2_image
 HI!
 
+Currently an older version of SDL image is used because I can't get sdl2_image to support pngs for some reason.
 
 
 GAME COMPONENTS
