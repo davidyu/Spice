@@ -41,7 +41,7 @@
 		<Cursor position="599" topLine="0" />
 	</File>
 	<File name="src\CORE_cGame.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1496" topLine="38" />
+		<Cursor position="19" topLine="0" />
 	</File>
 	<File name="src\CORE_cSDLState.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1961" topLine="0" />
@@ -50,7 +50,7 @@
 		<Cursor position="901" topLine="0" />
 	</File>
 	<File name="src\GFX_cImage.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="303" topLine="0" />
+		<Cursor position="704" topLine="0" />
 	</File>
 	<File name="src\GFX_cTexture.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="377" topLine="11" />
@@ -58,7 +58,7 @@
 	<File name="src\STATE_cGameStateManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="2673" topLine="12" />
 	</File>
-	<File name="src\demo_cPlayState.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="4496" topLine="165" />
+	<File name="src\demo_cPlayState.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="745" topLine="37" />
 	</File>
 </CodeBlocks_layout_file>

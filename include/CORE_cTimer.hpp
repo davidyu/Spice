@@ -7,8 +7,8 @@
 namespace CORE
 {
 
-class cTimer
-{
+    class cTimer
+    {
     public:
         // Initialises variables
                                 cTimer();
@@ -43,7 +43,7 @@ class cTimer
         bool                    m_is_started;
 
 
-};
+    };
 
 }
 

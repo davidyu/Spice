@@ -13,8 +13,8 @@ namespace CORE
 {
 
 
-class cGame : public iApplication
-{
+    class cGame : public iApplication
+    {
     public:
                                     cGame();
         virtual                     ~cGame();
@@ -28,6 +28,7 @@ class cGame : public iApplication
         STATE::cGameStateManager&   GetStateManager();
 
         inline SDL_Renderer*        GetRenderer() const{ return m_sdl_state->renderer; }
+
     protected:
         bool m_running;
         STATE::cGameStateManager    m_state_manager;
@@ -38,7 +39,7 @@ class cGame : public iApplication
 
         cSDLState*                  m_sdl_state;
 
-};
+    };
 
 }
 

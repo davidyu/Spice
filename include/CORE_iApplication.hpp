@@ -4,13 +4,13 @@
 namespace CORE
 {
 
-class iApplication
-{
+    class iApplication
+    {
     public:
         virtual bool Initialise() = 0;
         virtual bool Terminate() = 0;
         virtual void MainLoop() = 0;
-};
+    };
 
 }
 

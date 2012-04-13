@@ -15,22 +15,22 @@ namespace GFX
 
     class cImage
     {
-        public:
-            cImage(const string& str_filepath);
-            virtual ~cImage() { if (mp_surface) { SDL_FreeSurface(mp_surface); mp_surface = 0; } }
+    public:
+        cImage(const string& str_filepath);
+        virtual ~cImage() { if (mp_surface) { SDL_FreeSurface(mp_surface); mp_surface = 0; } }
 
-            bool IsTransparent() const;
-            void ConvertPixelFormat();
-            const GLint GetWidth() const    { CheckImage(); return mp_surface->w; }
-            const GLint GetHeight() const   { CheckImage(); return mp_surface->h; }
-            const void* GetPixels() const   { CheckImage(); return mp_surface->pixels; }
+        bool IsTransparent() const;
+        void ConvertPixelFormat();
+        const GLint GetWidth() const    { CheckImage(); return mp_surface->w; }
+        const GLint GetHeight() const   { CheckImage(); return mp_surface->h; }
+        const void* GetPixels() const   { CheckImage(); return mp_surface->pixels; }
 
-            inline void CheckImage() const;
-        private:
-            cImage(const cImage& rhs);            // Don't implement
-            cImage& operator=(const cImage& rhs); // Don't implement
+        inline void CheckImage() const;
+    private:
+        cImage(const cImage& rhs);            // Don't implement
+        cImage& operator=(const cImage& rhs); // Don't implement
 
-            SDL_Surface* mp_surface;
+        SDL_Surface* mp_surface;
     }; // End class cImage
 
     void cImage::CheckImage() const  { assert(mp_surface != 0); }

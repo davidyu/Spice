@@ -26,7 +26,7 @@
 	<map>
 	<string>
 
-1333998386 source:d:\programming\spice\src\core_cgame.cpp
+1334340294 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"CORE_cGame.hpp"
@@ -35,7 +35,7 @@
 	<cassert>
 	<stdlib.h>
 
-1333229756 d:\programming\spice\include\core_cgame.hpp
+1334338125 d:\programming\spice\include\core_cgame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"CORE_cSDLState.hpp"
@@ -44,12 +44,12 @@
 	"STATE_cGameStateManager.hpp"
 	"cGenericFactory.hpp"
 
-1332634986 d:\programming\spice\include\core_iapplication.hpp
+1334338182 d:\programming\spice\include\core_iapplication.hpp
 
-1333298131 d:\programming\spice\include\state_cgamestatemanager.hpp
+1334338235 d:\programming\spice\include\state_cgamestatemanager.hpp
 	<vector>
 
-1333159244 d:\programming\spice\include\state_igamestate.hpp
+1334338247 d:\programming\spice\include\state_igamestate.hpp
 
 1333916277 source:d:\programming\spice\src\state_cgamestatemanager.cpp
 	<cassert>
@@ -69,13 +69,13 @@
 	<map>
 	<string>
 
-1332820661 d:\programming\spice\include\state_cgametransition.hpp
+1334338242 d:\programming\spice\include\state_cgametransition.hpp
 	"CORE_cGame.hpp"
 
 1332801945 source:d:\programming\spice\src\core_input.cpp
 	"CORE_Input.hpp"
 
-1333229582 d:\programming\spice\include\core_input.hpp
+1334338119 d:\programming\spice\include\core_input.hpp
 	<algorithm>
 	"SDL2/SDL.h"
 	"CORE_keycodes.hpp"
@@ -85,16 +85,16 @@
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
-1333229492 d:\programming\spice\include\core_ctimer.hpp
+1334338177 d:\programming\spice\include\core_ctimer.hpp
 	"SDL2/SDL.h"
 
 1333229762 source:d:\programming\spice\src\core_ctimer.cpp
 	"CORE_cTimer.hpp"
 
-1333157239 d:\programming\spice\include\core_csdlstate.hpp
+1334338169 d:\programming\spice\include\core_csdlstate.hpp
 	<SDL2/SDL.h>
 
-1333157370 source:d:\programming\spice\src\core_csdlstate.cpp
+1334339570 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_CSDLState.hpp"
 
 1333998976 source:d:\programming\spice\src\demo_cplaystate.cpp
@@ -108,18 +108,18 @@
 	<iostream>
 	<SDL2/SDL_image.h>
 
-1333914536 d:\programming\spice\include\gfx_cimage.hpp
+1334338191 d:\programming\spice\include\gfx_cimage.hpp
 	<string>
 	<gl/gl.h>
 	<SDL2/SDL.h>
 	<cassert>
 
-1333936047 source:d:\programming\spice\src\gfx_ctexture.cpp
+1334335095 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<gl/glu.h>
 
-1333914112 d:\programming\spice\include\gfx_ctexture.hpp
+1334338111 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
@@ -128,4 +128,32 @@
 
 1333913145 d:\programming\spice\include\memory_macros.h
 	<string.h>
+
+1334338451 source:d:\programming\spice\src\math_matrix4x4.cpp
+	"MATH_Matrix4x4.hpp"
+
+1334341684 d:\programming\spice\include\math_matrix4x4.hpp
+	"MATH_MathHelper.hpp"
+
+1334341814 d:\programming\spice\include\math_mathhelper.hpp
+	<cmath>
+
+1334341728 source:d:\programming\spice\src\gfx_ccamerabase.cpp
+	"GFX_cCameraBase.hpp"
+
+1334342769 d:\programming\spice\include\gfx_ccamerabase.hpp
+	"MATH_LinearAlgebra.hpp"
+
+1334343349 d:\programming\spice\include\math_linearalgebra.hpp
+	"MATH_Vec3.hpp"
+	"MATH_Vec2.hpp"
+	"MATH_Matrix4x4.hpp"
+
+1334341671 d:\programming\spice\include\math_vec3f.hpp
+	"MATH_MathHelper.hpp"
+
+1334341671 d:\programming\spice\include\math_vec3.hpp
+	"MATH_MathHelper.hpp"
+
+1334343358 d:\programming\spice\include\math_vec2.hpp
 

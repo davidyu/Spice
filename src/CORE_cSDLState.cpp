@@ -3,6 +3,8 @@
 #define DEFAULT_WINDOW_WIDTH 640
 #define DEFAULT_WINDOW_HEIGHT 480
 
+using namespace CORE;
+
 cSDLState::cSDLState()
 {
     window = 0;
