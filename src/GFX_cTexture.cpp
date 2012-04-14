@@ -4,7 +4,7 @@
 
 #include "GFX_cTexture.hpp"
 #include "GFX_cImage.hpp"
-#include <gl/glu.h>
+#include <GL/glu.h>
 
 using namespace GFX;
 

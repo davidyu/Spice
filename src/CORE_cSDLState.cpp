@@ -1,4 +1,4 @@
-#include "CORE_CSDLState.hpp"
+#include "CORE_cSDLState.hpp"
 
 #define DEFAULT_WINDOW_WIDTH 640
 #define DEFAULT_WINDOW_HEIGHT 480
