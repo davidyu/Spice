@@ -5,8 +5,8 @@
 #define GFX_CIMAGE_H
 
 #include <string>
-#include <gl/gl.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
 #include <cassert>
 using std::string;
 

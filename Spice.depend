@@ -69,13 +69,13 @@
 	<map>
 	<string>
 
-1334338242 d:\programming\spice\include\state_cgametransition.hpp
+1334426030 d:\programming\spice\include\state_cgametransition.hpp
 	"CORE_cGame.hpp"
 
 1332801945 source:d:\programming\spice\src\core_input.cpp
 	"CORE_Input.hpp"
 
-1334338119 d:\programming\spice\include\core_input.hpp
+1334420968 d:\programming\spice\include\core_input.hpp
 	<algorithm>
 	"SDL2/SDL.h"
 	"CORE_keycodes.hpp"
@@ -108,18 +108,18 @@
 	<iostream>
 	<SDL2/SDL_image.h>
 
-1334338191 d:\programming\spice\include\gfx_cimage.hpp
+1334430104 d:\programming\spice\include\gfx_cimage.hpp
 	<string>
-	<gl/gl.h>
 	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1334335095 source:d:\programming\spice\src\gfx_ctexture.cpp
+1334431096 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<gl/glu.h>
 
-1334338111 d:\programming\spice\include\gfx_ctexture.hpp
+1334431066 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
@@ -156,4 +156,15 @@
 	"MATH_MathHelper.hpp"
 
 1334343358 d:\programming\spice\include\math_vec2.hpp
+
+1334425981 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
+	"GFX_G2D_cSpriteBatch.hpp"
+
+1334425966 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+
+1334426006 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
+	"GFX_G2D_cTextureRegion.hpp"
+
+1334426006 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+	<vector>
 

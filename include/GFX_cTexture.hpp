@@ -1,3 +1,7 @@
+/**
+ * Texture class taken from The OpenGL Object Loader project
+ */
+
 #ifndef CTEXTURE_H
 #define CTEXTURE_H
 
@@ -6,13 +10,13 @@
 #include <string>
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL.h>
+
 using std::string;
-
-
 
 
 namespace GFX
 {
+    // Forward declarations
     class cImage;
 
     class cTexture
@@ -26,7 +30,7 @@ namespace GFX
 
         const GLuint	GetID() const       { return m_texture_id; }
         const bool	IsTransparent() const   { return m_is_transparent; }
-        const bool	IsRegistred() const     { return mp_image == 0; }
+        const bool	IsRegistered() const     { return mp_image.get() == 0; }
         void	    RegisterGL();
 
         inline void	CheckTexture() const;
@@ -39,9 +43,9 @@ namespace GFX
         std::shared_ptr<cImage> mp_image;
     }; // End class cTexture
 
-    void cTexture::CheckTexture() const
+    inline void cTexture::CheckTexture() const
     {
-        assert(mp_image != 0 || m_texture_id != INVALID_ID);
+        assert(mp_image.get() != 0 || m_texture_id != INVALID_ID);
     }
 
 } // End namespace GFX

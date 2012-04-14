@@ -13,8 +13,8 @@
 using namespace CORE;
 using namespace STATE;
 
-cGame::cGame() :
-    m_sdl_state(0)
+cGame::cGame()
+: m_sdl_state(0)
 {
 }
 
@@ -25,11 +25,14 @@ cGame::~cGame()
 #include <stdlib.h>
 bool cGame::Initialise()
 {
-    if (!SDL_Init( SDL_INIT_EVERYTHING )) { return false; }
+    if (!SDL_Init( SDL_INIT_EVERYTHING )){
+        return false;
+    }
     if (!IMG_Init( IMG_INIT_PNG )){
         printf("IMG_Init: %s\n", IMG_GetError());
 //        return false ;
     }
+    m_running = true;
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
     m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
