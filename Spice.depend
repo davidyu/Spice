@@ -108,18 +108,18 @@
 	<iostream>
 	<SDL2/SDL_image.h>
 
-1334338191 d:\programming\spice\include\gfx_cimage.hpp
+1334430104 d:\programming\spice\include\gfx_cimage.hpp
 	<string>
-	<gl/gl.h>
 	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1334335095 source:d:\programming\spice\src\gfx_ctexture.cpp
+1334431096 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<gl/glu.h>
 
-1334421312 d:\programming\spice\include\gfx_ctexture.hpp
+1334431066 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>

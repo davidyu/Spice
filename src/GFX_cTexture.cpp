@@ -30,7 +30,6 @@ const bool cTexture::operator==(const cTexture& rhs) const
 	return (mp_image == rhs.mp_image) && (GetID() == rhs.GetID());
 }
 
-
 //
 void cTexture::RegisterGL()
 {

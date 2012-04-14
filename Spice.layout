@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="include\CORE_Input.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="892" topLine="0" />
+		<Cursor position="367" topLine="12" />
 	</File>
 	<File name="include\CORE_cGame.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="89" topLine="0" />
+		<Cursor position="249" topLine="11" />
 	</File>
 	<File name="include\CORE_cSDLState.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="2026" topLine="38" />
@@ -16,14 +16,20 @@
 	<File name="include\CORE_iApplication.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="240" topLine="0" />
 	</File>
-	<File name="include\GFX_cCameraBase.hpp" open="1" top="1" tabpos="3">
+	<File name="include\GFX_G2D_cSpriteBatch.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="89" topLine="0" />
+	</File>
+	<File name="include\GFX_G2D_cTextureRegion.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="1504" topLine="28" />
+	</File>
+	<File name="include\GFX_cCameraBase.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="408" topLine="12" />
 	</File>
 	<File name="include\GFX_cImage.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="955" topLine="4" />
+		<Cursor position="797" topLine="4" />
 	</File>
 	<File name="include\GFX_cTexture.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="194" topLine="0" />
+		<Cursor position="225" topLine="21" />
 	</File>
 	<File name="include\MATH_LinearAlgebra.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="102" topLine="0" />
@@ -34,7 +40,7 @@
 	<File name="include\MATH_MathHelper.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="728" topLine="0" />
 	</File>
-	<File name="include\MATH_Matrix4x4.hpp" open="1" top="0" tabpos="5">
+	<File name="include\MATH_Matrix4x4.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="7751" topLine="140" />
 	</File>
 	<File name="include\MATH_Vec2.hpp" open="0" top="0" tabpos="0">
@@ -44,10 +50,10 @@
 		<Cursor position="6138" topLine="195" />
 	</File>
 	<File name="include\STATE_cGameStateManager.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="597" topLine="0" />
+		<Cursor position="856" topLine="5" />
 	</File>
-	<File name="include\STATE_cGameTransition.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="402" topLine="0" />
+	<File name="include\STATE_cGameTransition.hpp" open="1" top="1" tabpos="5">
+		<Cursor position="1806" topLine="26" />
 	</File>
 	<File name="include\STATE_iGameState.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="332" topLine="0" />
@@ -70,17 +76,23 @@
 	<File name="src\CORE_cTimer.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="622" topLine="0" />
 	</File>
-	<File name="src\GFX_cCameraBase.cpp" open="1" top="0" tabpos="4">
+	<File name="src\GFX_G2D_cSpriteBatch.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="92" topLine="0" />
+	</File>
+	<File name="src\GFX_G2D_cTextureRegion.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="94" topLine="0" />
+	</File>
+	<File name="src\GFX_cCameraBase.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="65" topLine="0" />
 	</File>
 	<File name="src\GFX_cImage.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="641" topLine="0" />
 	</File>
 	<File name="src\GFX_cTexture.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1257" topLine="25" />
+		<Cursor position="375" topLine="0" />
 	</File>
 	<File name="src\STATE_cGameStateManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2673" topLine="12" />
+		<Cursor position="1953" topLine="68" />
 	</File>
 	<File name="src\demo_cPlayState.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1251" topLine="0" />

@@ -48,6 +48,8 @@
 		<Unit filename="include\CORE_cSDLState.hpp" />
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
+		<Unit filename="include\GFX_G2D_cSpriteBatch.hpp" />
+		<Unit filename="include\GFX_G2D_cTextureRegion.hpp" />
 		<Unit filename="include\GFX_cCameraBase.hpp" />
 		<Unit filename="include\GFX_cImage.hpp" />
 		<Unit filename="include\GFX_cTexture.hpp" />
@@ -66,6 +68,8 @@
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />
+		<Unit filename="src\GFX_G2D_cSpriteBatch.cpp" />
+		<Unit filename="src\GFX_G2D_cTextureRegion.cpp" />
 		<Unit filename="src\GFX_cCameraBase.cpp" />
 		<Unit filename="src\GFX_cImage.cpp" />
 		<Unit filename="src\GFX_cTexture.cpp" />
