@@ -41,8 +41,8 @@ namespace GFX
             virtual ~cTextureRegion();
 
             // Static functions
-            static vector<cTextureRegion> SplitTextureHorizontal(const cTexture& tex, int frame_width, int y_offset);
-            static vector<cTextureRegion> SplitTextureRegionHorizontal(const cTextureRegion& tex_reg, int frame_width, int y_offset);
+            static std::vector<cTextureRegion> SplitTextureHorizontal(const cTexture& tex, int frame_width, int y_offset);
+            static std::vector<cTextureRegion> SplitTextureRegionHorizontal(const cTextureRegion& tex_reg, int frame_width, int y_offset);
             //TODO: ADD VERTICAL SPLITS??
 
             // Getters

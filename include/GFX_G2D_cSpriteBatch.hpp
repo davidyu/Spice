@@ -3,6 +3,8 @@
 
 namespace GFX
 {
+    class cTexture;
+
     namespace G2D
     {
         class cSpriteBatch
@@ -12,7 +14,7 @@ namespace GFX
             virtual ~cSpriteBatch();
 
         private:
-            cTexture m_last_texture;
+            cTexture* m_last_texture;
             float*      m_verticies;
 
             bool        m_blending_enabled;
