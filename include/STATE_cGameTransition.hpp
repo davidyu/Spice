@@ -19,16 +19,18 @@ namespace STATE
             virtual         ~cGameTransition() {}
 
             virtual bool    OnEnter() {}
-            virtual bool    OnExit() {}
+            virtual bool    OnExit()
+                            {
+                                // Must delete old state since GameStateManager does not know
+                                // when the transition is done with the old state
+                                DELETESINGLE(mp_old_state);
+                            }
             virtual void    Pause() {}
             virtual void    Resume() {}
 
             virtual void    Update(CORE::cGame* game, float delta)
                             {
-                                if (mp_old_state!=0)    { delete mp_old_state; }
-                                if (mp_new_state!=0)    { delete mp_new_state; }
-
-                                game->GetStateManager().PopState();
+                                Finish(); // Dummy transition finishes right away
                             }
             virtual void    Render(float percent_tick) {}
 
@@ -39,6 +41,10 @@ namespace STATE
                                 mp_old_state = old_s;
                                 mp_new_state = new_s;
 
+                            }
+            void            Finish()
+                            {
+                                game->GetStateManager().PopState();
                             }
         protected:
             iGameState*             mp_old_state;

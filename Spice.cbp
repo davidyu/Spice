@@ -48,8 +48,15 @@
 		<Unit filename="include\CORE_cSDLState.hpp" />
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
+		<Unit filename="include\GFX_cCameraBase.hpp" />
 		<Unit filename="include\GFX_cImage.hpp" />
 		<Unit filename="include\GFX_cTexture.hpp" />
+		<Unit filename="include\MATH_LinearAlgebra.hpp" />
+		<Unit filename="include\MATH_Math.hpp" />
+		<Unit filename="include\MATH_MathHelper.hpp" />
+		<Unit filename="include\MATH_Matrix4x4.hpp" />
+		<Unit filename="include\MATH_Vec2.hpp" />
+		<Unit filename="include\MATH_Vec3.hpp" />
 		<Unit filename="include\STATE_cGameStateManager.hpp" />
 		<Unit filename="include\STATE_cGameTransition.hpp" />
 		<Unit filename="include\STATE_iGameState.hpp" />
@@ -59,8 +66,10 @@
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />
+		<Unit filename="src\GFX_cCameraBase.cpp" />
 		<Unit filename="src\GFX_cImage.cpp" />
 		<Unit filename="src\GFX_cTexture.cpp" />
+		<Unit filename="src\MATH_Matrix4x4.cpp" />
 		<Unit filename="src\STATE_cGameStateManager.cpp" />
 		<Unit filename="src\demo_cPlayState.cpp" />
 		<Extensions>

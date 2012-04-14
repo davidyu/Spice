@@ -31,9 +31,10 @@ Misc:
 	cGenericFactory
 	
 Next Steps:
-	cTimer
 	Maths
-	Textures/Sprites
+	Sprites, Alpha, & Sprite Batch
+	Animation
+	Shaders?
 
 	
 	

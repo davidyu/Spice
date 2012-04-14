@@ -1,3 +1,7 @@
+/**
+ * Texture class taken from The OpenGL Object Loader project
+ */
+
 #ifndef CTEXTURE_H
 #define CTEXTURE_H
 
@@ -9,10 +13,9 @@
 using std::string;
 
 
-
-
 namespace GFX
 {
+    // Forward declarations
     class cImage;
 
     class cTexture

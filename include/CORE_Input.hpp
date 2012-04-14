@@ -19,22 +19,24 @@ namespace CORE
     public:
                         Input()                         { }
                         ~Input()                        { }
+
         void            Initialise()
-        {
-            std::fill(m_old_keystate, m_old_keystate+HAR_LAST, 0);
-            std::fill(m_keystate, m_keystate+HAR_LAST, 0);
-        }
-        inline void            Update()
-        {
-            std::copy(m_keystate, m_keystate+HAR_LAST, m_old_keystate);
-            std::copy(SDL_GetKeyboardState(0), SDL_GetKeyboardState(0)+HAR_LAST, m_keystate);
+                        {
+                            std::fill(m_old_keystate, m_old_keystate+HAR_LAST, 0);
+                            std::fill(m_keystate, m_keystate+HAR_LAST, 0);
+                        }
 
-            m_old_mousestate    = m_mousestate;
-            m_old_xmouse        = m_xmouse;
-            m_old_ymouse        = m_ymouse;
-            m_mousestate        = SDL_GetMouseState(&m_xmouse, &m_ymouse);
+        inline void     Update()
+                        {
+                            std::copy(m_keystate, m_keystate+HAR_LAST, m_old_keystate);
+                            std::copy(SDL_GetKeyboardState(0), SDL_GetKeyboardState(0)+HAR_LAST, m_keystate);
 
-        }
+                            m_old_mousestate    = m_mousestate;
+                            m_old_xmouse        = m_xmouse;
+                            m_old_ymouse        = m_ymouse;
+                            m_mousestate        = SDL_GetMouseState(&m_xmouse, &m_ymouse);
+
+                        }
 
         //    Uint8*          get_keystate()                  { return m_keystate; }
         //    Uint8*          get_old_keystate()              { return m_old_keystate; }
