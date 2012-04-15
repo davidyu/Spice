@@ -48,11 +48,11 @@ namespace GFX
     {
         assert(mp_image.get() != 0 || m_texture_id != INVALID_ID);
     }
-    inline GLuint GetID() const
+    inline const GLuint cTexture::GetID() const
     {
         return m_texture_id;
     }
-    inline void BindGL() const
+    inline void cTexture::BindGL() const
     {
         glBindTexture (GL_TEXTURE_2D, m_texture_id);
     }

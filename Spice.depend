@@ -85,8 +85,7 @@
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
-1334504072 d:\programming\spice\include\core_ctimer.hpp
-	<SDL2/SDL.h>
+1334504092 d:\programming\spice\include\core_ctimer.hpp
 
 1334501190 source:d:\programming\spice\src\core_ctimer.cpp
 	"SDL2/SDL.h"
@@ -120,7 +119,7 @@
 	"GFX_cImage.hpp"
 	<GL/glu.h>
 
-1334431066 d:\programming\spice\include\gfx_ctexture.hpp
+1334516312 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
