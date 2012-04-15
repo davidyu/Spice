@@ -22,9 +22,11 @@ int main(int argc, char* args[])
 {
     iApplication* game = new cGame();
 
-    game->Initialise();
-    game->MainLoop();
-    game->Terminate();
+     if (game->Initialise()) {
+        game->MainLoop();
+        game->Terminate();
+     }
+
 
     delete game;
 

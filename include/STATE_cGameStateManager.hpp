@@ -21,8 +21,8 @@ namespace STATE
             void                PushState(iGameState* new_state);
             void                PushStateUsingTransition(iGameState* new_state, cGameTransition* transition);
 
-            iGameState*         PopState();
-            iGameState*         PopStateUsingTransition(cGameTransition* transition);
+            void                PopState();
+            void                PopStateUsingTransition(cGameTransition* transition);
 
             iGameState*         GetCurrent() const;
 

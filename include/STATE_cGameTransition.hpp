@@ -24,6 +24,7 @@ namespace STATE
                                 // Must delete old state since GameStateManager does not know
                                 // when the transition is done with the old state
                                 DELETESINGLE(mp_old_state);
+                                return true;
                             }
             virtual void    Pause() {}
             virtual void    Resume() {}

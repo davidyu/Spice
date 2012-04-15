@@ -43,7 +43,7 @@ namespace GFX
             // Static functions
             static std::vector<cTextureRegion> SplitTextureHorizontal(const cTexture& tex, int frame_width, int y_offset);
             static std::vector<cTextureRegion> SplitTextureRegionHorizontal(const cTextureRegion& tex_reg, int frame_width, int y_offset);
-            //TODO: ADD VERTICAL SPLITS??
+            //TODO: ADD VERTICAL SPLITS??; USE OWN ARRAY CLASS
 
             // Getters
             const cTexture& GetTexture() const;

@@ -61,8 +61,6 @@ Rander()
     };
 
     /* Do our drawing, too. */
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glBegin(GL_QUADS);
 
@@ -159,9 +157,6 @@ Rander()
 #endif /* SHADED_CUBE */
 
     glEnd();
-
-    glMatrixMode(GL_MODELVIEW);
-    glRotatef(0.001, 1.0, 1.0, 1.0);
 }
 
 
@@ -187,10 +182,12 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
+    //glLoadIdentity();
 
     RenderTexture(*p_tex);
     //Rander();
+    glMatrixMode(GL_MODELVIEW);
+    glRotatef(0.1, 1.0, 1.0, 1.0);
 
 }
 

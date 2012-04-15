@@ -48,6 +48,7 @@
 		<Unit filename="include\CORE_cSDLState.hpp" />
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
+		<Unit filename="include\CORE_keycodes.hpp" />
 		<Unit filename="include\GFX_G2D_cSpriteBatch.hpp" />
 		<Unit filename="include\GFX_G2D_cTextureRegion.hpp" />
 		<Unit filename="include\GFX_cCameraBase.hpp" />
@@ -64,6 +65,7 @@
 		<Unit filename="include\STATE_iGameState.hpp" />
 		<Unit filename="include\cGenericFactory.hpp" />
 		<Unit filename="include\demo_cPlayState.hpp" />
+		<Unit filename="include\memory_macros.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />

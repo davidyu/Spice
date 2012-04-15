@@ -15,6 +15,7 @@ using namespace STATE;
 
 cGame::cGame()
 : m_sdl_state(0)
+, m_running(true)
 {
 }
 
@@ -26,6 +27,7 @@ cGame::~cGame()
 bool cGame::Initialise()
 {
     if (!SDL_Init( SDL_INIT_EVERYTHING )){
+        cout << "SOMETHING BAD HAPPENED IN SDL_INIT\n";
         return false;
     }
     if (!IMG_Init( IMG_INIT_PNG )){
@@ -35,6 +37,7 @@ bool cGame::Initialise()
     m_running = true;
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
+    m_sdl_state->SetGL();
     m_sdl_state->window = SDL_CreateWindow(m_sdl_state->window_title,
         m_sdl_state->window_x,
         m_sdl_state->window_y,
@@ -55,7 +58,7 @@ bool cGame::Initialise()
     glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-3.0, 3.0, 3.0, -3.0, -1.0, 1.0);
+    glOrtho(-3.0, 3.0, 3.0, -3.0, -10.0, 10.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -65,7 +68,7 @@ bool cGame::Initialise()
     glShadeModel(GL_SMOOTH);
 
                            // Enable Texture Mapping ( NEW )
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
+    //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 
 
     m_input.Initialise();
