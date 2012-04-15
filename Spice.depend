@@ -85,10 +85,11 @@
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
-1334338177 d:\programming\spice\include\core_ctimer.hpp
-	"SDL2/SDL.h"
+1334504072 d:\programming\spice\include\core_ctimer.hpp
+	<SDL2/SDL.h>
 
-1333229762 source:d:\programming\spice\src\core_ctimer.cpp
+1334501190 source:d:\programming\spice\src\core_ctimer.cpp
+	"SDL2/SDL.h"
 	"CORE_cTimer.hpp"
 
 1334338169 d:\programming\spice\include\core_csdlstate.hpp
@@ -97,7 +98,7 @@
 1334438124 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1334452682 source:d:\programming\spice\src\demo_cplaystate.cpp
+1334463734 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	"demo_cPlayState.hpp"
 	"CORE_cGame.hpp"
@@ -165,6 +166,6 @@
 1334426006 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1334426006 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+1334453728 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
 	<vector>
 

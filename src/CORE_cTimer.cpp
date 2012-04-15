@@ -1,5 +1,9 @@
+#include "SDL2/SDL.h"
 #include "CORE_cTimer.hpp"
+
+
 using namespace CORE;
+
 cTimer::cTimer() :
     m_ticks_since_start(0),
     m_ticks_since_pause(0),

@@ -67,8 +67,8 @@
 	<File name="main.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="604" topLine="0" />
 	</File>
-	<File name="src\CORE_cGame.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="815" topLine="28" />
+	<File name="src\CORE_cGame.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="376" topLine="112" />
 	</File>
 	<File name="src\CORE_cSDLState.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1010" topLine="34" />
@@ -94,7 +94,7 @@
 	<File name="src\STATE_cGameStateManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="2241" topLine="0" />
 	</File>
-	<File name="src\demo_cPlayState.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="4332" topLine="170" />
+	<File name="src\demo_cPlayState.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="4383" topLine="167" />
 	</File>
 </CodeBlocks_layout_file>

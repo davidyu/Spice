@@ -54,6 +54,7 @@
 		<Unit filename="include\GFX_cCameraBase.hpp" />
 		<Unit filename="include\GFX_cImage.hpp" />
 		<Unit filename="include\GFX_cTexture.hpp" />
+		<Unit filename="include\GFX_cTextureMesh.hpp" />
 		<Unit filename="include\MATH_LinearAlgebra.hpp" />
 		<Unit filename="include\MATH_Math.hpp" />
 		<Unit filename="include\MATH_MathHelper.hpp" />
@@ -75,6 +76,7 @@
 		<Unit filename="src\GFX_cCameraBase.cpp" />
 		<Unit filename="src\GFX_cImage.cpp" />
 		<Unit filename="src\GFX_cTexture.cpp" />
+		<Unit filename="src\GFX_cTextureMesh.cpp" />
 		<Unit filename="src\MATH_Matrix4x4.cpp" />
 		<Unit filename="src\STATE_cGameStateManager.cpp" />
 		<Unit filename="src\demo_cPlayState.cpp" />

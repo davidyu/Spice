@@ -28,10 +28,11 @@ namespace GFX
 
         const bool	operator==(const cTexture& rhs) const;
 
-        const GLuint	GetID() const       { return m_texture_id; }
-        const bool	IsTransparent() const   { return m_is_transparent; }
+        const GLuint	GetID() const;
+        const bool	IsTransparent() const    { return m_is_transparent; }
         const bool	IsRegistered() const     { return mp_image.get() == 0; }
         void	    RegisterGL();
+        void        BindGL() const;
 
         inline void	CheckTexture() const;
             //  REQUIRE: (pImage is not NULL) OR (the texture has been passed to OpenGL)
@@ -46,6 +47,14 @@ namespace GFX
     inline void cTexture::CheckTexture() const
     {
         assert(mp_image.get() != 0 || m_texture_id != INVALID_ID);
+    }
+    inline GLuint GetID() const
+    {
+        return m_texture_id;
+    }
+    inline void BindGL() const
+    {
+        glBindTexture (GL_TEXTURE_2D, m_texture_id);
     }
 
 } // End namespace GFX
