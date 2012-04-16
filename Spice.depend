@@ -160,11 +160,17 @@
 1334425981 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 
-1334425966 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+1334600786 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
 
 1334426006 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
 1334453728 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+	<vector>
+
+1334516353 source:d:\programming\spice\src\gfx_ctexturemesh.cpp
+	"GFX_cTextureMesh.hpp"
+
+1334597991 d:\programming\spice\include\gfx_ctexturemesh.hpp
 	<vector>
 
