@@ -5,7 +5,19 @@
 
 using namespace CORE;
 
+cSDLState::cSDLState(int win_w, int win_h)
+{
+    init();
+    window_w = win_w;
+    window_h = win_h;
+}
+
 cSDLState::cSDLState()
+{
+    init();
+}
+
+void cSDLState::init()
 {
     window = 0;
     renderer = 0;

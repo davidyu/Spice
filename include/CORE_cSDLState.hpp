@@ -14,9 +14,14 @@ namespace CORE
     class cSDLState
     {
     public:
+        cSDLState(int win_w, int win_h); //alternate ctor for optional window width/height
         cSDLState();
         virtual ~cSDLState();
         void SetGL();
+        void setWindowWidth(int val)
+        {window_w = val;};
+        void setWindowHeight(int val)
+        {window_h = val;};
 
     // Members
 
@@ -67,6 +72,9 @@ namespace CORE
         int gl_accelerated;
         int gl_major_version;
         int gl_minor_version;
+
+    private:
+        void init();
 
     }; // End class cSDL_State
 
