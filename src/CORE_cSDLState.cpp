@@ -7,9 +7,37 @@ using namespace CORE;
 
 cSDLState::cSDLState(int win_w, int win_h)
 {
-    cSDLState();
+    window = 0;
+    renderer = 0;
+    glctx = 0;
+
+    window_title = "";
+    window_x = SDL_WINDOWPOS_CENTERED;
+    window_y = SDL_WINDOWPOS_CENTERED;
     window_w = win_w;
     window_h = win_h;
+    is_fullscreen = SDL_FALSE;
+
+    SDL_zero(render_flags);
+
+    /* Set some very sane GL defaults */
+    gl_red_size = 3;
+    gl_green_size = 3;
+    gl_blue_size = 2;
+    gl_alpha_size = 0;
+    gl_buffer_size = 0;
+    gl_depth_size = 16;
+    gl_stencil_size = 0;
+    gl_double_buffer = 1;
+    gl_accum_red_size = 0;
+    gl_accum_green_size = 0;
+    gl_accum_blue_size = 0;
+    gl_accum_alpha_size = 0;
+    gl_stereo = 0;
+    gl_multisamplebuffers = 0;
+    gl_multisamplesamples = 0;
+    gl_retained_backing = 1;
+    gl_accelerated = -1;
 }
 
 cSDLState::cSDLState()
