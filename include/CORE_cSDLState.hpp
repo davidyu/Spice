@@ -14,6 +14,7 @@ namespace CORE
     class cSDLState
     {
     public:
+        cSDLState(int win_w, int win_h); //alternate ctor for optional window width/height
         cSDLState();
         virtual ~cSDLState();
         void SetGL();
