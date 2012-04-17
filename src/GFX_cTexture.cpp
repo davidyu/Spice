@@ -12,16 +12,21 @@ const GLuint cTexture::INVALID_ID = ~1;
 
 
 cTexture::~cTexture()
-{
-    //dtor
-}
+{}
 
 //
 cTexture::cTexture(const string& str_filepath)
-: m_texture_id(INVALID_ID)
-, mp_image(new cImage(str_filepath))
+: mp_image(new cImage(str_filepath))
 {
 	m_is_transparent = mp_image->IsTransparent();
+	m_texture_id = INVALID_ID;
+
+    m_width     = mp_image->GetWidth();
+	m_height    = mp_image->GetHeight();
+	m_u         = 0.0f;
+	m_v         = 0.0f;
+	m_u2        = 1.0f;
+	m_v2        = 1.0f;
 }
 
 //
@@ -45,13 +50,10 @@ void cTexture::RegisterGL()
 
 	mp_image->ConvertPixelFormat();
 
-	const int w = mp_image->GetWidth();
-	const int h = mp_image->GetHeight();
-
-	if (((w & (w-1)) == 0) && ((h & (h-1)) == 0))
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, mp_image->GetPixels());
+	if (((m_width & (m_width-1)) == 0) && ((m_height & (m_height-1)) == 0))
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, mp_image->GetPixels());
 	else
-		gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA8, w, h, GL_RGBA, GL_UNSIGNED_BYTE, mp_image->GetPixels());
+		gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA8, m_width, m_height, GL_RGBA, GL_UNSIGNED_BYTE, mp_image->GetPixels());
 
 	mp_image.reset();
 

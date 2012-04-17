@@ -5,9 +5,12 @@
 
 namespace GFX
 {
-    class cTexture;
-    class cTextureRegion;
+    // Forward Declarations
+//    class cTexture;
+//    class cTextureRegion;
     class cTextureMesh;
+    class cTextureWrapper;
+    typedef unsigned int GLuint;
 
     namespace G2D
     {
@@ -22,8 +25,8 @@ namespace GFX
             void Begin();
             void End();
 
-            void DrawTexture(const cTextureRegion& tex_reg, int x, int y, int w, int h);
-            void DrawTextureRegion(const cTextureRegion& tex_reg, float x, float y, int src_w, int src_h, float degrees, float scale);
+            void DrawTexture(cTextureWrapper& tex, float x, float y, float w, float h);
+            //void DrawTextureRegion(const cTextureWrapper& tex, float x, float y, int src_w, int src_h, float degrees, float scale);
             // TODO -- Add more draws
 
             // Renders all pending textures to be drawn, without ending the sprite batch
@@ -39,13 +42,16 @@ namespace GFX
 
         private:
             // Private methods
-            void            ChangeTexture(const cTexture& tex);
+            void            ChangeTexture(const cTextureWrapper& tex);
             void            RenderMesh();
 
             cTextureMesh*   m_mesh;
-            cTexture*       m_last_texture;
+            cTextureWrapper* m_last_texture;
 
+            bool            m_is_drawing;           // Set to true when Begin() is called, and false when End() is.
             bool            m_is_blending_enabled;
+            int             mn_verticies;
+            int             m_index;
 
         };
     }

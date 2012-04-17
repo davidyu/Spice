@@ -32,7 +32,7 @@ namespace MATH
         //	c = cos(angle)
         //  s = sin(angle)
 
-        degrees = DegToRad(degrees);
+        degrees = DegToRad(degrees); // Be careful, "degrees" is in radians after this line.
 
         float x = axis.x;
         float y = axis.y;
