@@ -5,7 +5,7 @@
 #define CTEXTUREREGION_H
 
 #include <vector> // TODO: DON'T USE?
-
+#include "GFX_cTextureWrapper.hpp"
 class cTexture;
 
 namespace GFX
@@ -15,7 +15,7 @@ namespace GFX
 
     namespace G2D
     {
-        class cTextureRegion
+        class cTextureRegion : public cTextureWrapper
         {
         public:
             // Empty constructor

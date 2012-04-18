@@ -55,6 +55,7 @@
 		<Unit filename="include\GFX_cImage.hpp" />
 		<Unit filename="include\GFX_cTexture.hpp" />
 		<Unit filename="include\GFX_cTextureMesh.hpp" />
+		<Unit filename="include\GFX_cTextureWrapper.hpp" />
 		<Unit filename="include\MATH_LinearAlgebra.hpp" />
 		<Unit filename="include\MATH_Math.hpp" />
 		<Unit filename="include\MATH_MathHelper.hpp" />

@@ -8,8 +8,7 @@
 #include <memory>
 #include <cassert>
 #include <string>
-#include <SDL2/SDL_opengl.h>
-#include <SDL2/SDL.h>
+#include "GFX_cTextureWrapper.hpp"
 
 using std::string;
 
@@ -19,7 +18,7 @@ namespace GFX
     // Forward declarations
     class cImage;
 
-    class cTexture
+    class cTexture : public cTextureWrapper
     {
     public:
         cTexture(const string& str_filepath);
@@ -28,34 +27,21 @@ namespace GFX
 
         const bool	operator==(const cTexture& rhs) const;
 
-        const GLuint	GetID() const;
         const bool	IsTransparent() const    { return m_is_transparent; }
         const bool	IsRegistered() const     { return mp_image.get() == 0; }
         void	    RegisterGL();
-        void        BindGL() const;
 
         inline void	CheckTexture() const;
             //  REQUIRE: (pImage is not NULL) OR (the texture has been passed to OpenGL)
 
         static const GLuint	INVALID_ID;
     private:
-        GLuint m_texture_id;
         bool m_is_transparent;
         std::shared_ptr<cImage> mp_image;
     }; // End class cTexture
 
     inline void cTexture::CheckTexture() const
-    {
-        assert(mp_image.get() != 0 || m_texture_id != INVALID_ID);
-    }
-    inline const GLuint cTexture::GetID() const
-    {
-        return m_texture_id;
-    }
-    inline void cTexture::BindGL() const
-    {
-        glBindTexture (GL_TEXTURE_2D, m_texture_id);
-    }
+    { assert(mp_image.get() != 0 || m_texture_id != INVALID_ID); }
 
 } // End namespace GFX
 

@@ -20,6 +20,7 @@ namespace GFX
         virtual             ~cTextureMesh();
 
         void                Destroy();
+        void                AddVertex4f(float x, float y, float u, float v);
         void                AddVertex8f(float x, float y, float u, float v
                                       , float r, float g, float b, float a);
         void                AddVertex(const Vertex& vertex);
@@ -47,7 +48,15 @@ namespace GFX
 
     };
 
-
+    inline void cTextureMesh::AddVertex4f(float x, float y, float u, float v)
+    {
+        Vertex vertex = {
+            x, y,
+            u, v,
+            0.0f, 0.0f, 0.0f, 1.0f
+        };
+        AddVertex(vertex);
+    }
     inline void cTextureMesh::AddVertex8f(float x, float y, float u, float v
                                         , float r, float g, float b, float a)
     {

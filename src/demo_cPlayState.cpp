@@ -184,14 +184,10 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-    //RenderTexture(*p_tex);
-    Rander();
-    glLoadIdentity();
-    glMatrixMode(GL_MODELVIEW);
-    glRotatef(30.0, 1,0,0);
-    glRotatef(-45.0, 0,1,0);
-    //glRotatef(0.1, 1.0, 1.0, 1.0);
-
+    RenderTexture(*p_tex);
+    //Rander();
+    glMatrixMode(GL_PROJECTION);
+    glRotatef(0.1, 1.0, 1.0, 1.0);
 }
 
 void cPlayState::HandleInput() {}

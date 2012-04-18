@@ -97,7 +97,7 @@
 1334438124 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1334463734 source:d:\programming\spice\src\demo_cplaystate.cpp
+1334674019 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	"demo_cPlayState.hpp"
 	"CORE_cGame.hpp"
@@ -114,17 +114,16 @@
 	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1334438124 source:d:\programming\spice\src\gfx_ctexture.cpp
+1334673982 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
 
-1334516312 d:\programming\spice\include\gfx_ctexture.hpp
+1334676673 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
-	<SDL2/SDL_opengl.h>
-	<SDL2/SDL.h>
+	"GFX_cTextureWrapper.hpp"
 
 1333913145 d:\programming\spice\include\memory_macros.h
 	<string.h>
@@ -144,7 +143,7 @@
 1334342769 d:\programming\spice\include\gfx_ccamerabase.hpp
 	"MATH_LinearAlgebra.hpp"
 
-1334343349 d:\programming\spice\include\math_linearalgebra.hpp
+1334639872 d:\programming\spice\include\math_linearalgebra.hpp
 	"MATH_Vec3.hpp"
 	"MATH_Vec2.hpp"
 	"MATH_Matrix4x4.hpp"
@@ -160,17 +159,22 @@
 1334425981 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 
-1334600786 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+1334601028 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
 
 1334426006 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1334453728 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+1334673905 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
 	<vector>
+	"GFX_cTextureWrapper.hpp"
 
-1334516353 source:d:\programming\spice\src\gfx_ctexturemesh.cpp
+1334600848 source:d:\programming\spice\src\gfx_ctexturemesh.cpp
+	<SDL2/SDL_opengl.h>
 	"GFX_cTextureMesh.hpp"
 
-1334597991 d:\programming\spice\include\gfx_ctexturemesh.hpp
+1334676867 d:\programming\spice\include\gfx_ctexturemesh.hpp
 	<vector>
+
+1334676765 d:\programming\spice\include\gfx_ctexturewrapper.hpp
+	<SDL2/SDL_opengl.h>
 
