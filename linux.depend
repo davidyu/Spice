@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1334422630 source:/home/accts/ly58/cs478/final/Spice/main.cpp
+	<iostream>
+	"CORE_cGame.hpp"
+	<windows.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
+	"SDL2/SDL.h"
+	"CORE_iApplication.hpp"
+	"CORE_cSDLState.hpp"
+	"CORE_Input.hpp"
+	"CORE_cTimer.hpp"
+	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_iApplication.hpp
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_cSDLState.hpp
+	<SDL2/SDL.h>
+
+1334433724 /home/accts/ly58/cs478/final/Spice/include/CORE_Input.hpp
+	<algorithm>
+	"SDL2/SDL.h"
+	"CORE_keycodes.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_keycodes.hpp
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+	"SDL2/SDL.h"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameStateManager.hpp
+	<vector>
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
+	<map>
+	<string>
+
+1334433724 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cGame.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_image.h>
+	"CORE_cGame.hpp"
+	"STATE_iGameState.hpp"
+	"demo_cPlayState.hpp"
+	<cassert>
+	<stdlib.h>
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/STATE_iGameState.hpp
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/demo_cPlayState.hpp
+	"STATE_iGameState.hpp"
+
+1334434957 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cSDLState.cpp
+	"CORE_cSDLState.hpp"
+
+1334422631 source:/home/accts/ly58/cs478/final/Spice/src/CORE_cTimer.cpp
+	"CORE_cTimer.hpp"
+
+1334433700 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cImage.cpp
+	"GFX_cImage.hpp"
+	<iostream>
+	<SDL2/SDL_image.h>
+
+1334433724 /home/accts/ly58/cs478/final/Spice/include/GFX_cImage.hpp
+	<string>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	<cassert>
+
+1334435046 source:/home/accts/ly58/cs478/final/Spice/src/GFX_cTexture.cpp
+	"GFX_cTexture.hpp"
+	"GFX_cImage.hpp"
+	<GL/glu.h>
+
+1334433724 /home/accts/ly58/cs478/final/Spice/include/GFX_cTexture.hpp
+	<memory>
+	<cassert>
+	<string>
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL.h>
+
+1334422631 source:/home/accts/ly58/cs478/final/Spice/src/STATE_cGameStateManager.cpp
+	<cassert>
+	"memory_macros.h"
+	"STATE_cGameStateManager.hpp"
+	"STATE_iGameState.hpp"
+	"STATE_cGameTransition.hpp"
+
+1334422630 /home/accts/ly58/cs478/final/Spice/include/memory_macros.h
+	<string.h>
+
+1334433724 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameTransition.hpp
+	"CORE_cGame.hpp"
+
+1334433700 source:/home/accts/ly58/cs478/final/Spice/src/demo_cPlayState.cpp
+	<SDL2/SDL_opengl.h>
+	"demo_cPlayState.hpp"
+	"CORE_cGame.hpp"
+	"GFX_cTexture.hpp"
+

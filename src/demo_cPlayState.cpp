@@ -63,7 +63,7 @@ Rander()
     /* Do our drawing, too. */
 
     glBegin(GL_QUADS);
-#define SHADED_CUBE
+//#define SHADED_CUBE
 #ifdef SHADED_CUBE
     glColor3fv(color[0]);
     glVertex3fv(cube[0]);
@@ -182,12 +182,15 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //glLoadIdentity();
+
 
     //RenderTexture(*p_tex);
     Rander();
-    glMatrixMode(GL_PROJECTION);
-    glRotatef(0.1, 1.0, 1.0, 1.0);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glRotatef(30.0, 1,0,0);
+    glRotatef(-45.0, 0,1,0);
+    //glRotatef(0.1, 1.0, 1.0, 1.0);
 
 }
 
