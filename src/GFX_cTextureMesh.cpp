@@ -49,7 +49,7 @@ void cTextureMesh::Render()
     glColorPointer(4, GL_FLOAT, GetVertexByteSize(),GetVertexBuffer()->col);
 
     // Draw
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, GetNumberOfIndicies());
+    glDrawArrays(GL_QUADS, 0, GetNumberOfIndicies());
     //glDrawElements(GL_QUADS, GetNumberOfIndicies(), GL_UNSIGNED_INT, GetIndexBuffer());
 
     // Disable client states

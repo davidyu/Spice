@@ -121,42 +121,6 @@ Rander()
     glVertex3fv(cube[2]);
     glColor3fv(color[7]);
     glVertex3fv(cube[7]);
-#else /* flat cube */
-    glColor3f(1.0, 0.0, 0.0);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[1]);
-    glVertex3fv(cube[2]);
-    glVertex3fv(cube[3]);
-
-    glColor3f(0.0, 1.0, 0.0);
-    glVertex3fv(cube[3]);
-    glVertex3fv(cube[4]);
-    glVertex3fv(cube[7]);
-    glVertex3fv(cube[2]);
-
-    glColor3f(0.0, 0.0, 1.0);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[6]);
-    glVertex3fv(cube[1]);
-
-    glColor3f(0.0, 1.0, 1.0);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[4]);
-    glVertex3fv(cube[7]);
-    glVertex3fv(cube[6]);
-
-    glColor3f(1.0, 1.0, 0.0);
-    glVertex3fv(cube[5]);
-    glVertex3fv(cube[0]);
-    glVertex3fv(cube[3]);
-    glVertex3fv(cube[4]);
-
-    glColor3f(1.0, 0.0, 1.0);
-    glVertex3fv(cube[6]);
-    glVertex3fv(cube[1]);
-    glVertex3fv(cube[2]);
-    glVertex3fv(cube[7]);
 #endif /* SHADED_CUBE */
 
     glEnd();
@@ -187,17 +151,17 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     static G2D::cSpriteBatch batch = G2D::cSpriteBatch();
 
     static cTextureRegion reg = cTextureRegion(*p_tex, 64, 0, 128, 64);
-    static cTextureRegion reg2 = cTextureRegion(reg, 64, 0, 64, 64);
+    static cTextureRegion reg2 = cTextureRegion(reg, 0.5f, 0.0f, 1.0f, 1.0f);
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 //    Rander();
-    RenderTexture(reg2);
+//    RenderTexture(reg2);
 
-//    batch.Begin();
-//        batch.DrawTexture(reg, 0.0f, 0.0f, 2.0f, 2.0f);
-//    batch.End();
+    batch.Begin();
+        batch.DrawTexture(reg2, 0.0f, 0.0f, 1.0f, 1.0f);
+    batch.End();
 
 //    glMatrixMode(GL_PROJECTION);
 //    glRotatef(0.1, 1.0, 1.0, 1.0);

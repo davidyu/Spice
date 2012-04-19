@@ -27,8 +27,9 @@ namespace GFX
             // Negative dimensions indicate flips
             cTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
 
-            // Creates texture region using texture mapping coords
-            cTextureRegion(const cTextureWrapper&tex, float u, float v, float u2, float v2);
+            // Treating tex as a full texture, this ctor creates texture region using texture mapping coords
+            // i.e. uv coords are relative to the tex, not the base texture.
+            cTextureRegion(const cTextureWrapper& tex, float u, float v, float u2, float v2);
 
 //            // Creates texture region using offsets, height, and width of the passed texture region
 //            // Negative dimensions indicate flips
