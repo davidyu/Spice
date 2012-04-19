@@ -55,10 +55,9 @@ bool cGame::Initialise()
 
     SDL_GL_SetSwapInterval(1); // 1 for Vsync?
 
-    glEnable(GL_TEXTURE_2D);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-3.0, 3.0, -3.0, 3.0, -10.0, 10.0);
+    glOrtho(-3.0, 3.0, 3.0, -3.0, -10.0, 10.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -66,9 +65,9 @@ bool cGame::Initialise()
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
+    glEnable(GL_TEXTURE_2D);
 
-                           // Enable Texture Mapping ( NEW )
-    //glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 
 
     m_input.Initialise();

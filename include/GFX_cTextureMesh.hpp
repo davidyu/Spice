@@ -17,8 +17,10 @@ namespace GFX
         };
 
                             cTextureMesh();
+                            cTextureMesh(int initial_sz); // Reserve some space in vertex buffer
         virtual             ~cTextureMesh();
 
+        void                Initialise(int initial_sz);
         void                Destroy();
         void                AddVertex4f(float x, float y, float u, float v);
         void                AddVertex8f(float x, float y, float u, float v
@@ -53,7 +55,7 @@ namespace GFX
         Vertex vertex = {
             x, y,
             u, v,
-            0.0f, 0.0f, 0.0f, 1.0f
+            1.0f, 1.0f, 1.0f, 1.0f
         };
         AddVertex(vertex);
     }
@@ -80,7 +82,7 @@ namespace GFX
     { return (m_index_buffer.empty()) ? 0 : &m_index_buffer[0]; }
 
     inline int cTextureMesh::GetIndexByteSize() const
-    { return static_cast<int>(sizeof(m_index_buffer)); }
+    { return static_cast<int>(sizeof(int)); }
 
     inline int cTextureMesh::GetNumberOfIndicies() const
     { return static_cast<int>(m_index_buffer.size()); }
@@ -95,7 +97,7 @@ namespace GFX
     { return (m_vertex_buffer.empty()) ? 0 : &m_vertex_buffer[0]; }
 
     inline const int cTextureMesh::GetVertexByteSize() const
-    { return static_cast<int>(m_vertex_buffer.size()); }
+    { return static_cast<int>(sizeof(Vertex)); }
 
 } // End namespace GFX
 

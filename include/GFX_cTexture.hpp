@@ -33,8 +33,6 @@ namespace GFX
 
         inline void	CheckTexture() const;
             //  REQUIRE: (pImage is not NULL) OR (the texture has been passed to OpenGL)
-
-        static const GLuint	INVALID_ID;
     private:
         bool m_is_transparent;
         std::shared_ptr<cImage> mp_image;

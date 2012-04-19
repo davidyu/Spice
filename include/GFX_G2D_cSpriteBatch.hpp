@@ -18,6 +18,7 @@ namespace GFX
         {
         public:
             cSpriteBatch();
+            cSpriteBatch(int n_batch); // Number of draws per batch
             virtual ~cSpriteBatch();
 
             void Destroy();
@@ -42,15 +43,17 @@ namespace GFX
 
         private:
             // Private methods
-            void            ChangeTexture(const cTextureWrapper& tex);
+            void            Initialise(int n_batch);
+            void            ChangeTexture(cTextureWrapper& tex);
             void            RenderMesh();
 
             cTextureMesh*   m_mesh;
             cTextureWrapper* m_last_texture;
+            float            m_reciprocal_tex_width, m_reciprocal_tex_height;
 
             bool            m_is_drawing;           // Set to true when Begin() is called, and false when End() is.
             bool            m_is_blending_enabled;
-            int             mn_verticies;
+            int             mn_max_batch;           // Number of draws per batch
             int             m_index;
 
         };

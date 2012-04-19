@@ -7,6 +7,7 @@
 #include <SDL2/SDL_opengl.h>
 
 typedef unsigned int GLuint;
+#define INVALID_ID ~1
 
 namespace GFX
 {
@@ -14,17 +15,22 @@ namespace GFX
     {
     public:
         void        BindGL() const;
-        const int GetWidth() const;
-        const int GetHeight() const;
+        const int GetTextureWidth() const;
+        const int GetTextureHeight() const;
         const GLuint GetID() const;
         const float GetU() const;
         const float GetV() const;
         const float GetU2() const;
         const float GetV2() const;
-        const void GetTextureCoordinates(float& u, float& v, float& u2, float& v2) const;
-        void SetTextureCoordinates(float u, float v, float u2, float v2);
+        const void GetUV(float& u, float& v, float& u2, float& v2) const;
+        const float GetDeltaU() const;
+        const float GetDeltaV() const;
+        void SetUV(float u, float v, float u2, float v2);
+        void SetTextureWidth(float w);
+        void SetTextureHeight(float h);
+
     protected:
-        int m_width, m_height;
+        int m_texture_width, m_texture_height;
         float m_u, m_v, m_u2, m_v2;
         GLuint m_texture_id;
 
@@ -33,29 +39,21 @@ namespace GFX
     inline void cTextureWrapper::BindGL() const
     { glBindTexture(GL_TEXTURE_2D, m_texture_id); }
 
-    inline const int cTextureWrapper::GetWidth() const
-    { return m_width; }
+    inline const int cTextureWrapper::GetTextureWidth() const
+    { return m_texture_width; }
 
-    inline const int cTextureWrapper::GetHeight() const
-    { return m_height; }
+    inline const int cTextureWrapper::GetTextureHeight() const
+    { return m_texture_height; }
 
     inline const GLuint cTextureWrapper::GetID() const
     { return m_texture_id; }
 
-    inline const void cTextureWrapper::GetTextureCoordinates(float& u, float& v, float& u2, float& v2) const
+    inline const void cTextureWrapper::GetUV(float& u, float& v, float& u2, float& v2) const
     {
         u = m_u;
         v = m_v;
         u2 = m_u2;
         v2 = m_v2;
-    }
-
-    inline void cTextureWrapper::SetTextureCoordinates(float u, float v, float u2, float v2)
-    {
-        m_u = u;
-        m_v = v;
-        m_u2 = u2;
-        m_v2 = v2;
     }
 
     inline const float cTextureWrapper::GetU() const
@@ -70,5 +68,23 @@ namespace GFX
     inline const float cTextureWrapper::GetV2() const
     { return m_v2; }
 
+    inline const float cTextureWrapper::GetDeltaU() const
+    { return m_u2 - m_u;}
+
+    inline const float cTextureWrapper::GetDeltaV() const
+    { return m_v2 - m_v;}
+
+    inline void cTextureWrapper::SetUV(float u, float v, float u2, float v2)
+    {
+        m_u = u;
+        m_v = v;
+        m_u2 = u2;
+        m_v2 = v2;
+    }
+
+    inline void cTextureWrapper::SetTextureWidth(float w)
+    { m_texture_width = w; }
+    inline void cTextureWrapper::SetTextureHeight(float h)
+    { m_texture_height = h; }
 } // End namespace GFX
 #endif // CTEXTUREWRAPPER_H
