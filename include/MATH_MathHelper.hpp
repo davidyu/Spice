@@ -13,19 +13,20 @@ namespace MATH
 {
 
     inline bool CloseTof(float a, float b)
-    {
-        return fabsf((a - b) / ((b == 0.0f) ? 1.0f : b)) < EPSILON;
-    }
+    { return fabsf((a - b) / ((b == 0.0f) ? 1.0f : b)) < EPSILON; }
 
     inline float DegToRad(float d)
-    {
-        return (d * PI) / 180.0f;
-    }
+    { return (d * PI) / 180.0f; }
 
     inline float RadToDeg(float r)
-    {
-        return (r * 180.0f) / PI;
-    }
+    { return (r * 180.0f) / PI; }
+
+    inline float cos_deg(float d)
+    { return cosf(DegToRad(d)); }
+
+    inline float sin_deg(float d)
+    { return sinf(DegToRad(d)); }
+
 
 } // End namespace MATH
 

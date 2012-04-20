@@ -160,7 +160,8 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 //    RenderTexture(reg2);
 
     batch.Begin();
-        batch.DrawTexture(reg2, 0.0f, 0.0f, 1.0f, 1.0f);
+        batch.DrawTexture(reg2, -2.0f, -2.0f, 1.0f, 1.0f);
+        batch.DrawTextureRotScale(reg2, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 2.0f, 2.0f);
     batch.End();
 
 //    glMatrixMode(GL_PROJECTION);

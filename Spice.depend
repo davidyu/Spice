@@ -26,7 +26,7 @@
 	<map>
 	<string>
 
-1334852390 source:d:\programming\spice\src\core_cgame.cpp
+1334894734 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	"CORE_cGame.hpp"
@@ -97,7 +97,7 @@
 1334677044 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1334877773 source:d:\programming\spice\src\demo_cplaystate.cpp
+1334895129 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	"demo_cPlayState.hpp"
 	"CORE_cGame.hpp"
@@ -136,7 +136,7 @@
 1334341684 d:\programming\spice\include\math_matrix4x4.hpp
 	"MATH_MathHelper.hpp"
 
-1334341814 d:\programming\spice\include\math_mathhelper.hpp
+1334891815 d:\programming\spice\include\math_mathhelper.hpp
 	<cmath>
 
 1334341728 source:d:\programming\spice\src\gfx_ccamerabase.cpp
@@ -158,18 +158,19 @@
 
 1334343358 d:\programming\spice\include\math_vec2.hpp
 
-1334871408 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
+1334895101 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_cTextureMesh.hpp"
+	"MATH_MathHelper.hpp"
 	"memory_macros.h"
 
-1334858378 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+1334892579 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
 
-1334877873 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
+1334894886 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1334864896 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+1334878068 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
 	<vector>
 	"GFX_cTextureWrapper.hpp"
 
@@ -180,6 +181,6 @@
 1334863214 d:\programming\spice\include\gfx_ctexturemesh.hpp
 	<vector>
 
-1334863005 d:\programming\spice\include\gfx_ctexturewrapper.hpp
+1334895045 d:\programming\spice\include\gfx_ctexturewrapper.hpp
 	<SDL2/SDL_opengl.h>
 

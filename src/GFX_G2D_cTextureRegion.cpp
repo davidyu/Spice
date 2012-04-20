@@ -74,8 +74,6 @@ void cTextureRegion::SetRegionFromUV(const cTextureWrapper& tex, float u, float 
     const float v_offset = tex.GetV();
     const float delta_u = tex.GetDeltaU();
     const float delta_v = tex.GetDeltaV();
-    const float inverse_texture_width = 1.0f / static_cast<float>(tex.GetTextureWidth());
-    const float inverse_texture_height = 1.0f / static_cast<float>(tex.GetTextureHeight());
 
     SetUV( (u*delta_u+u_offset)
         ,  (v*delta_v+v_offset)
