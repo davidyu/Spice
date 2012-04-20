@@ -6,6 +6,11 @@
 using namespace GFX;
 using namespace G2D;
 
+std::vector<cTextureWrapper> cTextureRegion::SplitTextureHorizontal(const cTextureWrapper& tex, int frame_width, int y_offset)
+{
+
+}
+
 cTextureRegion::cTextureRegion()
 {
     //ctor

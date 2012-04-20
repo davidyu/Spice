@@ -1,9 +1,14 @@
 #include <SDL2/SDL_opengl.h>
 #include "demo_cPlayState.hpp"
 #include "CORE_cGame.hpp"
+#include "GFX_cImage.hpp"
 #include "GFX_cTexture.hpp"
 #include "GFX_G2D_cTextureRegion.hpp"
 #include "GFX_G2D_cSpriteBatch.hpp"
+#include "GFX_G2D_cAnimation.hpp"
+#include "GFX_cTextureRegistry.hpp"
+
+    #include <iostream>
 
 using namespace GFX;
 using namespace GFX::G2D;
@@ -20,17 +25,29 @@ STATE::iGameState* cPlayState::Clone()
     return new cPlayState;
 }
 
-cTexture* p_tex = 0;
+
 
 bool cPlayState::OnEnter()
 {
-    p_tex = new cTexture("art/tilez.png");
-    p_tex->RegisterGL();
+    cTexture p_tex("art/tilez.png");
+    cTexture p_tex2("art/try.jpg");
+    p_tex.RegisterGL();
+    p_tex2.RegisterGL();
+
+    cTextureRegistry::RegisterTexture("tiles", p_tex);
+    cTextureRegistry::RegisterTexture("try", p_tex2);
+
+    static cImage img("art/pixelmap.png");
+    std::cout << "starting\n";
+    for (int j=0; j<img.GetHeight(); ++j) {
+        for (int i=0; i<img.GetWidth(); ++i) {
+            std::cout << std::hex << ((img.GetPixel(i, j)& 0xffffff00) >> 8) << ", ";
+        }
+        std::cout << "\n";
+    }
 }
 bool cPlayState::OnExit()
 {
-    delete p_tex;
-    p_tex = 0;
 }
 void cPlayState::Pause() {}
 void cPlayState::Resume() {}
@@ -38,92 +55,6 @@ void cPlayState::Resume() {}
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
     if (game->GetInput().GetKeyState(HAR_ESCAPE)) game->EndGame();
-}
-static void
-Rander()
-{
-    static float color[8][3] = {
-        {1.0, 1.0, 0.0},
-        {1.0, 0.0, 0.0},
-        {0.0, 0.0, 0.0},
-        {0.0, 1.0, 0.0},
-        {0.0, 1.0, 1.0},
-        {1.0, 1.0, 1.0},
-        {1.0, 0.0, 1.0},
-        {0.0, 0.0, 1.0}
-    };
-    static float cube[8][3] = {
-        {0.5, 0.5, -0.5},
-        {0.5, -0.5, -0.5},
-        {-0.5, -0.5, -0.5},
-        {-0.5, 0.5, -0.5},
-        {-0.5, 0.5, 0.5},
-        {0.5, 0.5, 0.5},
-        {0.5, -0.5, 0.5},
-        {-0.5, -0.5, 0.5}
-    };
-
-    /* Do our drawing, too. */
-
-    glBegin(GL_QUADS);
-#define SHADED_CUBE
-#ifdef SHADED_CUBE
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-
-    glColor3fv(color[5]);
-    glVertex3fv(cube[5]);
-    glColor3fv(color[0]);
-    glVertex3fv(cube[0]);
-    glColor3fv(color[3]);
-    glVertex3fv(cube[3]);
-    glColor3fv(color[4]);
-    glVertex3fv(cube[4]);
-
-    glColor3fv(color[6]);
-    glVertex3fv(cube[6]);
-    glColor3fv(color[1]);
-    glVertex3fv(cube[1]);
-    glColor3fv(color[2]);
-    glVertex3fv(cube[2]);
-    glColor3fv(color[7]);
-    glVertex3fv(cube[7]);
-#endif /* SHADED_CUBE */
-
-    glEnd();
 }
 
 
@@ -150,18 +81,19 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     static G2D::cSpriteBatch batch = G2D::cSpriteBatch();
 
-    static cTextureRegion reg = cTextureRegion(*p_tex, 64, 0, 128, 64);
-    static cTextureRegion reg2 = cTextureRegion(reg, 0.5f, 0.0f, 1.0f, 1.0f);
+    static cTextureRegion reg = cTextureRegion(cTextureRegistry::GetTexture("tiles"), 64, 0, 128, 64);
+    static cTextureRegion reg2 = cTextureRegion(cTextureRegistry::GetTexture("try"));
 
     glClearColor(0.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-//    Rander();
 //    RenderTexture(reg2);
 
     batch.Begin();
+//        batch.DrawTexture(*p_tex2, 0.0f, 3.0f, 1.0f, 1.0f);
         batch.DrawTexture(reg2, -2.0f, -2.0f, 1.0f, 1.0f);
-        batch.DrawTextureRotScale(reg2, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 2.0f, 2.0f);
+        batch.DrawTextureRotScale(reg, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 2.0f, 2.0f);
+
     batch.End();
 
 //    glMatrixMode(GL_PROJECTION);
@@ -169,4 +101,3 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 }
 
 void cPlayState::HandleInput() {}
-

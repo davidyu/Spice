@@ -23,6 +23,7 @@ namespace GFX
         void ConvertPixelFormat();
         const GLint GetWidth() const    { CheckImage(); return mp_surface->w; }
         const GLint GetHeight() const   { CheckImage(); return mp_surface->h; }
+        const unsigned int GetPixel(int x, int y) const { return static_cast<unsigned int*>(mp_surface->pixels)[y*(mp_surface->pitch/sizeof(unsigned int)) + x]; }
         const void* GetPixels() const   { CheckImage(); return mp_surface->pixels; }
 
         inline void CheckImage() const;

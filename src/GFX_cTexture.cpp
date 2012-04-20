@@ -20,10 +20,7 @@ cTexture::cTexture(const string& str_filepath)
 
     SetTextureWidth(mp_image->GetWidth());
 	SetTextureHeight(mp_image->GetHeight());
-	m_u         = 0.0f;
-	m_v         = 0.0f;
-	m_u2        = 1.0f;
-	m_v2        = 1.0f;
+	SetUV(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 //
