@@ -18,6 +18,7 @@ namespace GFX
         {
         public:
             cSpriteBatch();
+            cSpriteBatch(int n_batch); // Number of draws per batch
             virtual ~cSpriteBatch();
 
             void Destroy();
@@ -26,6 +27,10 @@ namespace GFX
             void End();
 
             void DrawTexture(cTextureWrapper& tex, float x, float y, float w, float h);
+            void DrawTextureRotScale(cTextureWrapper& tex, float x, float y, float w, float h
+                       , float x_origin, float y_origin
+                       , float rot_degrees, float x_scale, float y_scale
+                       , bool rot_clockwise=false);
             //void DrawTextureRegion(const cTextureWrapper& tex, float x, float y, int src_w, int src_h, float degrees, float scale);
             // TODO -- Add more draws
 
@@ -42,15 +47,19 @@ namespace GFX
 
         private:
             // Private methods
-            void            ChangeTexture(const cTextureWrapper& tex);
+            void            ChangeTexture(cTextureWrapper& tex);
+            void            FlushIfNewTextureOrBatchFull(cTextureWrapper& tex); // Best function name ever...
+            void            Initialise(int n_batch);
             void            RenderMesh();
+
 
             cTextureMesh*   m_mesh;
             cTextureWrapper* m_last_texture;
+            float            m_reciprocal_tex_width, m_reciprocal_tex_height;
 
             bool            m_is_drawing;           // Set to true when Begin() is called, and false when End() is.
             bool            m_is_blending_enabled;
-            int             mn_verticies;
+            int             mn_max_batch;           // Number of draws per batch
             int             m_index;
 
         };

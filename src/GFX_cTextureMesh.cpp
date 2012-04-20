@@ -9,11 +9,12 @@ using namespace GFX;
 
 cTextureMesh::cTextureMesh()
 {
-    mn_verticies = 0;
-    m_use_vbo = true;
+    Initialise(100);
+}
 
-    m_vertex_buffer.reserve(90);
-    m_index_buffer.reserve(30);
+cTextureMesh::cTextureMesh(int initial_sz)
+{
+    Initialise(initial_sz);
 }
 
 cTextureMesh::~cTextureMesh()
@@ -21,11 +22,19 @@ cTextureMesh::~cTextureMesh()
     Destroy();
 }
 
+void cTextureMesh::Initialise(int initial_sz)
+{
+    m_vertex_buffer.reserve(100);
+    m_index_buffer.reserve(100);
+    m_use_vbo = false;
+}
+
 void cTextureMesh::Destroy()
 {
     m_vertex_buffer.clear();
     m_index_buffer.clear();
 }
+
 
 void cTextureMesh::Render()
 {
@@ -40,7 +49,8 @@ void cTextureMesh::Render()
     glColorPointer(4, GL_FLOAT, GetVertexByteSize(),GetVertexBuffer()->col);
 
     // Draw
-    glDrawElements(GL_TRIANGLES, GetNumberOfIndicies(), GL_UNSIGNED_INT, GetIndexBuffer());
+    glDrawArrays(GL_QUADS, 0, GetNumberOfIndicies());
+    //glDrawElements(GL_QUADS, GetNumberOfIndicies(), GL_UNSIGNED_INT, GetIndexBuffer());
 
     // Disable client states
     glDisableClientState(GL_NORMAL_ARRAY);

@@ -6,7 +6,6 @@
 
 #include <vector> // TODO: DON'T USE?
 #include "GFX_cTextureWrapper.hpp"
-class cTexture;
 
 namespace GFX
 {
@@ -22,23 +21,29 @@ namespace GFX
             cTextureRegion();
 
             // Creates texture region the whole size of the passed texture
-            cTextureRegion(const cTexture& tex);
+            cTextureRegion(const cTextureWrapper& tex);
 
             // Creates texture region using offsets, height, and width of the passed texture
             // Negative dimensions indicate flips
-            cTextureRegion(const cTexture&  tex, int x_offset, int y_offset, int width, int height);
+            cTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
 
-            // Creates texture region using texture mapping coords
-            cTextureRegion(const cTexture& tex, float u, float v, float u2, float v2);
+            // Treating tex as a full texture, this ctor creates texture region using texture mapping coords
+            // i.e. uv coords are relative to the tex, not the base texture.
+            cTextureRegion(const cTextureWrapper& tex, float u, float v, float u2, float v2);
+
+//            // Creates texture region using offsets, height, and width of the passed texture region
+//            // Negative dimensions indicate flips
+//            cTextureRegion(const cTextureRegion& tex_reg, int x_offset, int y_offset, int width, int height);
 
             // Copy constructor
             cTextureRegion(const cTextureRegion& rhs);
 
-            // Creates texture region using offsets, height, and width of the passed texture region
-            // Negative dimensions indicate flips
-            cTextureRegion(const cTextureRegion& tex_reg, int x_offset, int y_offset, int width, int height);
+            // Assignment
+            cTextureRegion& operator=(const cTextureRegion& rhs);
 
             virtual ~cTextureRegion();
+
+            void CopyTextureWrapper(const cTextureWrapper& rhs);
 
             // Static functions
             static std::vector<cTextureRegion> SplitTextureHorizontal(const cTexture& tex, int frame_width, int y_offset);
@@ -49,17 +54,12 @@ namespace GFX
             const cTexture& GetTexture() const;
 
             // Setters
-            void SetRegionFromDimensions(int x_offset, int y_offset, int width, int height);
-            void SetRegionFromTexture(const cTexture& tex);
-            void SetRegionFromTextureRegion(const cTextureRegion& tex_reg, int x_offset, int y_offset, int width, int height);
-            void SetRegionFromUV(float u, float v, float u2, float v2);
-
-            void SetTexture(const cTexture& tex);
-
+            void SetRegionFromDimensions(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
+            void SetRegionFromWholeTexture(const cTextureWrapper& tex);
+//            void SetRegionFromTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
+            void SetRegionFromUV(const cTextureWrapper& tex, float u, float v, float u2, float v2);
         protected:
-            float m_u, m_v;     //!< Top, left
-            float m_u2, m_v2;   //!< Bottom, right
-            cTexture* mp_texture; //!< Pointer to the base texture. TODO: use shared_ptr ?
+            float aspect_ratio;  //!< Width/Height of region
         };
 
     }

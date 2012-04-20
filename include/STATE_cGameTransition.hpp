@@ -33,6 +33,7 @@ namespace STATE
                             {
                                 Finish(game); // Dummy transition finishes right away
                             }
+
             virtual void    Render(float percent_tick) {}
 
             void            HandleInput() {}
@@ -41,8 +42,8 @@ namespace STATE
                             {
                                 mp_old_state = old_s;
                                 mp_new_state = new_s;
-
                             }
+
             void            Finish(CORE::cGame* game)
                             {
                                 game->GetStateManager().PopState();
