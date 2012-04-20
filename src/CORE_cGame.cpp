@@ -141,5 +141,3 @@ cGameStateManager& cGame::GetStateManager()
 {
     return m_state_manager;
 }
-
-
