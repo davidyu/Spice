@@ -15,6 +15,13 @@ namespace MATH
     inline bool CloseTof(float a, float b)
     { return fabsf((a - b) / ((b == 0.0f) ? 1.0f : b)) < EPSILON; }
 
+    inline float minf(float a, float b)
+    { return (a<b) ? a : b; }
+
+    inline float maxf(float a, float b)
+    { return (a>b) ? a : b; }
+
+    // Trig stuff
     inline float DegToRad(float d)
     { return (d * PI) / 180.0f; }
 
