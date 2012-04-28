@@ -21,6 +21,19 @@ namespace MATH
     inline float maxf(float a, float b)
     { return (a>b) ? a : b; }
 
+    inline void clampf(float& v, float min, float max)
+    {
+        if (v<min)
+        { v = min; return; }
+        else if (v>max)
+        { v = max; return; }
+    }
+
+    inline int signf(float v)
+    { return (v < 0.0f) ? -1 : 1;}
+
+    inline float lerpf(float min, float max, float percent)
+    { return (max-min)*percent + min; }
     // Trig stuff
     inline float DegToRad(float d)
     { return (d * PI) / 180.0f; }

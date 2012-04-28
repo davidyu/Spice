@@ -97,6 +97,7 @@ void cGameStateManager::PopState()
     // Leave old state
     m_states.back()->OnExit();
     DELETESINGLE(m_states.back());
+    m_states.pop_back();
     if (!m_states.empty()) {
         m_states.back()->Resume();
     }

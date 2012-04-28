@@ -39,14 +39,14 @@ namespace GFX
             cTextureRegion(const cTextureRegion& rhs);
 
             // Assignment
-            cTextureRegion& operator=(const cTextureRegion& rhs);
+
 
             virtual ~cTextureRegion();
 
             void CopyTextureWrapper(const cTextureWrapper& rhs);
 
             // Static functions
-            static std::vector<cTextureWrapper> SplitTextureHorizontal(const cTextureWrapper& tex, int frame_width, int y_offset);
+//            static std::vector<cTextureWrapper> SplitTextureHorizontal(const cTextureWrapper& tex, int frame_width, int y_offset);
 //            static std::vector<cTextureWrapper> SplitTextureRegionHorizontal(const cTextureWrapper& tex_reg, int frame_width, int y_offset);
             //TODO: ADD VERTICAL SPLITS??; USE OWN ARRAY CLASS
 
@@ -60,6 +60,7 @@ namespace GFX
             void SetRegionFromUV(const cTextureWrapper& tex, float u, float v, float u2, float v2);
         protected:
             float aspect_ratio;  //!< Width/Height of region
+            cTextureRegion& operator=(const cTextureRegion& rhs);
         };
 
     }

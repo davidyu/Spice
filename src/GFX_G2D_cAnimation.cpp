@@ -10,7 +10,7 @@ cAnimation::cAnimation()
 {
 
 }
-cAnimation::cAnimation(float ticks_per_frame, std::vector<cTextureWrapper> frames)
+cAnimation::cAnimation(float ticks_per_frame, std::vector<cTextureWrapper>& frames)
 {
     m_frames = frames;
     SetTicksPerFrame(ticks_per_frame);

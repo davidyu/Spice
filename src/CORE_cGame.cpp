@@ -1,5 +1,6 @@
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
 #include "CORE_cGame.hpp"
 #include "STATE_iGameState.hpp"
 #include "demo_cPlayState.hpp"
@@ -14,8 +15,8 @@ using namespace CORE;
 using namespace STATE;
 
 cGame::cGame()
-: m_sdl_state(0)
-, m_running(true)
+: m_running(true)
+, m_sdl_state(0)
 {
 }
 
@@ -30,10 +31,7 @@ bool cGame::Initialise()
         cout << "SOMETHING BAD HAPPENED IN SDL_INIT\n";
         return false;
     }
-    if (!IMG_Init( IMG_INIT_PNG )){
-        printf("IMG_Init: %s\n", IMG_GetError());
-//        return false ;
-    }
+
     m_running = true;
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
@@ -51,6 +49,7 @@ bool cGame::Initialise()
                                     0, m_sdl_state->render_flags);
     // GL Context
     m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
+    cout <<"WHAT" << m_sdl_state->glctx << "WHAT";
     SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
     SDL_GL_SetSwapInterval(1); // 1 for Vsync?
@@ -71,6 +70,24 @@ bool cGame::Initialise()
 
 
     m_input.Initialise();
+
+    if (!IMG_Init( IMG_INIT_PNG )){
+        printf("IMG_Init: %s\n", IMG_GetError());
+        return false;
+    }
+
+    if( Mix_OpenAudio( MIX_DEFAULT_FREQUENCY, AUDIO_S16SYS, 2, 4096 ) == -1 ) {
+        fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
+        return false;
+    }
+//    if (!Mix_Init()){
+//        printf("Mix_Init: %s\n", Mix_GetError());
+//        return false;
+//    }
+
+
+
+
 
     state_factory.RegisterClass("game", cPlayState::CreateInstance);
     m_state_manager.PushState(state_factory.CreateObject("game"));
@@ -95,12 +112,14 @@ bool cGame::Terminate()
     }
     SDL_Quit();
     IMG_Quit();
+    Mix_Quit();
+    return true;
 }
 
 void cGame::MainLoop()
 {
-    iGameState* state;
-    float delta, percent_tick; // Dummy vars for now; substitute timer values in later
+    iGameState* state = 0;
+    float delta = 0.0f, percent_tick = 0.0f; // Dummy vars for now; substitute timer values in later
 
     while (m_running)
     {
@@ -118,7 +137,9 @@ void cGame::MainLoop()
         /*DEBUG*/assert(state!=0);
         state->Update(this, delta);
 
-
+        glClearColor(0.0, 0.0, 0.0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
         state->Render(this, percent_tick);
 
         SDL_GL_SwapWindow(m_sdl_state->window);

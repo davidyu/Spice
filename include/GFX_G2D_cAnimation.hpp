@@ -15,14 +15,14 @@ namespace GFX
         {
         public:
             cAnimation();
-            cAnimation(float ticks_per_frame, std::vector<cTextureWrapper> frames);
+            cAnimation(float ticks_per_frame, std::vector<cTextureWrapper>& frames);
 
             virtual ~cAnimation();
 
             void ClearAll();
             void PushFrame(const cTextureWrapper& frame);
 
-            const cTextureWrapper& GetKeyFrame(float statetime, bool is_looping);
+            const cTextureWrapper& GetKeyFrame(float statetime, bool is_looping) const;
 
             // Setters
             void SetTicksPerFrame(float tpf);
@@ -33,7 +33,7 @@ namespace GFX
             float m_total_ticks;
         };  // End class cAnimation
 
-        inline const cTextureWrapper& cAnimation::GetKeyFrame(float statetime, bool is_looping)
+        inline const cTextureWrapper& cAnimation::GetKeyFrame(float statetime, bool is_looping) const
         {
             int frame_index = static_cast<int>(statetime/m_ticks_per_frame);
 

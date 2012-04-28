@@ -26,9 +26,10 @@
 	<map>
 	<string>
 
-1334894734 source:d:\programming\spice\src\core_cgame.cpp
+1334980024 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
 	"CORE_cGame.hpp"
 	"STATE_iGameState.hpp"
 	"demo_cPlayState.hpp"
@@ -58,7 +59,7 @@
 	"STATE_iGameState.hpp"
 	"STATE_cGameTransition.hpp"
 
-1334435763 source:d:\programming\spice\main.cpp
+1334971200 source:d:\programming\spice\main.cpp
 	<iostream>
 	"CORE_cGame.hpp"
 	<windows.h>
@@ -85,7 +86,8 @@
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
-1334504092 d:\programming\spice\include\core_ctimer.hpp
+1334963094 d:\programming\spice\include\core_ctimer.hpp
+	<SDL2/SDL.h>
 
 1334501190 source:d:\programming\spice\src\core_ctimer.cpp
 	"SDL2/SDL.h"
@@ -97,8 +99,9 @@
 1334677044 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1334959779 source:d:\programming\spice\src\demo_cplaystate.cpp
+1335014143 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_mixer.h>
 	"demo_cPlayState.hpp"
 	"CORE_cGame.hpp"
 	"GFX_cImage.hpp"
@@ -107,9 +110,10 @@
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_G2D_cAnimation.hpp"
 	"GFX_cTextureRegistry.hpp"
+	"GFX_GfxHelper.hpp"
 	<iostream>
 
-1333943508 source:d:\programming\spice\src\gfx_cimage.cpp
+1335015053 source:d:\programming\spice\src\gfx_cimage.cpp
 	"GFX_cImage.hpp"
 	<iostream>
 	<SDL2/SDL_image.h>
@@ -120,12 +124,13 @@
 	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1334956163 source:d:\programming\spice\src\gfx_ctexture.cpp
+1335012608 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
+	<iostream>
 
-1334857668 d:\programming\spice\include\gfx_ctexture.hpp
+1334976336 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
@@ -162,19 +167,20 @@
 
 1334343358 d:\programming\spice\include\math_vec2.hpp
 
-1334895101 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
+1334983197 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_cTextureMesh.hpp"
 	"MATH_MathHelper.hpp"
 	"memory_macros.h"
 
-1334892579 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+1334983197 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+	"GFX_Color4.hpp"
 
-1334956035 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
+1334978677 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1334956029 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+1334978610 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
 	<vector>
 	"GFX_cTextureWrapper.hpp"
 
@@ -185,7 +191,7 @@
 1334863214 d:\programming\spice\include\gfx_ctexturemesh.hpp
 	<vector>
 
-1334895045 d:\programming\spice\include\gfx_ctexturewrapper.hpp
+1334978677 d:\programming\spice\include\gfx_ctexturewrapper.hpp
 	<SDL2/SDL_opengl.h>
 
 1334951641 source:d:\programming\spice\src\gfx_g2d_canimation.cpp
@@ -200,4 +206,14 @@
 	<unordered_map>
 	<string>
 	"GFX_cTextureWrapper.hpp"
+
+1334959906 source:d:\programming\spice\src\gfx_ctextureregistry.cpp
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cTextureWrapper.hpp"
+
+1334982153 d:\programming\spice\include\gfx_gfxhelper.hpp
+	<SDL2/SDL_opengl.h>
+	"GFX_cTextureWrapper.hpp"
+
+1334983167 d:\programming\spice\include\gfx_color4.hpp
 

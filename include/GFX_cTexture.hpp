@@ -39,7 +39,7 @@ namespace GFX
     }; // End class cTexture
 
     inline void cTexture::CheckTexture() const
-    { assert(mp_image.get() != 0 || m_texture_id != INVALID_ID); }
+    { assert( m_texture_id != INVALID_ID); }
 
 } // End namespace GFX
 
