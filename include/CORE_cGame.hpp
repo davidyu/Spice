@@ -36,7 +36,6 @@ namespace CORE
         CORE::cTimer                m_timer;
         cGenericFactory<STATE::iGameState> state_factory; // FIXME:Should be declared elsewhere
 
-
         cSDLState*                  m_sdl_state;
 
     };
