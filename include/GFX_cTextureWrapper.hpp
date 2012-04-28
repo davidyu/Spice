@@ -6,14 +6,14 @@
 
 #include <SDL2/SDL_opengl.h>
 
-typedef unsigned int GLuint;
-#define INVALID_ID ~1
+#define INVALID_ID GL_INVALID_VALUE
 
 namespace GFX
 {
     class cTextureWrapper
     {
     public:
+        cTextureWrapper(){}
         void        BindGL() const;
         const int GetTextureWidth() const;
         const int GetTextureHeight() const;

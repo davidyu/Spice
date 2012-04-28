@@ -10,6 +10,8 @@
 using namespace GFX;
 using namespace GFX::G2D;
 
+#define c m_current_color
+
 cSpriteBatch::cSpriteBatch()
 // Delegated ctor
 {
@@ -28,6 +30,7 @@ void cSpriteBatch::Initialise(int n_batch)
     m_index = 0;
     m_is_blending_enabled = false;
     m_mesh = new cTextureMesh(n_batch);
+    m_current_color.set(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 cSpriteBatch::~cSpriteBatch()
@@ -59,13 +62,12 @@ void cSpriteBatch::End()
 }
 
 
-void cSpriteBatch::DrawTexture(cTextureWrapper& tex, float x, float y, float w, float h)
+void cSpriteBatch::DrawTexture(const cTextureWrapper& tex, float x, float y, float w, float h)
 {
     // if (!m_is_drawing) throw Exception... // TODO
 
     FlushIfNewTextureOrBatchFull(tex);
     ChangeTexture(tex);
-    m_index = 0;
 
     const float x2 = x + w;
     const float y2 = y + h;
@@ -74,22 +76,20 @@ void cSpriteBatch::DrawTexture(cTextureWrapper& tex, float x, float y, float w, 
     const float u2  = tex.GetU2();
     const float v2  = tex.GetV2();
 
-    m_mesh->AddVertex4f(x, y, u, v);
-    m_mesh->AddVertex4f(x2, y, u2, v);
-    m_mesh->AddVertex4f(x2, y2, u2, v2);
-    m_mesh->AddVertex4f(x, y2, u, v2);
+    m_mesh->AddVertex8f(x, y, u, v, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x2, y, u2, v, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x2, y2, u2, v2, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x, y2, u, v2, c.r, c.g, c.b, c.a);
 
     m_index += 4;
 }
 
-void cSpriteBatch::DrawTextureRotScale(cTextureWrapper& tex, float x, float y, float w, float h
-                       , float x_origin, float y_origin
-                       , float rot_degrees, float x_scale, float y_scale
-                       , bool rot_clockwise)
+void cSpriteBatch::DrawTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
+                                   , float x_origin, float y_origin
+                                   , float x_scale, float y_scale, float rot_degrees)
 {
     FlushIfNewTextureOrBatchFull(tex);
     ChangeTexture(tex);
-    m_index = 0;
 
     const float x_world = x + x_origin;
     const float y_world = y + y_origin;
@@ -146,10 +146,10 @@ void cSpriteBatch::DrawTextureRotScale(cTextureWrapper& tex, float x, float y, f
     const float u2  = tex.GetU2();
     const float v2  = tex.GetV2();
 
-    m_mesh->AddVertex4f(x1, y1, u, v);
-    m_mesh->AddVertex4f(x2, y2, u2, v);
-    m_mesh->AddVertex4f(x3, y3, u2, v2);
-    m_mesh->AddVertex4f(x4, y4, u, v2);
+    m_mesh->AddVertex8f(x1, y1, u, v, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x2, y2, u2, v, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x3, y3, u2, v2, c.r, c.g, c.b, c.a);
+    m_mesh->AddVertex8f(x4, y4, u, v2, c.r, c.g, c.b, c.a);
 
     m_index += 4;
 
@@ -164,7 +164,7 @@ void cSpriteBatch::RenderMesh()
     m_mesh->Render();
 }
 
-void cSpriteBatch::ChangeTexture(cTextureWrapper& tex)
+void cSpriteBatch::ChangeTexture(const cTextureWrapper& tex)
 {
     m_last_texture = &tex;
     m_reciprocal_tex_width = 1.0f/tex.GetTextureWidth();
@@ -172,12 +172,19 @@ void cSpriteBatch::ChangeTexture(cTextureWrapper& tex)
 
 }
 
- void cSpriteBatch::FlushIfNewTextureOrBatchFull(cTextureWrapper& tex)
+ void cSpriteBatch::FlushIfNewTextureOrBatchFull(const cTextureWrapper& tex)
  {
     if (m_last_texture!=0 && tex.GetID() != m_last_texture->GetID()) {
         RenderMesh();
+        m_mesh->Destroy();
         ChangeTexture(tex);
     } else if (m_index >= mn_max_batch) {
         RenderMesh();
     }
+ }
+
+
+ void cSpriteBatch::SetColor(const Color4 col)
+ {
+    m_current_color = col;
  }

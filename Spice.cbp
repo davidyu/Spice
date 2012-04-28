@@ -12,8 +12,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-pedantic" />
-					<Add option="-std=c++0x" />
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
@@ -30,19 +28,27 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
 				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Winit-self" />
+			<Add option="-Wcast-align" />
+			<Add option="-Wundef" />
+			<Add option="-Wfloat-equal" />
+			<Add option="-Winline" />
+			<Add option="-Wunreachable-code" />
+			<Add option="-Weffc++" />
+			<Add option="-pedantic" />
+			<Add option="-std=c++0x" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
 			<Add directory="D:\Programming\spice\test\include" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32" />
-			<Add option="-lglu32 -lSDL_image" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lglu32" />
+			<Add option="-lSDL_image -lSDL2_mixer" />
 		</Linker>
 		<Unit filename="include\CORE_Input.hpp" />
 		<Unit filename="include\CORE_cGame.hpp" />
@@ -50,6 +56,7 @@
 		<Unit filename="include\CORE_cTimer.hpp" />
 		<Unit filename="include\CORE_iApplication.hpp" />
 		<Unit filename="include\CORE_keycodes.hpp" />
+		<Unit filename="include\GFX_Color4.hpp" />
 		<Unit filename="include\GFX_G2D_cAnimation.hpp" />
 		<Unit filename="include\GFX_G2D_cSpriteBatch.hpp" />
 		<Unit filename="include\GFX_G2D_cTextureRegion.hpp" />

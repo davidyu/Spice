@@ -1,8 +1,11 @@
 #ifndef VEC2_H
 #define VEC2_H
 
+#include "MATH_MathHelper.hpp"
 
-template <class T>
+namespace MATH
+{
+    template <class T>
     class Vec2
     {
         public:
@@ -154,38 +157,42 @@ template <class T>
             return (float)sqrt(*this * *this);
         }
 
-        inline void Rotate(float rad)
+        inline void Rotate(float deg)
         {
+            const float rad = DegToRad(deg);
             float tx = x;
-            x = x * cos(rad) - y * sin(rad);
-            y = tx * sin(rad) + y * cos(rad);
+            x = x * cosf(rad) - y * sinf(rad);
+            y = tx * sinf(rad) + y * cosf(rad);
         }
 
         //get value of rotated radian
-        inline Vec2f Rotated(float rad) const
+        inline Vec2f Rotated(float deg) const
         {
-            float x1 = x * cos(rad) - y * sin(rad);
-            float y1 = x * sin(rad) + y * cos(rad);
+            const float rad = DegToRad(deg);
+            float x1 = x * cosf(rad) - y * sinf(rad);
+            float y1 = x * sinf(rad) + y * cosf(rad);
 
             return Vec2f(x1, y1);
         }
 
         //shift and rotate
-        inline void ShiftAndRotate(Vec2f pos, float rad)
+        inline void ShiftAndRotate(Vec2f pos, float deg)
         {
+            const float rad = DegToRad(deg);
             Vec2f tempV = *this;
 
-            this->x = tempV.x * cos(rad) - tempV.y * sin(rad) + pos.x;
-            this->y = tempV.x * sin(rad) + tempV.y * cos(rad) + pos.y;
+            this->x = tempV.x * cosf(rad) - tempV.y * sinf(rad) + pos.x;
+            this->y = tempV.x * sinf(rad) + tempV.y * cosf(rad) + pos.y;
         }
 
         //shift and rotate
-        inline Vec2f ShiftAndRotated(Vec2f pos, float rad) const
+        inline Vec2f ShiftAndRotated(Vec2f pos, float deg) const
         {
+            const float rad = DegToRad(deg);
             Vec2f tempV;
 
-            tempV.x = this->x * cos(rad) - this->y * sin(rad) + pos.x;
-            tempV.y = this->x * sin(rad) + this->y * cos(rad) + pos.y;
+            tempV.x = this->x * cosf(rad) - this->y * sinf(rad) + pos.x;
+            tempV.y = this->x * sinf(rad) + this->y * cosf(rad) + pos.y;
 
             return tempV;
         }
@@ -242,13 +249,13 @@ template <class T>
         }
 
         //calculates radian between 2 vectors (in rad)
-        float GetAngle(const Vec2f& v2)
+        float GetAngle(const Vec2f& v2) const
         {
-            return acosf((*this*v2)/(this->Length() * v2.Length()));
+            return RadToDeg(acosf((*this*v2)/(this->Length() * v2.Length())));
         }
 
         //calculates radian between 2 normalized vectors (in rad)
-        float GetAngleNormalized(const Vec2f& v2)
+        float GetAngleNormalized(const Vec2f& v2) const
         {
             return acosf(*this*v2);
         }
@@ -275,5 +282,5 @@ template <class T>
 
     };
 
-
+}
 #endif // VEC2_H

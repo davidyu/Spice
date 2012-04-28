@@ -2,6 +2,7 @@
 #define DEMO_CPLAYSTATE_H
 
 #include "STATE_iGameState.hpp"
+#include "GFX_G2D_cSpriteBatch.hpp"
 //
 /*temp*/#include <iostream>
 
@@ -27,12 +28,14 @@ class cPlayState : public STATE::iGameState
         void Pause();
         void Resume();
 
+        void HandleInput(CORE::cGame* game);
         void Update(CORE::cGame* game, float delta);
 
         void Render(CORE::cGame* game, float percent_tick);
 
         void HandleInput();
     private:
+        GFX::G2D::cSpriteBatch m_batch;
 };
 
 #endif // DEMO_CPLAYSTATE_H

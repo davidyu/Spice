@@ -3,14 +3,13 @@
 #ifndef CSPRITEBATCH_H
 #define CSPRITEBATCH_H
 
+#include "GFX_Color4.hpp"
+
 namespace GFX
 {
     // Forward Declarations
-//    class cTexture;
-//    class cTextureRegion;
     class cTextureMesh;
     class cTextureWrapper;
-    typedef unsigned int GLuint;
 
     namespace G2D
     {
@@ -26,11 +25,10 @@ namespace GFX
             void Begin();
             void End();
 
-            void DrawTexture(cTextureWrapper& tex, float x, float y, float w, float h);
-            void DrawTextureRotScale(cTextureWrapper& tex, float x, float y, float w, float h
-                       , float x_origin, float y_origin
-                       , float rot_degrees, float x_scale, float y_scale
-                       , bool rot_clockwise=false);
+            void DrawTexture(const cTextureWrapper& tex, float x, float y, float w, float h);
+            void DrawTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
+                                   , float x_origin, float y_origin
+                                   , float x_scale, float y_scale, float rot_degrees);
             //void DrawTextureRegion(const cTextureWrapper& tex, float x, float y, int src_w, int src_h, float degrees, float scale);
             // TODO -- Add more draws
 
@@ -44,18 +42,21 @@ namespace GFX
             void SetBatchSize(int i);
             void SetBlendFunction(int src_func, int dest_func);
             void SetBlending(bool b); // Enable or disable blending. !Flushes batches first.
+            void SetColor(const Color4 col);
 
         private:
             // Private methods
-            void            ChangeTexture(cTextureWrapper& tex);
-            void            FlushIfNewTextureOrBatchFull(cTextureWrapper& tex); // Best function name ever...
+            void            ChangeTexture(const cTextureWrapper& tex);
+            void            FlushIfNewTextureOrBatchFull(const cTextureWrapper& tex); // Best function name ever...
             void            Initialise(int n_batch);
             void            RenderMesh();
 
 
             cTextureMesh*   m_mesh;
-            cTextureWrapper* m_last_texture;
+            const cTextureWrapper* m_last_texture;
             float            m_reciprocal_tex_width, m_reciprocal_tex_height;
+
+            Color4          m_current_color;
 
             bool            m_is_drawing;           // Set to true when Begin() is called, and false when End() is.
             bool            m_is_blending_enabled;

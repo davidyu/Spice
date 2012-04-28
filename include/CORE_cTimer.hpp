@@ -1,9 +1,9 @@
 #ifndef CTIMER_H
 #define CTIMER_H
 
+#include <SDL2/SDL.h>
 // Headers
 
-typedef uint32_t Uint32;
 
 namespace CORE
 {

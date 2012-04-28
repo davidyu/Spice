@@ -25,8 +25,6 @@ namespace STATE
             virtual void        Resume() = 0;
             virtual void        Update(CORE::cGame* game, float delta) = 0;
             virtual void        Render(CORE::cGame* game, float percent_tick) = 0;
-
-
     }; // class iGameState
 
 } // namespace STATE
