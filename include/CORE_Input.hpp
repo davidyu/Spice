@@ -28,8 +28,11 @@ namespace CORE
 
         inline void     Update()
                         {
+                            Uint8* keyboard_state = SDL_GetKeyboardState(0);
+                            Uint8* keyboard_state2 = SDL_GetKeyboardState(0);
+
                             std::copy(m_keystate, m_keystate+HAR_LAST, m_old_keystate);
-                            std::copy(SDL_GetKeyboardState(0), SDL_GetKeyboardState(0)+HAR_LAST, m_keystate);
+                            std::copy(keyboard_state, keyboard_state+HAR_LAST, m_keystate);
 
                             m_old_mousestate    = m_mousestate;
                             m_old_xmouse        = m_xmouse;
