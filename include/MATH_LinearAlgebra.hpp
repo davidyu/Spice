@@ -24,6 +24,13 @@ namespace MATH
                         (lhs.x * rhs.mtx[0][3]) + (lhs.y * rhs.mtx[1][3]) + (lhs.z * rhs.mtx[2][3]) + (lhs.w * rhs.mtx[3][3]));
     }
 
+    inline Vec4f GetMatVecProd4(const Matrix4x4& lhs, const Vec4f& rhs)
+    {
+        return Vec4f(  (lhs.mtx[0][0] * rhs.x) + (lhs.mtx[0][1] * rhs.y) + (lhs.mtx[0][2] * rhs.z) + (lhs.mtx[0][3] * rhs.w),
+                       (lhs.mtx[1][0] * rhs.x) + (lhs.mtx[1][1] * rhs.y) + (lhs.mtx[1][2] * rhs.z) + (lhs.mtx[1][3] * rhs.w),
+                       (lhs.mtx[2][0] * rhs.x) + (lhs.mtx[2][1] * rhs.y) + (lhs.mtx[2][2] * rhs.z) + (lhs.mtx[2][3] * rhs.w),
+                       (lhs.mtx[3][0] * rhs.x) + (lhs.mtx[3][1] * rhs.y) + (lhs.mtx[3][2] * rhs.z) + (lhs.mtx[3][3] * rhs.w));
+    }
 
     inline void GetRotationMatrix4x4(Matrix4x4& mtx, const Vec3f& axis, float degrees)
     {
