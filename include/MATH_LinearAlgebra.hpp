@@ -1,6 +1,7 @@
 #ifndef LINEARALGEBRA_H
 #define LINEARALGEBRA_H
 
+#include "MATH_Vec4.hpp"
 #include "MATH_Vec3.hpp"
 #include "MATH_Vec2.hpp"
 #include "MATH_Matrix4x4.hpp"
@@ -14,6 +15,8 @@ namespace MATH
                         (lhs.x * rhs.mtx[0][1]) + (lhs.y * rhs.mtx[1][1]) + (lhs.z * rhs.mtx[2][1]),
                         (lhs.x * rhs.mtx[0][2]) + (lhs.y * rhs.mtx[1][2]) + (lhs.z * rhs.mtx[2][2]));
     }
+
+    inline Vec
 
 
     inline void GetRotationMatrix4x4(Matrix4x4& mtx, const Vec3f& axis, float degrees)

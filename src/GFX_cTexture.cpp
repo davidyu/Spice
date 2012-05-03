@@ -34,7 +34,6 @@ const bool cTexture::operator==(const cTexture& rhs) const
 void cTexture::RegisterGL()
 {
 	glGenTextures (1, &m_texture_id);
-	std::cout << m_texture_id << std::endl;
 
 //	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 //    glEnable(GL_BLEND);
