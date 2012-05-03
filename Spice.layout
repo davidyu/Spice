@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="include\CORE_Input.hpp" open="0" top="0" tabpos="10">
+	<File name="include\CORE_Input.hpp" open="1" top="0" tabpos="10">
 		<Cursor position="245" topLine="10" />
 	</File>
-	<File name="include\CORE_cGame.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="1272" topLine="23" />
+	<File name="include\CORE_cGame.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="1031" topLine="18" />
 	</File>
 	<File name="include\CORE_cSDLState.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="490" topLine="0" />
@@ -13,8 +13,11 @@
 	<File name="include\CORE_cTimer.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="include\CORE_iApplication.hpp" open="0" top="0" tabpos="5">
+	<File name="include\CORE_iApplication.hpp" open="1" top="0" tabpos="5">
 		<Cursor position="71" topLine="0" />
+	</File>
+	<File name="include\CORE_keycodes.hpp" open="1" top="0" tabpos="0">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="include\GFX_Color4.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="178" topLine="0" />
@@ -26,7 +29,7 @@
 		<Cursor position="2298" topLine="52" />
 	</File>
 	<File name="include\GFX_G2D_cTextureRegion.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="335" topLine="0" />
+		<Cursor position="2184" topLine="37" />
 	</File>
 	<File name="include\GFX_GfxHelper.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="925" topLine="0" />
@@ -49,7 +52,7 @@
 	<File name="include\GFX_cTextureWrapper.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="292" topLine="0" />
 	</File>
-	<File name="include\MATH_LinearAlgebra.hpp" open="0" top="0" tabpos="6">
+	<File name="include\MATH_LinearAlgebra.hpp" open="1" top="0" tabpos="6">
 		<Cursor position="1289" topLine="14" />
 	</File>
 	<File name="include\MATH_Math.hpp" open="0" top="0" tabpos="0">
@@ -79,14 +82,14 @@
 	<File name="include\cGenericFactory.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="797" topLine="0" />
 	</File>
-	<File name="include\demo_cPlayState.hpp" open="1" top="0" tabpos="6">
-		<Cursor position="377" topLine="16" />
+	<File name="include\demo_cPlayState.hpp" open="0" top="0" tabpos="6">
+		<Cursor position="377" topLine="5" />
 	</File>
 	<File name="main.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="371" topLine="10" />
 	</File>
-	<File name="src\CORE_cGame.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="656" topLine="14" />
+	<File name="src\CORE_cGame.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="4271" topLine="141" />
 	</File>
 	<File name="src\CORE_cSDLState.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="454" topLine="0" />
@@ -97,11 +100,11 @@
 	<File name="src\GFX_G2D_cAnimation.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="80" topLine="0" />
 	</File>
-	<File name="src\GFX_G2D_cSpriteBatch.cpp" open="1" top="0" tabpos="7">
+	<File name="src\GFX_G2D_cSpriteBatch.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="386" topLine="0" />
 	</File>
 	<File name="src\GFX_G2D_cTextureRegion.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="2123" topLine="16" />
+		<Cursor position="2633" topLine="50" />
 	</File>
 	<File name="src\GFX_cCameraBase.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="65" topLine="0" />
@@ -110,7 +113,7 @@
 		<Cursor position="1411" topLine="19" />
 	</File>
 	<File name="src\GFX_cTexture.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1247" topLine="0" />
+		<Cursor position="1190" topLine="28" />
 	</File>
 	<File name="src\GFX_cTextureMesh.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1503" topLine="55" />
@@ -118,10 +121,10 @@
 	<File name="src\GFX_cTextureRegistry.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="75" topLine="0" />
 	</File>
-	<File name="src\STATE_cGameStateManager.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="2984" topLine="94" />
+	<File name="src\STATE_cGameStateManager.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="2984" topLine="83" />
 	</File>
 	<File name="src\demo_cPlayState.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1875" topLine="57" />
+		<Cursor position="1726" topLine="3" />
 	</File>
 </CodeBlocks_layout_file>

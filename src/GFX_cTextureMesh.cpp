@@ -1,6 +1,9 @@
 /**
  * cTextureMesh based somewhat on globjview on dhpoware
  */
+
+#define GL_GLEXT_PROTOTYPES // Need for VBO
+
 #include <SDL2/SDL_opengl.h>
 #include "GFX_cTextureMesh.hpp"
 

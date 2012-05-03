@@ -33,6 +33,9 @@ void cSDLState::init()
     SDL_zero(render_flags);
 
     /* Set some very sane GL defaults */
+    gl_major_version = 3;
+    gl_minor_version = 0;
+
     gl_red_size = 3;
     gl_green_size = 3;
     gl_blue_size = 2;
@@ -50,6 +53,7 @@ void cSDLState::init()
     gl_multisamplesamples = 0;
     gl_retained_backing = 1;
     gl_accelerated = -1;
+
 }
 
 cSDLState::~cSDLState()
@@ -74,8 +78,8 @@ void cSDLState::SetGL()
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, gl_multisamplebuffers);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, gl_multisamplesamples);
     if (gl_accelerated >= 0) {
-            SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL,
-                                gl_accelerated);
+        SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL,
+                            gl_accelerated);
     }
     SDL_GL_SetAttribute(SDL_GL_RETAINED_BACKING, gl_retained_backing);
     if (gl_major_version) {
