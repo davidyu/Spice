@@ -39,7 +39,8 @@ void cGameStateManager::ReplaceState(iGameState* new_state)
 
     if(!m_states.empty()) {
         m_states.back()->OnExit();
-        DELETESINGLE(m_states.back());
+        iGameState* stateToDelete = m_states.back();
+        DELETESINGLE(stateToDelete);
         m_states.pop_back();
     }
     m_states.push_back(new_state);

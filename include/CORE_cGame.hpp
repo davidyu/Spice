@@ -40,6 +40,11 @@ namespace CORE
         STATE::cGameStateManager    m_state_manager;
         CORE::Input                 m_input;
         CORE::cTimer                m_timer;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 22848fb622e9dbaec610b2e338f2c0f9213d5ba2
         cSDLState*                  m_sdl_state;
 
     };

@@ -6,7 +6,7 @@
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
+1335596001 /home/accts/ly58/cs478/final/Spice/include/CORE_cGame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"CORE_cSDLState.hpp"
@@ -27,12 +27,13 @@
 
 1334422630 /home/accts/ly58/cs478/final/Spice/include/CORE_keycodes.hpp
 
-1334601792 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/CORE_cTimer.hpp
+	<SDL2/SDL.h>
 
 1334601792 /home/accts/ly58/cs478/final/Spice/include/STATE_cGameStateManager.hpp
 	<vector>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
+1335596391 /home/accts/ly58/cs478/final/Spice/include/cGenericFactory.hpp
 	<map>
 	<string>
 
@@ -411,7 +412,7 @@
 1334422630 /home/accts/ly58/cs478/final/Spice/include/GFX_cCameraBase.hpp
 	"MATH_LinearAlgebra.hpp"
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_LinearAlgebra.hpp
+1334722351 /home/accts/ly58/cs478/final/Spice/include/MATH_LinearAlgebra.hpp
 	"MATH_Vec3.hpp"
 	"MATH_Vec2.hpp"
 	"MATH_Matrix4x4.hpp"
@@ -419,10 +420,11 @@
 1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec3.hpp
 	"MATH_MathHelper.hpp"
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_MathHelper.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_MathHelper.hpp
 	<cmath>
 
-1334422630 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
+1335596000 /home/accts/ly58/cs478/final/Spice/include/MATH_Vec2.hpp
+	"MATH_MathHelper.hpp"
 
 1334713170 /home/accts/ly58/cs478/final/Spice/include/MATH_Matrix4x4.hpp
 	"MATH_MathHelper.hpp"
