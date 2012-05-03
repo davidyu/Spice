@@ -10,61 +10,64 @@
 using namespace GFX;
 using namespace GFX::G2D;
 
-#define c m_current_color
+#define c m_CurrentColor
 
 cSpriteBatch::cSpriteBatch()
-// Delegated ctor
 {
     Initialise(100);
 }
 
-cSpriteBatch::cSpriteBatch(int n_batch)
+cSpriteBatch::cSpriteBatch(int nBatch)
 
 {
-    Initialise(n_batch);
+    Initialise(nBatch);
 }
 
-void cSpriteBatch::Initialise(int n_batch)
+void cSpriteBatch::Initialise(int nBatch)
 {
-    mn_max_batch = n_batch;
-    m_index = 0;
-    m_is_blending_enabled = false;
-    m_mesh = new cTextureMesh(n_batch);
-    m_current_color.set(1.0f, 1.0f, 1.0f, 1.0f);
+    m_nMaxBatch         = nBatch;
+    m_Index             = 0;
+
+    m_IsBlendingEnabled = false;
+    m_UseVbo            = true;
+
+    m_Mesh              = new cTextureMesh(nBatch);
+    m_CurrentColor.set(1.0f, 1.0f, 1.0f, 1.0f);
+
 }
 
 cSpriteBatch::~cSpriteBatch()
 {
-    DELETESINGLE(m_mesh);
+    DELETESINGLE(m_Mesh);
 }
 
 void cSpriteBatch::Begin()
 {
-    if (m_is_drawing){
+    if (m_IsDrawing){
         // Throw exception
     }
-    m_index = 0;
-    m_is_drawing = true;
-    m_mesh->Destroy();
-    m_last_texture = 0;
+    m_Index = 0;
+    m_IsDrawing = true;
+    m_Mesh->Destroy();
+    m_LastTexture = 0;
 
 }
 
 void cSpriteBatch::End()
 {
-    if (!m_is_drawing) {
+    if (!m_IsDrawing) {
         // Throw exception
     }
-    if (m_index > 0) {
+    if (m_Index > 0) {
         RenderMesh();
     }
-    m_is_drawing = false;
+    m_IsDrawing = false;
 }
 
 
 void cSpriteBatch::DrawTexture(const cTextureWrapper& tex, float x, float y, float w, float h)
 {
-    // if (!m_is_drawing) throw Exception... // TODO
+    // if (!m_IsDrawing) throw Exception... // TODO
 
     FlushIfNewTextureOrBatchFull(tex);
     ChangeTexture(tex);
@@ -76,12 +79,12 @@ void cSpriteBatch::DrawTexture(const cTextureWrapper& tex, float x, float y, flo
     const float u2  = tex.GetU2();
     const float v2  = tex.GetV2();
 
-    m_mesh->AddVertex8f(x, y, u, v, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x2, y, u2, v, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x2, y2, u2, v2, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x, y2, u, v2, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x, y, u, v, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x2, y, u2, v, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x2, y2, u2, v2, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x, y2, u, v2, c.r, c.g, c.b, c.a);
 
-    m_index += 4;
+    m_Index += 4;
 }
 
 void cSpriteBatch::DrawTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
@@ -146,39 +149,36 @@ void cSpriteBatch::DrawTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& te
     const float u2  = tex.GetU2();
     const float v2  = tex.GetV2();
 
-    m_mesh->AddVertex8f(x1, y1, u, v, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x2, y2, u2, v, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x3, y3, u2, v2, c.r, c.g, c.b, c.a);
-    m_mesh->AddVertex8f(x4, y4, u, v2, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x1, y1, u, v, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x2, y2, u2, v, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x3, y3, u2, v2, c.r, c.g, c.b, c.a);
+    m_Mesh->AddVertex8f(x4, y4, u, v2, c.r, c.g, c.b, c.a);
 
-    m_index += 4;
+    m_Index += 4;
 
 }
 
 void cSpriteBatch::RenderMesh()
 {
-    if (m_index == 0 || m_last_texture ==0) {
+    if (m_Index == 0 || m_LastTexture ==0) {
         return;
     }
-    m_last_texture->BindGL();
-    m_mesh->Render();
+    m_LastTexture->BindGL();
+    m_Mesh->Render();
 }
 
 void cSpriteBatch::ChangeTexture(const cTextureWrapper& tex)
 {
-    m_last_texture = &tex;
-    m_reciprocal_tex_width = 1.0f/tex.GetTextureWidth();
-    m_reciprocal_tex_height = 1.0f/tex.GetTextureHeight();
-
+    m_LastTexture = &tex;
 }
 
  void cSpriteBatch::FlushIfNewTextureOrBatchFull(const cTextureWrapper& tex)
  {
-    if (m_last_texture!=0 && tex.GetID() != m_last_texture->GetID()) {
+    if (m_LastTexture!=0 && tex.GetID() != m_LastTexture->GetID()) {
         RenderMesh();
-        m_mesh->Destroy();
+        m_Mesh->Destroy();
         ChangeTexture(tex);
-    } else if (m_index >= mn_max_batch) {
+    } else if (m_Index >= m_nMaxBatch) {
         RenderMesh();
     }
  }
@@ -186,5 +186,5 @@ void cSpriteBatch::ChangeTexture(const cTextureWrapper& tex)
 
  void cSpriteBatch::SetColor(const Color4 col)
  {
-    m_current_color = col;
+    m_CurrentColor = col;
  }

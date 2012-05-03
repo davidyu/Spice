@@ -27,6 +27,23 @@ cGame::~cGame()
 #include <stdlib.h>
 bool cGame::Initialise()
 {
+    if (!SetupSDL()) {
+        return false;
+    }
+    if (!SetupGL()) {
+        return false;
+    }
+
+    m_input.Initialise();
+
+    state_factory.RegisterClass("game", cLesson5::CreateInstance);
+    m_state_manager.PushState(state_factory.CreateObject("game"));
+
+    return true;
+}
+
+bool cGame::SetupSDL()
+{
     if (!SDL_Init( SDL_INIT_EVERYTHING )){
         cout << "SOMETHING BAD HAPPENED IN SDL_INIT\n";
         return false;
@@ -49,27 +66,9 @@ bool cGame::Initialise()
                                     0, m_sdl_state->render_flags);
     // GL Context
     m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
-    cout <<"WHAT" << m_sdl_state->glctx << "WHAT";
     SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
     SDL_GL_SetSwapInterval(1); // 1 for Vsync?
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-3.0, 3.0, 3.0, -3.0, -10.0, 10.0);
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glClearDepth(1.0f);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-    glShadeModel(GL_SMOOTH);
-    glEnable(GL_TEXTURE_2D);
-
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
-
-
-    m_input.Initialise();
 
     if (!IMG_Init( IMG_INIT_PNG )){
         printf("IMG_Init: %s\n", IMG_GetError());
@@ -80,17 +79,27 @@ bool cGame::Initialise()
         fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
         return false;
     }
-//    if (!Mix_Init()){
+    //    if (!Mix_Init()){
 //        printf("Mix_Init: %s\n", Mix_GetError());
 //        return false;
 //    }
+    return true;
+}
+bool cGame::SetupGL()
+{
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0.0, 6.0, 6.0, 0.0, -10.0, 10.0);
 
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glShadeModel(GL_SMOOTH);
+    glEnable(GL_TEXTURE_2D);
 
-
-
-
-    state_factory.RegisterClass("game", cPlayState::CreateInstance);
-    m_state_manager.PushState(state_factory.CreateObject("game"));
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 
     return true;
 }
@@ -129,35 +138,39 @@ void cGame::MainLoop()
                 EndGame();
             }
         }
+        // Game Loop
+
+        // Update
         // Update Input-- set old keystates and current ones
         m_input.Update();
-
-        // Game Loop
         state = m_state_manager.GetCurrent();
-        /*DEBUG*/assert(state!=0);
         state->Update(this, delta);
 
-        glClearColor(0.0, 0.0, 0.0, 1.0);
+        // Render Sequence
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
+        state = m_state_manager.GetCurrent();
         state->Render(this, percent_tick);
-
         SDL_GL_SwapWindow(m_sdl_state->window);
-        //SDL_RenderPresent(m_sdl_state->renderer); // Gets overwritten somehow by SwapWindow
     }
     m_state_manager.ClearAll();
 }
 
 void cGame::EndGame()
-{
-    m_running = false;
-}
+{   m_running = false; }
 
 Input& cGame::GetInput()
-{
-    return m_input;
-}
+{    return m_input; }
+
 cGameStateManager& cGame::GetStateManager()
+<<<<<<< HEAD
+{    return m_state_manager;    }
+
+CORE::cTimer& cGame::GetTimer()
+{    return m_timer; }
+
+=======
 {
     return m_state_manager;
 }
+>>>>>>> 22848fb622e9dbaec610b2e338f2c0f9213d5ba2

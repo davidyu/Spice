@@ -106,6 +106,7 @@ void cGameStateManager::PopState()
 
 iGameState* cGameStateManager::GetCurrent() const
 {
+    /*DEBUG*/assert(m_states.back());
     return (m_states.empty()) ? 0 : m_states.back();
 }
 

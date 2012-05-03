@@ -46,7 +46,7 @@ namespace GFX
             void CopyTextureWrapper(const cTextureWrapper& rhs);
 
             // Static functions
-//            static std::vector<cTextureWrapper> SplitTextureHorizontal(const cTextureWrapper& tex, int frame_width, int y_offset);
+            static std::vector<cTextureWrapper> SplitTextureHorizontalTexNumXYWH(const cTextureWrapper& tex, int nFrames, int frameWidth, int frameHeight, int x_offset, int y_offset);
 //            static std::vector<cTextureWrapper> SplitTextureRegionHorizontal(const cTextureWrapper& tex_reg, int frame_width, int y_offset);
             //TODO: ADD VERTICAL SPLITS??; USE OWN ARRAY CLASS
 
@@ -54,7 +54,7 @@ namespace GFX
             const cTexture& GetTexture() const;
 
             // Setters
-            void SetRegionFromDimensions(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
+            void SetRegionFromDimensionsTexXYWH(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
             void SetRegionFromWholeTexture(const cTextureWrapper& tex);
 //            void SetRegionFromTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height);
             void SetRegionFromUV(const cTextureWrapper& tex, float u, float v, float u2, float v2);
