@@ -29,7 +29,7 @@ namespace CORE
 
         inline SDL_Renderer*        GetRenderer() const{ return m_sdl_state->renderer; }
 
-        cGenericFactory<STATE::iGameState> state_factory; // FIXME:Should be declared elsewhere
+        static cGenericFactory<STATE::iGameState> state_factory; // FIXME:Should be declared elsewhere
     protected:
         // Methods
 
@@ -40,11 +40,7 @@ namespace CORE
         STATE::cGameStateManager    m_state_manager;
         CORE::Input                 m_input;
         CORE::cTimer                m_timer;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 22848fb622e9dbaec610b2e338f2c0f9213d5ba2
         cSDLState*                  m_sdl_state;
 
     };

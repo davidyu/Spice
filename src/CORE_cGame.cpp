@@ -163,14 +163,11 @@ Input& cGame::GetInput()
 {    return m_input; }
 
 cGameStateManager& cGame::GetStateManager()
-<<<<<<< HEAD
 {    return m_state_manager;    }
 
 CORE::cTimer& cGame::GetTimer()
 {    return m_timer; }
 
-=======
 {
     return m_state_manager;
 }
->>>>>>> 22848fb622e9dbaec610b2e338f2c0f9213d5ba2
