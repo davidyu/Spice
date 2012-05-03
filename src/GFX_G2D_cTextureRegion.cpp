@@ -6,11 +6,17 @@
 using namespace GFX;
 using namespace G2D;
 
-//std::vector<cTextureWrapper> cTextureRegion::SplitTextureHorizontal(const cTextureWrapper& tex, int frame_width, int y_offset)
-//{
-//    std::vector<cTextureWrapper> temp;
-//    return temp;
-//}
+std::vector<cTextureWrapper> cTextureRegion::SplitTextureHorizontalTexNumXYWH(const cTextureWrapper& tex, int nFrames, int x_offset, int y_offset, int frameWidth, int frameHeight)
+{
+    std::vector<cTextureWrapper> texFrames;
+    int x;
+
+    for (unsigned int i=0; i<nFrames; ++i) {
+        x = (x_offset*nFrames);
+        texFrames.push_back(cTextureRegion(tex, x, y_offset, frameWidth, frameHeight));
+    }
+    return texFrames;
+}
 
 cTextureRegion::cTextureRegion()
 {
@@ -25,7 +31,7 @@ cTextureRegion::~cTextureRegion()
 cTextureRegion::cTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height)
 {
     CopyTextureWrapper(tex);
-    SetRegionFromDimensions(tex, x_offset, y_offset, width, height);
+    SetRegionFromDimensionsTexXYWH(tex, x_offset, y_offset, width, height);
 }
 
 cTextureRegion::cTextureRegion(const cTextureWrapper& tex, float u, float v, float u2, float v2)
@@ -48,7 +54,7 @@ void cTextureRegion::CopyTextureWrapper(const cTextureWrapper& rhs)
     m_texture_id = rhs.GetID();
 }
 
-void cTextureRegion::SetRegionFromDimensions(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height)
+void cTextureRegion::SetRegionFromDimensionsTexXYWH(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height)
 {
     const float u_offset = tex.GetU();
     const float v_offset = tex.GetV();

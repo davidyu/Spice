@@ -3,7 +3,9 @@
 #ifndef CSPRITEBATCH_H
 #define CSPRITEBATCH_H
 
+#include <SDL2/SDL_opengl.h> // Needed for GLuint
 #include "GFX_Color4.hpp"
+
 
 namespace GFX
 {
@@ -17,7 +19,7 @@ namespace GFX
         {
         public:
             cSpriteBatch();
-            cSpriteBatch(int n_batch); // Number of draws per batch
+            cSpriteBatch(int nBatch); // Number of draws per batch
             virtual ~cSpriteBatch();
 
             void Destroy();
@@ -48,20 +50,22 @@ namespace GFX
             // Private methods
             void            ChangeTexture(const cTextureWrapper& tex);
             void            FlushIfNewTextureOrBatchFull(const cTextureWrapper& tex); // Best function name ever...
-            void            Initialise(int n_batch);
+            void            Initialise(int nBatch);
             void            RenderMesh();
 
+            GLuint          m_VboId;                //!< Vertex buffer object ID
+            cTextureMesh*   m_Mesh;
+            const cTextureWrapper* m_LastTexture;
 
-            cTextureMesh*   m_mesh;
-            const cTextureWrapper* m_last_texture;
-            float            m_reciprocal_tex_width, m_reciprocal_tex_height;
+            int             m_nMaxBatch;            //!< Number of draws per batch
+            int             m_Index;
 
-            Color4          m_current_color;
+            Color4          m_CurrentColor;
 
-            bool            m_is_drawing;           // Set to true when Begin() is called, and false when End() is.
-            bool            m_is_blending_enabled;
-            int             mn_max_batch;           // Number of draws per batch
-            int             m_index;
+            bool            m_UseVbo;               //!< Defaults is true
+            bool            m_IsDrawing;            //!< Set to true when Begin() is called, and false when End() is.
+            bool            m_IsBlendingEnabled;
+
 
         };
     }

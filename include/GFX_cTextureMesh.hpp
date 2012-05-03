@@ -2,6 +2,7 @@
 #define CTEXTUREMESH_H
 
 #include <vector>
+#include <SDL2/SDL_opengl.h>
 
 namespace GFX
 {
@@ -16,11 +17,11 @@ namespace GFX
             float col[4];    //!< rgba // Possible to pack all these into one integer. 4 params -> 8 bits each -> 32 bits
         };
 
-                            cTextureMesh();
-                            cTextureMesh(int initial_sz); // Reserve some space in vertex buffer
+                            cTextureMesh(bool useVbo=true);
+                            cTextureMesh(int initial_sz, bool useVbo=true); // Reserve some space in vertex buffer
         virtual             ~cTextureMesh();
 
-        void                Initialise(int initial_sz);
+        void                Initialise(int initial_sz, bool useVbo);
         void                Destroy();
         void                AddVertex4f(float x, float y, float u, float v);
         void                AddVertex8f(float x, float y, float u, float v
@@ -40,13 +41,14 @@ namespace GFX
 
     private:
         // Private Methods
-        void                InitVBO();
+        void                GenerateVbo();
 
-        int                 mn_verticies;
-        bool                m_use_vbo;
+        GLuint              m_VboId;
+        int                 m_nBufferSize;
+        bool                m_UseVbo;
 
-        std::vector<Vertex> m_vertex_buffer;
-        std::vector<int>    m_index_buffer;
+        std::vector<Vertex> m_VertexBuffer;
+        std::vector<int>    m_IndexBuffer;
 
     };
 
@@ -74,27 +76,27 @@ namespace GFX
     {
         int index = GetNumberOfIndicies();
 
-        m_index_buffer.push_back(index);
-        m_vertex_buffer.push_back(vertex);
+        m_IndexBuffer.push_back(index);
+        m_VertexBuffer.push_back(vertex);
     }
 
     inline const int* cTextureMesh::GetIndexBuffer() const
-    { return (m_index_buffer.empty()) ? 0 : &m_index_buffer[0]; }
+    { return (m_IndexBuffer.empty()) ? 0 : &m_IndexBuffer[0]; }
 
     inline int cTextureMesh::GetIndexByteSize() const
     { return static_cast<int>(sizeof(int)); }
 
     inline int cTextureMesh::GetNumberOfIndicies() const
-    { return static_cast<int>(m_index_buffer.size()); }
+    { return static_cast<int>(m_IndexBuffer.size()); }
 
     inline int cTextureMesh::GetNumberOfVerticies() const
-    { return static_cast<int>(m_vertex_buffer.size()); }
+    { return static_cast<int>(m_VertexBuffer.size()); }
 
     inline const cTextureMesh::Vertex& cTextureMesh::GetVertex(int i) const
-    { return m_vertex_buffer[i]; }
+    { return m_VertexBuffer[i]; }
 
     inline const cTextureMesh::Vertex* cTextureMesh::GetVertexBuffer() const
-    { return (m_vertex_buffer.empty()) ? 0 : &m_vertex_buffer[0]; }
+    { return (m_VertexBuffer.empty()) ? 0 : &m_VertexBuffer[0]; }
 
     inline const int cTextureMesh::GetVertexByteSize() const
     { return static_cast<int>(sizeof(Vertex)); }

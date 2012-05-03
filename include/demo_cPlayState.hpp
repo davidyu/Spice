@@ -14,11 +14,11 @@ namespace CORE
 
 //static STATE::iGameState* CreateInstance() {}
 
-class cPlayState : public STATE::iGameState
+class cLesson5 : public STATE::iGameState
 {
     public:
-        cPlayState();
-        virtual ~cPlayState();
+        cLesson5();
+        virtual ~cLesson5();
 
         static STATE::iGameState* CreateInstance();
         virtual STATE::iGameState* Clone(); // Ideally this function should return a copy, not a blank instance
@@ -33,9 +33,9 @@ class cPlayState : public STATE::iGameState
 
         void Render(CORE::cGame* game, float percent_tick);
 
-        void HandleInput();
     private:
         GFX::G2D::cSpriteBatch m_batch;
+        bool test;
 };
 
 #endif // DEMO_CPLAYSTATE_H

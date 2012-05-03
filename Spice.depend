@@ -26,7 +26,7 @@
 	<map>
 	<string>
 
-1334980024 source:d:\programming\spice\src\core_cgame.cpp
+1336004366 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
@@ -36,7 +36,7 @@
 	<cassert>
 	<stdlib.h>
 
-1334338125 d:\programming\spice\include\core_cgame.hpp
+1335729486 d:\programming\spice\include\core_cgame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"CORE_cSDLState.hpp"
@@ -50,9 +50,9 @@
 1334450096 d:\programming\spice\include\state_cgamestatemanager.hpp
 	<vector>
 
-1334338247 d:\programming\spice\include\state_igamestate.hpp
+1335119283 d:\programming\spice\include\state_igamestate.hpp
 
-1334450102 source:d:\programming\spice\src\state_cgamestatemanager.cpp
+1335729667 source:d:\programming\spice\src\state_cgamestatemanager.cpp
 	<cassert>
 	"memory_macros.h"
 	"STATE_cGameStateManager.hpp"
@@ -70,7 +70,7 @@
 	<map>
 	<string>
 
-1334713248 d:\programming\spice\include\state_cgametransition.hpp
+1335119234 d:\programming\spice\include\state_cgametransition.hpp
 	"CORE_cGame.hpp"
 
 1332801945 source:d:\programming\spice\src\core_input.cpp
@@ -81,8 +81,9 @@
 	"SDL2/SDL.h"
 	"CORE_keycodes.hpp"
 
-1333159275 d:\programming\spice\include\demo_cplaystate.hpp
+1335761443 d:\programming\spice\include\demo_cplaystate.hpp
 	"STATE_iGameState.hpp"
+	"GFX_G2D_cSpriteBatch.hpp"
 
 1318621801 d:\programming\spice\include\core_keycodes.hpp
 
@@ -99,7 +100,7 @@
 1334677044 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1335014143 source:d:\programming\spice\src\demo_cplaystate.cpp
+1336004373 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_mixer.h>
 	"demo_cPlayState.hpp"
@@ -124,13 +125,13 @@
 	<SDL2/SDL_opengl.h>
 	<cassert>
 
-1335012608 source:d:\programming\spice\src\gfx_ctexture.cpp
+1336004452 source:d:\programming\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
 	<iostream>
 
-1334976336 d:\programming\spice\include\gfx_ctexture.hpp
+1335038972 d:\programming\spice\include\gfx_ctexture.hpp
 	<memory>
 	<cassert>
 	<string>
@@ -145,7 +146,7 @@
 1334341684 d:\programming\spice\include\math_matrix4x4.hpp
 	"MATH_MathHelper.hpp"
 
-1334950988 d:\programming\spice\include\math_mathhelper.hpp
+1335124709 d:\programming\spice\include\math_mathhelper.hpp
 	<cmath>
 
 1334341728 source:d:\programming\spice\src\gfx_ccamerabase.cpp
@@ -165,40 +166,43 @@
 1334341671 d:\programming\spice\include\math_vec3.hpp
 	"MATH_MathHelper.hpp"
 
-1334343358 d:\programming\spice\include\math_vec2.hpp
+1335117354 d:\programming\spice\include\math_vec2.hpp
+	"MATH_MathHelper.hpp"
 
-1334983197 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
+1335733843 source:d:\programming\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_cTextureMesh.hpp"
 	"MATH_MathHelper.hpp"
 	"memory_macros.h"
 
-1334983197 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+1335736779 d:\programming\spice\include\gfx_g2d_cspritebatch.hpp
+	<SDL2/SDL_opengl.h>
 	"GFX_Color4.hpp"
 
-1334978677 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
+1336003760 source:d:\programming\spice\src\gfx_g2d_ctextureregion.cpp
 	"GFX_G2D_cTextureRegion.hpp"
 
-1334978610 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
+1336003706 d:\programming\spice\include\gfx_g2d_ctextureregion.hpp
 	<vector>
 	"GFX_cTextureWrapper.hpp"
 
-1334877148 source:d:\programming\spice\src\gfx_ctexturemesh.cpp
+1335748947 source:d:\programming\spice\src\gfx_ctexturemesh.cpp
 	<SDL2/SDL_opengl.h>
 	"GFX_cTextureMesh.hpp"
 
-1334863214 d:\programming\spice\include\gfx_ctexturemesh.hpp
+1335736772 d:\programming\spice\include\gfx_ctexturemesh.hpp
 	<vector>
+	<SDL2/SDL_opengl.h>
 
 1334978677 d:\programming\spice\include\gfx_ctexturewrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1334951641 source:d:\programming\spice\src\gfx_g2d_canimation.cpp
+1335046979 source:d:\programming\spice\src\gfx_g2d_canimation.cpp
 	"GFX_G2D_cAnimation.hpp"
 	"GFX_cTextureWrapper.hpp"
 
-1334951598 d:\programming\spice\include\gfx_g2d_canimation.hpp
+1335046982 d:\programming\spice\include\gfx_g2d_canimation.hpp
 	<vector>
 	"MATH_MathHelper.hpp"
 
