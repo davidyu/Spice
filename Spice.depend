@@ -26,7 +26,7 @@
 	<map>
 	<string>
 
-1336498257 source:d:\programming\spice\src\core_cgame.cpp
+1336510734 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
@@ -76,10 +76,10 @@
 	"CORE_cGame.hpp"
 	"memory_macros.h"
 
-1336498574 source:d:\programming\spice\src\core_input.cpp
+1336511274 source:d:\programming\spice\src\core_input.cpp
 	"CORE_Input.hpp"
 
-1336498131 d:\programming\spice\include\core_input.hpp
+1336509538 d:\programming\spice\include\core_input.hpp
 	"global_inc.hpp"
 
 1336417508 d:\programming\spice\include\demo_cplaystate.hpp
@@ -101,7 +101,7 @@
 1336071936 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1336498625 source:d:\programming\spice\src\demo_cplaystate.cpp
+1336510854 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_mixer.h>
 	"demo_cPlayState.hpp"
@@ -227,10 +227,13 @@
 1336013638 d:\programming\spice\include\math_vec4.hpp
 	"MATH_MathHelper.hpp"
 
-1336497951 d:\programming\spice\include\global_inc.hpp
+1336505168 d:\programming\spice\include\global_inc.hpp
 	<vector>
 	<map>
+	<array>
 	<algorithm>
+	<iostream>
+	<cassert>
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
 	"memory_macros.h"

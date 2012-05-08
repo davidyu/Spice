@@ -43,8 +43,6 @@ bool cGame::Initialise()
     return true;
 }
 
-SDL_Joystick* stick = 0;
-
 bool cGame::SetupSDL()
 {
     if (!SDL_Init( SDL_INIT_EVERYTHING )){
@@ -104,14 +102,6 @@ bool cGame::SetupSDL()
 //        return false;
 //    }
 
-    if( SDL_NumJoysticks() < 1 )
-    { return false; }
-
-    stick = SDL_JoystickOpen( 0 );
-
-    if( stick == NULL )
-    { return false; }
-
     return true;
 }
 bool cGame::SetupGL()
@@ -150,7 +140,7 @@ bool cGame::Terminate()
     }
 
     m_state_manager.ClearAll();
-    SDL_JoystickClose( stick );
+    m_input.Terminate();
 
     SDL_Quit();
     IMG_Quit();
@@ -181,6 +171,8 @@ void cGame::MainLoop()
                 case SDL_MOUSEBUTTONUP:
                 case SDL_MOUSEBUTTONDOWN:
                 case SDL_JOYAXISMOTION:
+                case SDL_JOYBUTTONDOWN:
+                case SDL_JOYBUTTONUP:
                     m_input.HandleEvent(event);
                     break;
 

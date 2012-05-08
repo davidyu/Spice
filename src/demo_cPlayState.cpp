@@ -93,6 +93,7 @@ void cPlayState::HandleInput(CORE::cGame* game)
 
     if (input.GetKeyState(SDLK_ESCAPE)) game->EndGame();
     if (input.OnKeyDown(SDLK_a)) { test = !test;}
+    if (input.OnMouseButtonDown(SDL_BUTTON_LEFT)) { test = !test;}
     if (input.OnKeyDown(SDLK_b)) {
         STATE::cGameTransition* trans = game->transition_factory.CreateObject("trans");
         STATE::iGameState* newstate = game->state_factory.CreateObject("play");
@@ -101,5 +102,11 @@ void cPlayState::HandleInput(CORE::cGame* game)
         trans->SetOldAndNewState(oldstate, newstate);
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
+    float x, y;
+    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
+    if (input.OnJoyButtonDown(0, 5)) {
+        cout << x << ", " << y << endl;
+    }
+
 
 }
