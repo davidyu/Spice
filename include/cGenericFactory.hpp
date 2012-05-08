@@ -1,5 +1,4 @@
 // Generic Factory Design Pattern used to encapsulate the creation of objects
-
 #ifndef CGENERICFACTORY_H
 #define CGENERICFACTORY_H
 

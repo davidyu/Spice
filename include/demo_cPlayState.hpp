@@ -14,11 +14,11 @@ namespace CORE
 
 //static STATE::iGameState* CreateInstance() {}
 
-class cLesson5 : public STATE::iGameState
+class cPlayState : public STATE::iGameState
 {
     public:
-        cLesson5();
-        virtual ~cLesson5();
+        cPlayState();
+        virtual ~cPlayState();
 
         static STATE::iGameState* CreateInstance();
         virtual STATE::iGameState* Clone(); // Ideally this function should return a copy, not a blank instance

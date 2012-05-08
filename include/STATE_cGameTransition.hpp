@@ -3,6 +3,8 @@
 #define CGAMETRANSITION_H
 
 #include "CORE_cGame.hpp"
+//#include "global_inc.hpp"
+#include "memory_macros.h"
 
 namespace CORE
 {
@@ -15,15 +17,18 @@ namespace STATE
     class cGameTransition : public iGameState
     {
         public:
-                            cGameTransition() : mp_old_state(0), mp_new_state(0) {}
+                            cGameTransition() : m_pOldState(0), m_pNewState(0) {}
             virtual         ~cGameTransition() {}
+
+            static          STATE::cGameTransition* CreateInstance() { return new cGameTransition; }
+            virtual STATE::iGameState* Clone() {}
 
             virtual bool    OnEnter() {}
             virtual bool    OnExit()
                             {
                                 // Must delete old state since GameStateManager does not know
                                 // when the transition is done with the old state
-                                DELETESINGLE(mp_old_state);
+                                DELETESINGLE(m_pOldState);
                                 return true;
                             }
             virtual void    Pause() {}
@@ -34,14 +39,14 @@ namespace STATE
                                 Finish(game); // Dummy transition finishes right away
                             }
 
-            virtual void    Render(float percent_tick) {}
+            virtual void    Render(CORE::cGame* game, float percent_tick) {}
 
             void            HandleInput() {}
 
             void            SetOldAndNewState(iGameState* old_s, iGameState* new_s)
                             {
-                                mp_old_state = old_s;
-                                mp_new_state = new_s;
+                                m_pOldState = old_s;
+                                m_pNewState = new_s;
                             }
 
             void            Finish(CORE::cGame* game)
@@ -49,8 +54,8 @@ namespace STATE
                                 game->GetStateManager().PopState();
                             }
         protected:
-            iGameState*             mp_old_state;
-            iGameState*             mp_new_state;
+            iGameState*             m_pOldState;
+            iGameState*             m_pNewState;
 
     }; // class cGameTransition
 

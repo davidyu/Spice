@@ -29,7 +29,10 @@ namespace CORE
 
         inline SDL_Renderer*        GetRenderer() const{ return m_sdl_state->renderer; }
 
+        // TODO CREATE WRAPPER CLASS FOR STATE REG; CREATE NAMES FOR STATES
         static cGenericFactory<STATE::iGameState> state_factory; // FIXME:Should be declared elsewhere
+        static cGenericFactory<STATE::cGameTransition> transition_factory; // FIXME:Should be declared elsewhere?
+
     protected:
         // Methods
 
@@ -42,7 +45,6 @@ namespace CORE
         CORE::cTimer                m_timer;
 
         cSDLState*                  m_sdl_state;
-
     };
 
 }

@@ -3,7 +3,6 @@
 #include <SDL2/SDL_mixer.h>
 #include "CORE_cGame.hpp"
 #include "STATE_iGameState.hpp"
-#include "demo_cPlayState.hpp"
 
 
 
@@ -13,6 +12,9 @@
 
 using namespace CORE;
 using namespace STATE;
+
+cGenericFactory<STATE::iGameState> cGame::state_factory;
+cGenericFactory<STATE::cGameTransition> cGame::transition_factory;
 
 cGame::cGame()
 : m_running(true)
@@ -34,13 +36,14 @@ bool cGame::Initialise()
         return false;
     }
 
+    m_running = true;
     m_input.Initialise();
 
-    state_factory.RegisterClass("game", cLesson5::CreateInstance);
-    m_state_manager.PushState(state_factory.CreateObject("game"));
 
     return true;
 }
+
+SDL_Joystick* stick = 0;
 
 bool cGame::SetupSDL()
 {
@@ -48,8 +51,6 @@ bool cGame::SetupSDL()
         cout << "SOMETHING BAD HAPPENED IN SDL_INIT\n";
         return false;
     }
-
-    m_running = true;
     // Setup SDL Window and Render
     m_sdl_state = new cSDLState();
     m_sdl_state->SetGL();
@@ -59,13 +60,32 @@ bool cGame::SetupSDL()
         m_sdl_state->window_w , m_sdl_state->window_h,
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
+    if (!m_sdl_state->window) {
+        cout << "Window creation failed\n";
+        Terminate();
+        return false;
+    }
+
     // Fullscreen?
     SDL_SetWindowFullscreen(m_sdl_state->window, m_sdl_state->is_fullscreen);
     // Renderer
     m_sdl_state->renderer = SDL_CreateRenderer(m_sdl_state->window,
                                     0, m_sdl_state->render_flags);
+    if (!m_sdl_state->renderer) {
+        cout << "Renderer creation failed\n";
+        Terminate();
+        return false;
+    }
+
     // GL Context
     m_sdl_state->glctx = SDL_GL_CreateContext(m_sdl_state->window);
+    if (!m_sdl_state->glctx) {
+        cout << SDL_GetError();
+//        cout << "GL Context creation failed\n";
+        Terminate();
+        return false;
+    }
+
     SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
     SDL_GL_SetSwapInterval(1); // 1 for Vsync?
@@ -83,17 +103,26 @@ bool cGame::SetupSDL()
 //        printf("Mix_Init: %s\n", Mix_GetError());
 //        return false;
 //    }
+
+    if( SDL_NumJoysticks() < 1 )
+    { return false; }
+
+    stick = SDL_JoystickOpen( 0 );
+
+    if( stick == NULL )
+    { return false; }
+
     return true;
 }
 bool cGame::SetupGL()
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(0.0, 6.0, 6.0, 0.0, -10.0, 10.0);
+    glOrtho(-3.0, 3.0, 3.0, -3.0, -10.0, 10.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glClearDepth(1.0f);
+
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glShadeModel(GL_SMOOTH);
@@ -119,9 +148,16 @@ bool cGame::Terminate()
         }
         SDL_free(m_sdl_state);
     }
+
+    m_state_manager.ClearAll();
+    SDL_JoystickClose( stick );
+
     SDL_Quit();
     IMG_Quit();
     Mix_Quit();
+
+
+
     return true;
 }
 
@@ -134,26 +170,55 @@ void cGame::MainLoop()
     {
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
-            if(event.type == SDL_QUIT) {
-                EndGame();
+            switch (event.type) {
+                case SDL_QUIT:
+                    EndGame();
+                    break;
+
+                case SDL_KEYDOWN:
+                case SDL_KEYUP:
+                case SDL_MOUSEMOTION:
+                case SDL_MOUSEBUTTONUP:
+                case SDL_MOUSEBUTTONDOWN:
+                case SDL_JOYAXISMOTION:
+                    m_input.HandleEvent(event);
+                    break;
+
+                default:
+                    break;
             }
         }
+//            {
+//                if( event.jaxis.which == 0 ) {
+//                    if( event.jaxis.axis == 2 ) {
+//                        if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) ) {
+//                        } else {
+//                            cout << event.jaxis.value << endl;
+//                        }
+//                    }
+//                }
+//            }
+
+
         // Game Loop
 
         // Update
         // Update Input-- set old keystates and current ones
-        m_input.Update();
+
+        m_input.UpdateAll();
         state = m_state_manager.GetCurrent();
         state->Update(this, delta);
 
+
+
         // Render Sequence
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
+//        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
         state = m_state_manager.GetCurrent();
         state->Render(this, percent_tick);
+
         SDL_GL_SwapWindow(m_sdl_state->window);
     }
-    m_state_manager.ClearAll();
 }
 
 void cGame::EndGame()
@@ -167,7 +232,3 @@ cGameStateManager& cGame::GetStateManager()
 
 CORE::cTimer& cGame::GetTimer()
 {    return m_timer; }
-
-{
-    return m_state_manager;
-}

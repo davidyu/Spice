@@ -15,7 +15,6 @@
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg -lgmon" />
@@ -44,7 +43,7 @@
 			<Add option="-std=c++0x" />
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
-			<Add directory="D:\Programming\spice\test\include" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lglu32" />
@@ -75,11 +74,17 @@
 		<Unit filename="include\MATH_Vec3.hpp" />
 		<Unit filename="include\STATE_cGameStateManager.hpp" />
 		<Unit filename="include\STATE_cGameTransition.hpp" />
+		<Unit filename="include\STATE_cTransSquareSpin.hpp" />
 		<Unit filename="include\STATE_iGameState.hpp" />
 		<Unit filename="include\cGenericFactory.hpp" />
 		<Unit filename="include\demo_cPlayState.hpp" />
+		<Unit filename="include\global_inc.hpp" />
 		<Unit filename="include\memory_macros.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src\CORE_Input.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />
@@ -93,6 +98,7 @@
 		<Unit filename="src\GFX_cTextureRegistry.cpp" />
 		<Unit filename="src\MATH_Matrix4x4.cpp" />
 		<Unit filename="src\STATE_cGameStateManager.cpp" />
+		<Unit filename="src\STATE_cTransSquareSpin.cpp" />
 		<Unit filename="src\demo_cPlayState.cpp" />
 		<Extensions>
 			<code_completion />

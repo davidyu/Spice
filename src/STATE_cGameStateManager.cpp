@@ -110,6 +110,11 @@ iGameState* cGameStateManager::GetCurrent() const
     return (m_states.empty()) ? 0 : m_states.back();
 }
 
+int cGameStateManager::GetNumStates() const
+{
+    return static_cast<int>(m_states.size());
+}
+
 void cGameStateManager::ClearAll()
 {
     while (!m_states.empty()) {

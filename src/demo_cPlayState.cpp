@@ -1,6 +1,7 @@
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_mixer.h>
 #include "demo_cPlayState.hpp"
+#include "STATE_cGameTransition.hpp"
 #include "CORE_cGame.hpp"
 #include "GFX_cImage.hpp"
 #include "GFX_cTexture.hpp"
@@ -21,21 +22,21 @@ namespace
     cTexture* p_tex;
 }
 
-cLesson5::cLesson5() {}
-cLesson5::~cLesson5() {}
+cPlayState::cPlayState() {}
+cPlayState::~cPlayState() {}
 
-STATE::iGameState* cLesson5::CreateInstance()
+STATE::iGameState* cPlayState::CreateInstance()
 {
-    return new cLesson5;
+    return new cPlayState;
 }
-STATE::iGameState* cLesson5::Clone()
+STATE::iGameState* cPlayState::Clone()
 {
-    return new cLesson5;
+    return new cPlayState;
 }
 
 
 //cTexture* p_tex2;
-bool cLesson5::OnEnter()
+bool cPlayState::OnEnter()
 {
     cout << "Entering State\n";
     p_tex = new cTexture("art/split.png");
@@ -43,25 +44,24 @@ bool cLesson5::OnEnter()
     test = false;
 
 
-
     return true;
 }
-bool cLesson5::OnExit()
+bool cPlayState::OnExit()
 {
     cout << "Leaving state\n";
 }
-void cLesson5::Pause() {}
-void cLesson5::Resume() {}
+void cPlayState::Pause() {}
+void cPlayState::Resume() {}
 
 
 
 
-void cLesson5::Update(CORE::cGame* game, float delta)
+void cPlayState::Update(CORE::cGame* game, float delta)
 {
     HandleInput(game);
 }
 
-void cLesson5::Render(CORE::cGame* game, float percent_tick)
+void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
     static G2D::cSpriteBatch batch = G2D::cSpriteBatch();
 
@@ -87,12 +87,19 @@ void cLesson5::Render(CORE::cGame* game, float percent_tick)
     batch.End();
 }
 
-void cLesson5::HandleInput(CORE::cGame* game)
+void cPlayState::HandleInput(CORE::cGame* game)
 {
     CORE::Input& input = game->GetInput();
 
-    if (input.GetKeyState(HAR_ESCAPE)) game->EndGame();
-    if (input.OnKeyDown(HAR_a)) { test = !test; }
-    if (input.OnKeyDown(HAR_b)) { game->GetStateManager().ReplaceState(game->state_factory.CreateObject("game")); }
+    if (input.GetKeyState(SDLK_ESCAPE)) game->EndGame();
+    if (input.OnKeyDown(SDLK_a)) { test = !test;}
+    if (input.OnKeyDown(SDLK_b)) {
+        STATE::cGameTransition* trans = game->transition_factory.CreateObject("trans");
+        STATE::iGameState* newstate = game->state_factory.CreateObject("play");
+        STATE::iGameState* const oldstate = game->GetStateManager().GetCurrent();
+
+        trans->SetOldAndNewState(oldstate, newstate);
+        game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
+    }
 
 }

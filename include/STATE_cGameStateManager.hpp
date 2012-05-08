@@ -28,6 +28,9 @@ namespace STATE
 
             // Performs each state's OnExit, and deletes the state.
             void                ClearAll();
+
+            // Intended for debug use
+            int                 GetNumStates() const;
         private:
 
             // Members
