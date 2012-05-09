@@ -101,10 +101,10 @@ void cPlayState::HandleInput(CORE::cGame* game)
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;
-    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
-    if (input.OnJoyButtonDown(0, 5)) {
-        cout << x << ", " << y << endl;
-    }
+//    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
+//    if (input.OnJoyButtonDown(0, 5)) {
+//        cout << x << ", " << y << endl;
+//    }
 
 
 }
