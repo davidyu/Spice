@@ -34,7 +34,7 @@ void cSDLState::init()
 
     /* Set some very sane GL defaults */
     gl_major_version = 3;
-    gl_minor_version = 0;
+    gl_minor_version = 1;
 
     gl_red_size = 3;
     gl_green_size = 3;
@@ -44,15 +44,15 @@ void cSDLState::init()
     gl_depth_size = 16;
     gl_stencil_size = 0;
     gl_double_buffer = 1;
-    gl_accum_red_size = 0;
-    gl_accum_green_size = 0;
-    gl_accum_blue_size = 0;
-    gl_accum_alpha_size = 0;
+    gl_accum_red_size = 16;
+    gl_accum_green_size = 16;
+    gl_accum_blue_size = 16;
+    gl_accum_alpha_size = 16;
     gl_stereo = 0;
     gl_multisamplebuffers = 0;
     gl_multisamplesamples = 0;
     gl_retained_backing = 1;
-    gl_accelerated = -1;
+    gl_accelerated = 1;
 
 }
 
@@ -77,13 +77,14 @@ void cSDLState::SetGL()
     SDL_GL_SetAttribute(SDL_GL_STEREO, gl_stereo);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, gl_multisamplebuffers);
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, gl_multisamplesamples);
-    if (gl_accelerated >= 0) {
-        SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL,
-                            gl_accelerated);
-    }
-    SDL_GL_SetAttribute(SDL_GL_RETAINED_BACKING, gl_retained_backing);
+
     if (gl_major_version) {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_major_version);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_minor_version);
     }
+    if (gl_accelerated >= 0) {
+        SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+    }
+    SDL_GL_SetAttribute(SDL_GL_RETAINED_BACKING, gl_retained_backing);
+
 }

@@ -4,10 +4,8 @@
 #ifndef GFX_CIMAGE_H
 #define GFX_CIMAGE_H
 
-#include <string>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
-#include <cassert>
+#include "global_inc.hpp"
+
 using std::string;
 
 namespace GFX
@@ -17,24 +15,30 @@ namespace GFX
     {
     public:
         cImage(const string& str_filepath);
-        virtual ~cImage() { if (mp_surface) { SDL_FreeSurface(mp_surface); mp_surface = 0; } }
+        virtual ~cImage() { if (m_pSurface) { SDL_FreeSurface(m_pSurface); m_pSurface = 0; } }
 
         bool IsTransparent() const;
         void ConvertPixelFormat();
-        const GLint GetWidth() const    { CheckImage(); return mp_surface->w; }
-        const GLint GetHeight() const   { CheckImage(); return mp_surface->h; }
-        const unsigned int GetPixel(int x, int y) const { return static_cast<unsigned int*>(mp_surface->pixels)[y*(mp_surface->pitch/sizeof(unsigned int)) + x]; }
-        const void* GetPixels() const   { CheckImage(); return mp_surface->pixels; }
+        const GLint GetWidth() const    { CheckImage(); return m_pSurface->w; }
+        const GLint GetHeight() const   { CheckImage(); return m_pSurface->h; }
+        const unsigned int GetPixel(int x, int y) const { return static_cast<unsigned int*>(m_pSurface->pixels)[y*(m_pSurface->pitch/sizeof(unsigned int)) + x]; }
+        const void* GetPixels() const   { CheckImage(); return m_pSurface->pixels; }
+        const GLint GetBytesPerPixel() const { return m_nColors; }
+        const GLenum GetTextureFormat() const { return m_TextureFormat; }
 
         inline void CheckImage() const;
     private:
         cImage(const cImage& rhs);            // Don't implement
         cImage& operator=(const cImage& rhs); // Don't implement
 
-        SDL_Surface* mp_surface;
+        SDL_Surface* m_pSurface;
+
+        GLint       m_nColors;
+        GLenum      m_TextureFormat;
+
     }; // End class cImage
 
-    void cImage::CheckImage() const  { assert(mp_surface != 0); }
+    void cImage::CheckImage() const  { assert(m_pSurface != 0); }
 
 } // End namespace GFX
 #endif // GFX_CIMAGE_H

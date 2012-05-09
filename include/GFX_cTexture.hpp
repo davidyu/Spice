@@ -28,18 +28,18 @@ namespace GFX
         const bool	operator==(const cTexture& rhs) const;
 
         const bool	IsTransparent() const    { return m_is_transparent; }
-        const bool	IsRegistered() const     { return mp_image.get() == 0; }
+        const bool	IsRegistered() const     { return m_pImage.get() == 0; }
         void	    RegisterGL();
 
         inline void	CheckTexture() const;
             //  REQUIRE: (pImage is not NULL) OR (the texture has been passed to OpenGL)
     private:
         bool m_is_transparent;
-        std::shared_ptr<cImage> mp_image;
+        std::shared_ptr<cImage> m_pImage;
     }; // End class cTexture
 
     inline void cTexture::CheckTexture() const
-    { assert( m_texture_id != INVALID_ID); }
+    { assert( m_TextureID != INVALID_ID); }
 
 } // End namespace GFX
 

@@ -13,7 +13,9 @@ namespace GFX
     class cTextureWrapper
     {
     public:
-        cTextureWrapper(){}
+        cTextureWrapper() : m_TextureWidth(0), m_TextureHeight(0)
+                          , m_u(0.0f), m_v(0.0f), m_u2(1.0f), m_v2(1.0f)
+                          , m_TextureID(0) {}
         void        BindGL() const;
         const int GetTextureWidth() const;
         const int GetTextureHeight() const;
@@ -26,27 +28,28 @@ namespace GFX
         const float GetDeltaU() const;
         const float GetDeltaV() const;
         void SetUV(float u, float v, float u2, float v2);
+        void SetTextureID(GLuint texID);
         void SetTextureWidth(float w);
         void SetTextureHeight(float h);
 
     protected:
-        int m_texture_width, m_texture_height;
+        int m_TextureWidth, m_TextureHeight;
         float m_u, m_v, m_u2, m_v2;
-        GLuint m_texture_id;
+        GLuint m_TextureID;
 
     }; // End class cTextureWrapper
 
     inline void cTextureWrapper::BindGL() const
-    { glBindTexture(GL_TEXTURE_2D, m_texture_id); }
+    { glBindTexture(GL_TEXTURE_2D, m_TextureID); }
 
     inline const int cTextureWrapper::GetTextureWidth() const
-    { return m_texture_width; }
+    { return m_TextureWidth; }
 
     inline const int cTextureWrapper::GetTextureHeight() const
-    { return m_texture_height; }
+    { return m_TextureHeight; }
 
     inline const GLuint cTextureWrapper::GetID() const
-    { return m_texture_id; }
+    { return m_TextureID; }
 
     inline const void cTextureWrapper::GetUV(float& u, float& v, float& u2, float& v2) const
     {
@@ -81,10 +84,11 @@ namespace GFX
         m_u2 = u2;
         m_v2 = v2;
     }
-
+    inline void cTextureWrapper::SetTextureID(GLuint texID)
+    { m_TextureID = texID; }
     inline void cTextureWrapper::SetTextureWidth(float w)
-    { m_texture_width = w; }
+    { m_TextureWidth = w; }
     inline void cTextureWrapper::SetTextureHeight(float h)
-    { m_texture_height = h; }
+    { m_TextureHeight = h; }
 } // End namespace GFX
 #endif // CTEXTUREWRAPPER_H
