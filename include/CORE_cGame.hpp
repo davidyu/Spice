@@ -23,7 +23,7 @@ namespace CORE
         void                        EndGame();
 
         CORE::Input&                GetInput();
-        cSDLState*                  GetSDLState() { return m_sdl_state; }
+        cSDLState&                  GetSDLState() { return *m_sdl_state; }
         STATE::cGameStateManager&   GetStateManager();
         CORE::cTimer&               GetTimer();
 

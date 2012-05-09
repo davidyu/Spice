@@ -23,10 +23,10 @@ class cPlayState : public STATE::iGameState
         static STATE::iGameState* CreateInstance();
         virtual STATE::iGameState* Clone(); // Ideally this function should return a copy, not a blank instance
 
-        bool OnEnter();
-        bool OnExit();
-        void Pause();
-        void Resume();
+        bool OnEnter(CORE::cGame* game);
+        bool OnExit(CORE::cGame* game);
+        void Pause(CORE::cGame* game);
+        void Resume(CORE::cGame* game);
 
         void HandleInput(CORE::cGame* game);
         void Update(CORE::cGame* game, float delta);

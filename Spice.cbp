@@ -81,10 +81,7 @@
 		<Unit filename="include\global_inc.hpp" />
 		<Unit filename="include\memory_macros.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src\CORE_Input.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
+		<Unit filename="src\CORE_Input.cpp" />
 		<Unit filename="src\CORE_cGame.cpp" />
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />

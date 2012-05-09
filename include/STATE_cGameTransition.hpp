@@ -2,14 +2,13 @@
 #ifndef CGAMETRANSITION_H
 #define CGAMETRANSITION_H
 
+#include "STATE_iGameState.hpp"
 #include "CORE_cGame.hpp"
 //#include "global_inc.hpp"
 #include "memory_macros.h"
 
-namespace CORE
-{
-    class cGame;
-}
+
+
 
 namespace STATE
 {
@@ -20,19 +19,19 @@ namespace STATE
                             cGameTransition() : m_pOldState(0), m_pNewState(0) {}
             virtual         ~cGameTransition() {}
 
-            static          STATE::cGameTransition* CreateInstance() { return new cGameTransition; }
-            virtual STATE::iGameState* Clone() {}
+            static          cGameTransition* CreateInstance() { return new cGameTransition; }
+            virtual         iGameState* Clone() {}
 
-            virtual bool    OnEnter() {}
-            virtual bool    OnExit()
+            virtual bool    OnEnter(CORE::cGame* game) {}
+            virtual bool    OnExit(CORE::cGame* game)
                             {
                                 // Must delete old state since GameStateManager does not know
                                 // when the transition is done with the old state
                                 DELETESINGLE(m_pOldState);
                                 return true;
                             }
-            virtual void    Pause() {}
-            virtual void    Resume() {}
+            virtual void    Pause(CORE::cGame* game) {}
+            virtual void    Resume(CORE::cGame* game) {}
 
             virtual void    Update(CORE::cGame* game, float delta)
                             {
@@ -40,8 +39,6 @@ namespace STATE
                             }
 
             virtual void    Render(CORE::cGame* game, float percent_tick) {}
-
-            void            HandleInput() {}
 
             void            SetOldAndNewState(iGameState* old_s, iGameState* new_s)
                             {

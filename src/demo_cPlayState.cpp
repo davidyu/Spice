@@ -36,7 +36,7 @@ STATE::iGameState* cPlayState::Clone()
 
 
 //cTexture* p_tex2;
-bool cPlayState::OnEnter()
+bool cPlayState::OnEnter(CORE::cGame* game)
 {
     cout << "Entering State\n";
     p_tex = new cTexture("art/split.png");
@@ -46,12 +46,12 @@ bool cPlayState::OnEnter()
 
     return true;
 }
-bool cPlayState::OnExit()
+bool cPlayState::OnExit(CORE::cGame* game)
 {
     cout << "Leaving state\n";
 }
-void cPlayState::Pause() {}
-void cPlayState::Resume() {}
+void cPlayState::Pause(CORE::cGame* game) {}
+void cPlayState::Resume(CORE::cGame* game) {}
 
 
 
@@ -81,7 +81,7 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     batch.Begin();
 //        batch.DrawTexture(*p_tex2, 0.0f, 3.0f, 1.0f, 1.0f);
-        if (test) batch.DrawTexture(reg2, 0.0f, 1.0f, 4.0f, 1.0f);
+    batch.DrawTexture(reg2, 110.0f, 100.0f, 64.0f, 64.0f);
 //        batch.DrawTexturePos2Dim2Origin2Scale2Rot(reg, 0.0f, 0.0f, 2.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 45.0f);
 
     batch.End();
@@ -95,11 +95,9 @@ void cPlayState::HandleInput(CORE::cGame* game)
     if (input.OnKeyDown(SDLK_a)) { test = !test;}
     if (input.OnMouseButtonDown(SDL_BUTTON_LEFT)) { test = !test;}
     if (input.OnKeyDown(SDLK_b)) {
-        STATE::cGameTransition* trans = game->transition_factory.CreateObject("trans");
+        STATE::cGameTransition* trans = game->transition_factory.CreateObject("transSquareSpin");
         STATE::iGameState* newstate = game->state_factory.CreateObject("play");
-        STATE::iGameState* const oldstate = game->GetStateManager().GetCurrent();
 
-        trans->SetOldAndNewState(oldstate, newstate);
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;

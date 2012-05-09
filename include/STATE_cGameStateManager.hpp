@@ -3,6 +3,11 @@
 
 #include <vector>
 
+namespace CORE
+{
+    class cGame;
+}
+
 namespace STATE
 {
 
@@ -12,7 +17,7 @@ namespace STATE
     class cGameStateManager
     {
         public:
-                                cGameStateManager();
+                                cGameStateManager(CORE::cGame* const game);
             virtual ~           cGameStateManager();
 
             void                ReplaceState(iGameState* new_state);
@@ -34,7 +39,8 @@ namespace STATE
         private:
 
             // Members
-            std::vector<iGameState*> m_states;
+            std::vector<iGameState*> m_States;
+            CORE::cGame* m_Game;
 
     }; // class cGameStateManager
 

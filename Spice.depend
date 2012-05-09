@@ -26,7 +26,7 @@
 	<map>
 	<string>
 
-1336510734 source:d:\programming\spice\src\core_cgame.cpp
+1336533380 source:d:\programming\spice\src\core_cgame.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_mixer.h>
@@ -35,7 +35,7 @@
 	<cassert>
 	<stdlib.h>
 
-1336420099 d:\programming\spice\include\core_cgame.hpp
+1336529312 d:\programming\spice\include\core_cgame.hpp
 	"SDL2/SDL.h"
 	"CORE_iApplication.hpp"
 	"CORE_cSDLState.hpp"
@@ -46,19 +46,20 @@
 
 1334338182 d:\programming\spice\include\core_iapplication.hpp
 
-1336419846 d:\programming\spice\include\state_cgamestatemanager.hpp
+1336528596 d:\programming\spice\include\state_cgamestatemanager.hpp
 	<vector>
 
-1335119283 d:\programming\spice\include\state_igamestate.hpp
+1336528285 d:\programming\spice\include\state_igamestate.hpp
 
-1336419897 source:d:\programming\spice\src\state_cgamestatemanager.cpp
+1336528728 source:d:\programming\spice\src\state_cgamestatemanager.cpp
 	<cassert>
 	"memory_macros.h"
 	"STATE_cGameStateManager.hpp"
 	"STATE_iGameState.hpp"
 	"STATE_cGameTransition.hpp"
+	"CORE_cGame.hpp"
 
-1336419412 source:d:\programming\spice\main.cpp
+1336529248 source:d:\programming\spice\main.cpp
 	<windows.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_opengl.h>
@@ -66,13 +67,14 @@
 	"CORE_cGame.hpp"
 	"STATE_iGameState.hpp"
 	"demo_cPlayState.hpp"
-	"STATE_cGameTransition.hpp"
+	"STATE_cTransSquareSpin.hpp"
 
 1336419339 d:\programming\spice\include\cgenericfactory.hpp
 	<map>
 	<string>
 
-1336419237 d:\programming\spice\include\state_cgametransition.hpp
+1336528796 d:\programming\spice\include\state_cgametransition.hpp
+	"STATE_iGameState.hpp"
 	"CORE_cGame.hpp"
 	"memory_macros.h"
 
@@ -82,7 +84,7 @@
 1336509538 d:\programming\spice\include\core_input.hpp
 	"global_inc.hpp"
 
-1336417508 d:\programming\spice\include\demo_cplaystate.hpp
+1336528294 d:\programming\spice\include\demo_cplaystate.hpp
 	"STATE_iGameState.hpp"
 	"GFX_G2D_cSpriteBatch.hpp"
 
@@ -101,7 +103,7 @@
 1336071936 source:d:\programming\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
-1336510854 source:d:\programming\spice\src\demo_cplaystate.cpp
+1336534857 source:d:\programming\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_mixer.h>
 	"demo_cPlayState.hpp"
@@ -239,8 +241,15 @@
 	"memory_macros.h"
 	"CORE_keycodes.hpp"
 
-1336491390 source:d:\programming\spice\src\state_ctranssquarespin.cpp
+1336539777 source:d:\programming\spice\src\state_ctranssquarespin.cpp
 	"STATE_cTransSquareSpin.hpp"
+	<GL/glu.h>
+	"CORE_cGame.hpp"
+	"MATH_Math.hpp"
 
-1336491339 d:\programming\spice\include\state_ctranssquarespin.hpp
+1336530059 d:\programming\spice\include\state_ctranssquarespin.hpp
+	"STATE_cGameTransition.hpp"
+
+1334343339 d:\programming\spice\include\math_math.hpp
+	"MATH_LinearAlgebra.hpp"
 

@@ -18,7 +18,8 @@ cGenericFactory<STATE::cGameTransition> cGame::transition_factory;
 
 cGame::cGame()
 : m_running(true)
-, m_sdl_state(0)
+, m_state_manager(this)
+, m_sdl_state()
 {
 }
 
@@ -108,7 +109,7 @@ bool cGame::SetupGL()
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glOrtho(-3.0, 3.0, 3.0, -3.0, -10.0, 10.0);
+    glOrtho(0, GetSDLState().window_w, GetSDLState().window_h, 0, -10.0, 10.0);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -180,17 +181,6 @@ void cGame::MainLoop()
                     break;
             }
         }
-//            {
-//                if( event.jaxis.which == 0 ) {
-//                    if( event.jaxis.axis == 2 ) {
-//                        if( ( event.jaxis.value > -8000 ) && ( event.jaxis.value < 8000 ) ) {
-//                        } else {
-//                            cout << event.jaxis.value << endl;
-//                        }
-//                    }
-//                }
-//            }
-
 
         // Game Loop
 
@@ -200,8 +190,6 @@ void cGame::MainLoop()
         m_input.UpdateAll();
         state = m_state_manager.GetCurrent();
         state->Update(this, delta);
-
-
 
         // Render Sequence
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

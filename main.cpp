@@ -16,7 +16,7 @@
 #include "STATE_iGameState.hpp"
 
 #include "demo_cPlayState.hpp"
-#include "STATE_cGameTransition.hpp"
+#include "STATE_cTransSquareSpin.hpp"
 
 using namespace CORE;
 
@@ -24,7 +24,7 @@ void RegisterStates()
 {
     CORE::cGame::state_factory.RegisterClass("play", cPlayState::CreateInstance);
 //
-    cGame::transition_factory.RegisterClass("trans", STATE::cGameTransition::CreateInstance);
+    cGame::transition_factory.RegisterClass("transSquareSpin", STATE::cTransSquareSpin::CreateInstance);
 }
 
 // Main function must have these params for SDL... kinda lame for encapsulation here..
