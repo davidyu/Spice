@@ -35,6 +35,7 @@ class cPlayState : public STATE::iGameState
 
     private:
         GFX::G2D::cSpriteBatch m_batch;
+        GFX::cTextureWrapper* m_pMotionTex;
         bool test;
 };
 

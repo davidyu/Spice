@@ -19,8 +19,8 @@ std::vector<cTextureWrapper> cTextureRegion::SplitTextureHorizontalTexNumXYWH(co
 }
 
 cTextureRegion::cTextureRegion()
+: cTextureWrapper()
 {
-   m_texture_id = 0;
 }
 
 cTextureRegion::~cTextureRegion()
@@ -29,18 +29,21 @@ cTextureRegion::~cTextureRegion()
 }
 
 cTextureRegion::cTextureRegion(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height)
+: cTextureWrapper()
 {
     CopyTextureWrapper(tex);
     SetRegionFromDimensionsTexXYWH(tex, x_offset, y_offset, width, height);
 }
 
 cTextureRegion::cTextureRegion(const cTextureWrapper& tex, float u, float v, float u2, float v2)
+: cTextureWrapper()
 {
     CopyTextureWrapper(tex);
     SetRegionFromUV(tex, u, v, u2, v2);
 }
 
 cTextureRegion::cTextureRegion(const cTextureWrapper& tex)
+: cTextureWrapper()
 {
     CopyTextureWrapper(tex);
     SetUV(0.0f, 0.0f, 1.0f, 1.0f);
@@ -51,7 +54,7 @@ void cTextureRegion::CopyTextureWrapper(const cTextureWrapper& rhs)
     SetUV(rhs.GetU(), rhs.GetV(), rhs.GetU2(), rhs.GetV2());
     SetTextureWidth(rhs.GetTextureWidth());
     SetTextureHeight(rhs.GetTextureHeight());
-    m_texture_id = rhs.GetID();
+    m_TextureID = rhs.GetID();
 }
 
 void cTextureRegion::SetRegionFromDimensionsTexXYWH(const cTextureWrapper& tex, int x_offset, int y_offset, int width, int height)
@@ -76,7 +79,7 @@ void cTextureRegion::SetRegionFromDimensionsTexXYWH(const cTextureWrapper& tex, 
 
 void cTextureRegion::SetRegionFromWholeTexture(const cTextureWrapper& tex)
 {
-    m_texture_id = tex.GetID();
+    m_TextureID = tex.GetID();
     SetUV(tex.GetU(), tex.GetV(), tex.GetU2(), tex.GetV2());
 }
 

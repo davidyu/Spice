@@ -20,6 +20,7 @@ cGame::cGame()
 : m_running(true)
 , m_state_manager(this)
 , m_sdl_state()
+, m_timer()
 {
 }
 
@@ -157,6 +158,8 @@ void cGame::MainLoop()
     iGameState* state = 0;
     float delta = 0.0f, percent_tick = 0.0f; // Dummy vars for now; substitute timer values in later
 
+    m_timer.Start();
+
     while (m_running)
     {
         SDL_Event event;
@@ -165,7 +168,6 @@ void cGame::MainLoop()
                 case SDL_QUIT:
                     EndGame();
                     break;
-
                 case SDL_KEYDOWN:
                 case SDL_KEYUP:
                 case SDL_MOUSEMOTION:
@@ -176,7 +178,6 @@ void cGame::MainLoop()
                 case SDL_JOYBUTTONUP:
                     m_input.HandleEvent(event);
                     break;
-
                 default:
                     break;
             }
@@ -186,7 +187,8 @@ void cGame::MainLoop()
 
         // Update
         // Update Input-- set old keystates and current ones
-
+        delta = static_cast<float>(m_timer.GetTicksDelta());
+        std::cout << delta << endl;
         m_input.UpdateAll();
         state = m_state_manager.GetCurrent();
         state->Update(this, delta);
@@ -195,7 +197,7 @@ void cGame::MainLoop()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //        SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
         state = m_state_manager.GetCurrent();
-        state->Render(this, percent_tick);
+        state->Render(this, delta);
 
         SDL_GL_SwapWindow(m_sdl_state->window);
     }
