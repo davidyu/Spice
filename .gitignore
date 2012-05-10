@@ -1,3 +1,5 @@
 *.o
+*.depend
+gmon.out
 obj/
 default.workspace

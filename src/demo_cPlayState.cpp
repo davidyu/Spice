@@ -29,7 +29,10 @@ namespace
 
 cPlayState::cPlayState()
 : m_pMotionTex(0)
+<<<<<<< HEAD
 , texs()
+=======
+>>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
  {}
 cPlayState::~cPlayState() {}
 
@@ -98,9 +101,14 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     rot += percent_tick*0.1f;
     rot = fmod(rot, 360.0f);
 
+<<<<<<< HEAD
     const int width = m_pMotionTex->GetTextureWidth();
     const int height = m_pMotionTex->GetTextureHeight();
 
+=======
+    glEnable(GL_ALPHA_TEST) ;
+    glAlphaFunc(GL_GREATER, 0.1f);
+>>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
     glEnable(GL_BLEND);
     glDisable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA,
@@ -123,6 +131,13 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 //    glBlendFunc(GL_ZERO, GL_SRC_COLOR); // Multiplicative
 //    glBlendFunc(GL_ONE, GL_ONE); // Additive -> Wrong for Particle.png
 
+<<<<<<< HEAD
+=======
+    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*p_tex, 0.0, 0.0f, 400.0f, 400.0f, 200.0f, 200.0f, 1.0f, 1.0f, rot);
+
+    glColor4f(1.0f, 1.0f, 1.0f, 0.93f);
+    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
+>>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 
 //    glBlendFunc(GL_DST_COLOR, GL_ZERO); // Additive -> Wrong for Particle.png
 //    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
@@ -132,10 +147,18 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     ImmediateRenderTexturePos2Dim2(texs[1], posx, -300.0f, 1000.0f, 1000.0f);
 
+<<<<<<< HEAD
 
 
     glBlendFunc(GL_SRC_ALPHA,
 			GL_ONE_MINUS_SRC_ALPHA);
+=======
+//    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+//    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
+//
+>>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 
     /* End Main Drawing Procedure */
 
@@ -172,5 +195,8 @@ void cPlayState::HandleInput(CORE::cGame* game)
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 }
