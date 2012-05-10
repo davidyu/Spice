@@ -6,15 +6,8 @@
 
 namespace GFX
 {
-
-    struct MotionBlurTexture
-    {
-        int width, height, channels, format;
-    };
-
-    bool CreateMotionBlurTexture(int quality, int interpolation, cTextureWrapper& tex);
-
-//    void RenderToMotionBlurTexture(bool FirstRenderTexture, iGameState* state, CORE::cGame);
+    enum { MIPMAPPED, NEAREST };
+    bool CreateMotionBlurTexture(cTextureWrapper& tex, int width, int height, int interpolation);
 }
 
 

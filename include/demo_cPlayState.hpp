@@ -3,8 +3,10 @@
 
 #include "STATE_iGameState.hpp"
 #include "GFX_G2D_cSpriteBatch.hpp"
+#include "GFX_cTexture.hpp"
 //
-/*temp*/#include <iostream>
+#include "global_inc.hpp"
+
 
 namespace CORE
 {
@@ -36,6 +38,7 @@ class cPlayState : public STATE::iGameState
     private:
         GFX::G2D::cSpriteBatch m_batch;
         GFX::cTextureWrapper* m_pMotionTex;
+        std::vector<GFX::cTexture> texs;
         bool test;
 };
 

@@ -44,7 +44,7 @@ namespace GFX
             void SetBatchSize(int i);
             void SetBlendFunction(int src_func, int dest_func);
             void SetBlending(bool b); // Enable or disable blending. !Flushes batches first.
-            void SetColor(const Color4 col);
+            void SetColor(float r, float g, float b, float a);
 
         private:
             // Private methods

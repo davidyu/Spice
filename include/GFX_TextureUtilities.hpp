@@ -22,6 +22,10 @@ namespace GFX
 
     bool GenerateTexture(GLuint &Texture, int SizeX, int SizeY, int Channels, int Format, int Min_Filter, int Mag_Filter, unsigned int *memoryArea);
 
+    void RenderFullViewportTexture(cTextureWrapper& tex, int viewportWidth, int viewportHeight);
+
+    void CopyBackbufferToTexture(cTextureWrapper& tex, int width, int height);
+
 
 } // End namespace GFX
 

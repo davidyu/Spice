@@ -184,7 +184,7 @@ void cSpriteBatch::ChangeTexture(const cTextureWrapper& tex)
  }
 
 
- void cSpriteBatch::SetColor(const Color4 col)
+ void cSpriteBatch::SetColor(float r, float g, float b, float a)
  {
-    m_CurrentColor = col;
+    m_CurrentColor = Color4(r,g,b,a);
  }

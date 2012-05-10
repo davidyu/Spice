@@ -73,6 +73,9 @@ void cTransSquareSpin::Update(CORE::cGame* game, float delta)
 
     m_PercentDone += delta * m_AnimSpeed;
 
+    if (m_PercentDone >= 1.0f) {
+        Finish(game);
+    }
 //    std::cout << m_PercentDone << std::endl;
 }
 
@@ -81,6 +84,7 @@ void cTransSquareSpin::Render(CORE::cGame* game, float percent_tick)
     m_pOldState->Render(game, percent_tick);
 
     glEnable(GL_BLEND);
+    glDisable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
     glBindTexture(GL_TEXTURE_2D, 0);
@@ -92,7 +96,6 @@ void cTransSquareSpin::Render(CORE::cGame* game, float percent_tick)
         glVertex3f(square.v[1].x, square.v[1].y, 0.0f);
         glVertex3f(square.v[2].x, square.v[2].y, 0.0f);
         glVertex3f(square.v[3].x, square.v[3].y, 0.0f);
-
     glEnd();
 
 }

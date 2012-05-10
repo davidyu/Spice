@@ -14,11 +14,14 @@ namespace GFX
     {
     public:
         cTextureWrapper() : m_TextureWidth(0), m_TextureHeight(0)
+                          , m_BytesPerPixel(0), m_TextureFormat(0)
                           , m_u(0.0f), m_v(0.0f), m_u2(1.0f), m_v2(1.0f)
                           , m_TextureID(0) {}
         void        BindGL() const;
         const int GetTextureWidth() const;
         const int GetTextureHeight() const;
+        const GLint GetBytesPerPixel() const;
+        const GLenum GetTextureFormat() const;
         const GLuint GetID() const;
         const float GetU() const;
         const float GetV() const;
@@ -31,9 +34,13 @@ namespace GFX
         void SetTextureID(GLuint texID);
         void SetTextureWidth(float w);
         void SetTextureHeight(float h);
+        void SetBytesPerPixel(GLint bbp);
+        void SetTextureFormat(GLenum format);
 
     protected:
         int m_TextureWidth, m_TextureHeight;
+        GLint m_BytesPerPixel;
+        GLenum m_TextureFormat;
         float m_u, m_v, m_u2, m_v2;
         GLuint m_TextureID;
 
@@ -47,6 +54,12 @@ namespace GFX
 
     inline const int cTextureWrapper::GetTextureHeight() const
     { return m_TextureHeight; }
+
+    inline const GLint cTextureWrapper::GetBytesPerPixel() const
+    { return m_BytesPerPixel; }
+
+    inline const GLenum cTextureWrapper::GetTextureFormat() const
+    { return m_TextureFormat; }
 
     inline const GLuint cTextureWrapper::GetID() const
     { return m_TextureID; }
@@ -90,5 +103,9 @@ namespace GFX
     { m_TextureWidth = w; }
     inline void cTextureWrapper::SetTextureHeight(float h)
     { m_TextureHeight = h; }
+    inline void cTextureWrapper::SetBytesPerPixel(GLint bbp)
+    { m_BytesPerPixel = bbp; }
+    inline void cTextureWrapper::SetTextureFormat(GLenum format)
+    { m_TextureFormat = format; }
 } // End namespace GFX
 #endif // CTEXTUREWRAPPER_H

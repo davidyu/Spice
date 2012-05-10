@@ -3,36 +3,20 @@
  */
 #include "GFX_MotionBlur.hpp"
 #include "GFX_cTextureWrapper.hpp"
+#include "GFX_TextureUtilities.hpp"
 
 namespace GFX
 {
-    bool CreateMotionBlurTexture(int quality, int interpolation, cTextureWrapper& tex)
-    {	// Creates the motion blur texture
+
+
+    bool CreateMotionBlurTexture(cTextureWrapper& tex, int width, int height, int interpolation)
+    {
+
+        tex.SetTextureWidth(width);
+        tex.SetTextureHeight(height);
+
         int filter;
-
-        switch(quality) {
-            case 0:
-                tex.SetTextureWidth(512);
-                tex.SetTextureHeight(512);
-
-//                tex.channels = 3;
-//                tex.format = GL_RGB;
-                break;
-            case 1:
-                tex.SetTextureWidth(256);
-                tex.SetTextureHeight(256);
-
-//                tex.channels = 3;
-//                tex.format = GL_RGB;
-                break;
-            case 2:
-                tex.SetTextureWidth(128);
-                tex.SetTextureHeight(128);
-
-//                tex.channels = 3;
-//                tex.format = GL_RGB;
-                break;
-        }
+        GLuint texID = 0;
 
         switch(interpolation) {
             case 0 :
@@ -42,14 +26,14 @@ namespace GFX
                 filter = GL_NEAREST;
                 break;
         }
-        GLuint texID = 0;
+
 
         GenerateTexture(texID,
-        tex.GetTextureWidth(),
-        tex.GetTextureHeight(),
-        3,
-        GL_RGB,
-        filter, filter);
+            tex.GetTextureWidth(),
+            tex.GetTextureHeight(),
+            tex.GetBytesPerPixel(),
+            tex.GetTextureFormat(),
+            filter, filter);
 
         tex.SetTextureID(texID);
 

@@ -11,7 +11,7 @@
 #include "GFX_cTextureRegistry.hpp"
 #include "GFX_TextureUtilities.hpp"
 #include "GFX_MotionBlur.hpp"
-
+#include "global_inc.hpp"
     #include <iostream>
     using namespace std;
 
@@ -27,7 +27,10 @@ namespace
     cTexture* p_tex;
 }
 
-cPlayState::cPlayState() {}
+cPlayState::cPlayState()
+: m_pMotionTex(0)
+, texs()
+ {}
 cPlayState::~cPlayState() {}
 
 STATE::iGameState* cPlayState::CreateInstance()
@@ -44,23 +47,33 @@ STATE::iGameState* cPlayState::Clone()
 bool cPlayState::OnEnter(CORE::cGame* game)
 {
     cout << "Entering State\n";
-    if (!p_tex) {
-        p_tex = new cTexture("art/tilez.png");
-        p_tex->RegisterGL();
-    }
+//    if (!p_tex) {
+//        p_tex = new cTexture("art/tilez.png");
+//        p_tex->RegisterGL();
+//    }
     if (!m_pMotionTex) {
         m_pMotionTex = new cTextureWrapper();
-        CreateMotionBlurTexture(0, 0, *m_pMotionTex);
+        m_pMotionTex->SetBytesPerPixel(3);
+        m_pMotionTex->SetTextureFormat(GL_RGB);
+        m_pMotionTex->SetUV(0.0f, 1.0f, 1.0f, 0.0f);
+
+        CreateMotionBlurTexture(*m_pMotionTex, 512, 512, 0);
     }
 
-    test = false;
+    texs.push_back(cTexture("art/bg.jpg"));
+    texs.back().RegisterGL();
 
+    texs.push_back(cTexture("art/Particle.png"));
+    texs.back().RegisterGL();
+
+    test = false;
 
 
     return true;
 }
 bool cPlayState::OnExit(CORE::cGame* game)
 {
+    texs.clear();
     DELETESINGLE(p_tex);
     cout << "Leaving state\n";
 
@@ -69,71 +82,79 @@ void cPlayState::Pause(CORE::cGame* game) {}
 void cPlayState::Resume(CORE::cGame* game) {}
 
 
-
-
 void cPlayState::Update(CORE::cGame* game, float delta)
 {
     HandleInput(game);
 }
 
+float posx = 0.0f;
 void cPlayState::Render(CORE::cGame* game, float percent_tick)
 {
     static G2D::cSpriteBatch batch = G2D::cSpriteBatch();
 
-    static cTextureRegion reg = cTextureRegion(*p_tex);
-    static cTextureRegion reg2 = cTextureRegion(reg, 16, 0, 16, 16);
     static float rot = 0.0f;
 
-    static GLuint texID;
 
     rot += percent_tick*0.1f;
     rot = fmod(rot, 360.0f);
 
+    const int width = m_pMotionTex->GetTextureWidth();
+    const int height = m_pMotionTex->GetTextureHeight();
 
-    glEnable(GL_ALPHA_TEST) ;
-    glAlphaFunc(GL_GREATER, 0.1f);
     glEnable(GL_BLEND);
     glDisable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA,
 			GL_ONE_MINUS_SRC_ALPHA);
 
-    glViewport(0, 0, m_pMotionTex->GetTextureWidth(), m_pMotionTex->GetTextureHeight());
-
-    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*p_tex, 0.0, 0.0f, 400.0f, 400.0f, 200.0f, 200.0f, 1.0f, 1.0f, rot);
-//    ImmediateRenderTexturePos2Dim2(*p_tex, 0.0, 0.0f, 400.0f, 400.0f);
-    glColor4f(1.0f, 1.0f, 1.0f, 0.9f);
-    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
-
-    glBindTexture(GL_TEXTURE_2D, m_pMotionTex->GetID());
-	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 0, 0,
-    512, 512, 0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-
-    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-
-
-//    glPushMatrix();
-////        glScalef(1.0f, -1.0f, 1.0f);
-//        glTranslatef(100.0f, 0.0f, 0.0f);
-//
-//    glPopMatrix();
+//    glViewport(0, 0, width, height);
+    /* Begin Main Drawing Procedure */
 
     batch.Begin();
-//        batch.DrawTexture(*p_tex2, 0.0f, 3.0f, 1.0f, 1.0f);
-//    batch.DrawTexture(reg, 0.0f, 0.0f, 640.0f, 480.0f);
-//        batch.DrawTexturePos2Dim2Origin2Scale2Rot(reg, 0.0f, 0.0f, 2.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 45.0f);
-
+        batch.SetColor(0.2f, 0.2f, 0.2f, 1.0f);
+        batch.DrawTexture(texs[0], 0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HEIGHT);
+        batch.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+//        batch.DrawTexturePos2Dim2Origin2Scale2Rot(reg, 50.0f, 0.0f, 200.0f, 100.0f, 100.0f, 50.0f, 1.0f, 1.0f, rot);
     batch.End();
 
-//    glEnable(GL_DEPTH_TEST);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+//    glBlendFunc(GL_DST_COLOR, GL_ONE);
+    glBlendFunc(GL_DST_COLOR,GL_SRC_COLOR); // 2X Multiplicative
+//    glBlendFunc(GL_ZERO, GL_SRC_COLOR); // Multiplicative
+//    glBlendFunc(GL_ONE, GL_ONE); // Additive -> Wrong for Particle.png
 
-//    glMatrixMode(GL_MODELVIEW);
-//    glTranslatef(-320.0f,-240.0f, 0.0f);
-//    glRotatef(3.0, 1.0, 1.0, 1.0);
-//    glTranslatef(320.0f,240.0f, 0.0f);
+
+//    glBlendFunc(GL_DST_COLOR, GL_ZERO); // Additive -> Wrong for Particle.png
+//    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+////    glBlendEquation(GL_MAX);
+//    ImmediateRenderTexturePos2Dim2(texs[1], 0, -300.0f, 1000.0f, 1000.0f);
+
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    ImmediateRenderTexturePos2Dim2(texs[1], posx, -300.0f, 1000.0f, 1000.0f);
+
+
+
+    glBlendFunc(GL_SRC_ALPHA,
+			GL_ONE_MINUS_SRC_ALPHA);
+
+    /* End Main Drawing Procedure */
+
+    glColor4f(1.0f, 1.0f, 1.0f, 0.8f);
+//    RenderFullViewportTexture(*m_pMotionTex, width, height);
+//    CopyBackbufferToTexture(*m_pMotionTex, width, height);
+    RenderFullViewportTexture(*m_pMotionTex, WINDOW_WIDTH, WINDOW_HEIGHT);
+    CopyBackbufferToTexture(*m_pMotionTex, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// put the texture on the screen
+	RenderFullViewportTexture(*m_pMotionTex, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+
 }
 
 void cPlayState::HandleInput(CORE::cGame* game)
@@ -141,6 +162,7 @@ void cPlayState::HandleInput(CORE::cGame* game)
     CORE::Input& input = game->GetInput();
 
     if (input.GetKeyState(SDLK_ESCAPE)) game->EndGame();
+    if (input.GetKeyState(SDLK_RIGHT)) {posx += 1.0f; }
     if (input.OnKeyDown(SDLK_a)) { test = !test;}
     if (input.OnMouseButtonDown(SDL_BUTTON_LEFT)) { test = !test;}
     if (input.OnKeyDown(SDLK_b)) {
@@ -150,17 +172,5 @@ void cPlayState::HandleInput(CORE::cGame* game)
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;
-<<<<<<< HEAD
-//    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
-//    if (input.OnJoyButtonDown(0, 5)) {
-//        cout << x << ", " << y << endl;
-//    }
 
-
-=======
-    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
-    if (input.OnJoyButtonDown(0, 5)) {
-        cout << x << ", " << y << endl;
-    }
->>>>>>> 5a24c11cdd0f63ac9ab317d9334e7eeeb161cd38
 }

@@ -49,8 +49,13 @@ void cTexture::RegisterGL()
 
 	m_pImage->ConvertPixelFormat();
 
+	SetBytesPerPixel(m_pImage->GetBytesPerPixel());
+	SetTextureFormat(m_pImage->GetTextureFormat());
+
 	int width = GetTextureWidth();
 	int height = GetTextureHeight();
+
+
 
 	if (((width & (width-1)) == 0) && ((height & (height-1)) == 0))
 		glTexImage2D(GL_TEXTURE_2D, 0, m_pImage->GetBytesPerPixel(), width, height, 0, m_pImage->GetTextureFormat(), GL_UNSIGNED_BYTE, m_pImage->GetPixels());
@@ -59,7 +64,7 @@ void cTexture::RegisterGL()
 
     CheckTexture();
 
-	m_pImage.reset();
+//	m_pImage.reset();
 
 
 }

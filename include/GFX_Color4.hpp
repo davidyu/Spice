@@ -5,6 +5,10 @@
 
 struct Color4
 {
+    Color4(float vr, float vg, float vb, float va)
+    : r(vr), g(vg), b(vb), a(va) {}
+    Color4()
+    : r(0.0f), g(0.0f), b(0.0f), a(0.0f){}
     float r,g,b,a;
     void set(float vr, float vg, float vb, float va)
     { r = vr; g = vg, b=vb, a=va; }
