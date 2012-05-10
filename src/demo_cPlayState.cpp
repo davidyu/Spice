@@ -27,7 +27,9 @@ namespace
     cTexture* p_tex;
 }
 
-cPlayState::cPlayState() {}
+cPlayState::cPlayState()
+: m_pMotionTex(0)
+ {}
 cPlayState::~cPlayState() {}
 
 STATE::iGameState* cPlayState::CreateInstance()
@@ -89,7 +91,6 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     rot += percent_tick*0.1f;
     rot = fmod(rot, 360.0f);
 
-
     glEnable(GL_ALPHA_TEST) ;
     glAlphaFunc(GL_GREATER, 0.1f);
     glEnable(GL_BLEND);
@@ -100,8 +101,8 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glViewport(0, 0, m_pMotionTex->GetTextureWidth(), m_pMotionTex->GetTextureHeight());
 
     ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*p_tex, 0.0, 0.0f, 400.0f, 400.0f, 200.0f, 200.0f, 1.0f, 1.0f, rot);
-//    ImmediateRenderTexturePos2Dim2(*p_tex, 0.0, 0.0f, 400.0f, 400.0f);
-    glColor4f(1.0f, 1.0f, 1.0f, 0.9f);
+
+    glColor4f(1.0f, 1.0f, 1.0f, 0.93f);
     ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
 
     glBindTexture(GL_TEXTURE_2D, m_pMotionTex->GetID());
@@ -111,9 +112,11 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
+//    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-
+//    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
+//
 
 //    glPushMatrix();
 ////        glScalef(1.0f, -1.0f, 1.0f);
@@ -150,17 +153,4 @@ void cPlayState::HandleInput(CORE::cGame* game)
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;
-<<<<<<< HEAD
-//    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
-//    if (input.OnJoyButtonDown(0, 5)) {
-//        cout << x << ", " << y << endl;
-//    }
-
-
-=======
-    input.GetJoyExtentIDWhichExtent2(0, 0, x, y);
-    if (input.OnJoyButtonDown(0, 5)) {
-        cout << x << ", " << y << endl;
-    }
->>>>>>> 5a24c11cdd0f63ac9ab317d9334e7eeeb161cd38
 }
