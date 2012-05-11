@@ -22,12 +22,13 @@ namespace MATH
     inline float maxf(float a, float b)
     { return (a>b) ? a : b; }
 
-    inline void clampf(float& v, float min, float max)
+    inline float clampf(float v, float min, float max)
     {
         if (v<min)
-        { v = min; return; }
+        { return min; }
         else if (v>max)
-        { v = max; return; }
+        { return max; }
+        return v;
     }
 
     inline int signf(float v)

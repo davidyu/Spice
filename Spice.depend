@@ -256,7 +256,7 @@
 1334343339 d:\programming\spice\include\math_math.hpp
 	"MATH_LinearAlgebra.hpp"
 
-1334343339 D
+1336591051 D
 
 1336583890 source:c:\code\projects\cpp\spice\main.cpp
 	<windows.h>
@@ -316,15 +316,17 @@
 
 1336583890 c:\code\projects\cpp\spice\include\state_igamestate.hpp
 
-1336599328 c:\code\projects\cpp\spice\include\demo_cplaystate.hpp
+1336689130 c:\code\projects\cpp\spice\include\demo_cplaystate.hpp
 	"STATE_iGameState.hpp"
 	"GFX_G2D_cSpriteBatch.hpp"
+	"GFX_cTexture.hpp"
+	"global_inc.hpp"
 
-1336583890 c:\code\projects\cpp\spice\include\gfx_g2d_cspritebatch.hpp
+1336689130 c:\code\projects\cpp\spice\include\gfx_g2d_cspritebatch.hpp
 	<SDL2/SDL_opengl.h>
 	"GFX_Color4.hpp"
 
-1336583890 c:\code\projects\cpp\spice\include\gfx_color4.hpp
+1336689130 c:\code\projects\cpp\spice\include\gfx_color4.hpp
 
 1336583890 c:\code\projects\cpp\spice\include\state_ctranssquarespin.hpp
 	"STATE_cGameTransition.hpp"
@@ -346,7 +348,7 @@
 	<cassert>
 	<stdlib.h>
 
-1336607692 source:c:\code\projects\cpp\spice\src\core_csdlstate.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\core_csdlstate.cpp
 	"CORE_cSDLState.hpp"
 
 1336583890 source:c:\code\projects\cpp\spice\src\core_ctimer.cpp
@@ -361,13 +363,13 @@
 	<vector>
 	"MATH_MathHelper.hpp"
 
-1336583890 c:\code\projects\cpp\spice\include\math_mathhelper.hpp
+1336690148 c:\code\projects\cpp\spice\include\math_mathhelper.hpp
 	<cmath>
 
-1336599328 c:\code\projects\cpp\spice\include\gfx_ctexturewrapper.hpp
+1336689130 c:\code\projects\cpp\spice\include\gfx_ctexturewrapper.hpp
 	<SDL2/SDL_opengl.h>
 
-1336583890 source:c:\code\projects\cpp\spice\src\gfx_g2d_cspritebatch.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\gfx_g2d_cspritebatch.cpp
 	"GFX_G2D_cSpriteBatch.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_cTextureMesh.hpp"
@@ -417,7 +419,7 @@
 1336599328 c:\code\projects\cpp\spice\include\gfx_cimage.hpp
 	"global_inc.hpp"
 
-1336599328 source:c:\code\projects\cpp\spice\src\gfx_ctexture.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\gfx_ctexture.cpp
 	"GFX_cTexture.hpp"
 	"GFX_cImage.hpp"
 	<GL/glu.h>
@@ -453,7 +455,7 @@
 	"STATE_cGameTransition.hpp"
 	"CORE_cGame.hpp"
 
-1336599328 source:c:\code\projects\cpp\spice\src\state_ctranssquarespin.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\state_ctranssquarespin.cpp
 	"STATE_cTransSquareSpin.hpp"
 	<GL/glu.h>
 	"CORE_cGame.hpp"
@@ -462,7 +464,7 @@
 1336583890 c:\code\projects\cpp\spice\include\math_math.hpp
 	"MATH_LinearAlgebra.hpp"
 
-1336607566 source:c:\code\projects\cpp\spice\src\demo_cplaystate.cpp
+1336690180 source:c:\code\projects\cpp\spice\src\demo_cplaystate.cpp
 	<SDL2/SDL_opengl.h>
 	<SDL2/SDL_mixer.h>
 	"demo_cPlayState.hpp"
@@ -476,6 +478,7 @@
 	"GFX_cTextureRegistry.hpp"
 	"GFX_TextureUtilities.hpp"
 	"GFX_MotionBlur.hpp"
+	"global_inc.hpp"
 	<iostream>
 
 1336583890 c:\code\projects\cpp\spice\include\gfx_gfxhelper.hpp
@@ -484,11 +487,9 @@
 
 1336583890 ureWrapper.hpp"
 
-<<<<<<< HEAD
-1336659526 source:d:\programming\spice\src\gfx_motionblur.cpp
-=======
 1336592894 source:d:\programming\spice\src\gfx_motionblur.cpp
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
+
+1336599328 d5e78e02ac84cf6e77d558ed3166d2e614a43
 	"GFX_MotionBlur.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"GFX_TextureUtilities.hpp"
@@ -507,22 +508,20 @@
 
 1336591051 4c11cdd0f63ac9ab317d9334e7eeeb161cd38
 
-<<<<<<< HEAD
-=======
-1336599328 c:\code\projects\cpp\spice\include\gfx_textureutilities.hpp
+1336689130 c:\code\projects\cpp\spice\include\gfx_textureutilities.hpp
 	"global_inc.hpp"
 
-1336599328 c:\code\projects\cpp\spice\include\gfx_motionblur.hpp
+1336689130 c:\code\projects\cpp\spice\include\gfx_motionblur.hpp
 	"global_inc.hpp"
 	"GFX_TextureUtilities.hpp"
 
-1336599328 source:c:\code\projects\cpp\spice\src\gfx_motionblur.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\gfx_motionblur.cpp
 	"GFX_MotionBlur.hpp"
 	"GFX_cTextureWrapper.hpp"
+	"GFX_TextureUtilities.hpp"
 
-1336599328 source:c:\code\projects\cpp\spice\src\gfx_textureutilities.cpp
+1336689130 source:c:\code\projects\cpp\spice\src\gfx_textureutilities.cpp
 	"GFX_TextureUtilities.hpp"
 	"GFX_cTextureWrapper.hpp"
 	"MATH_Math.hpp"
 
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43

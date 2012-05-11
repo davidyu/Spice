@@ -29,10 +29,6 @@ namespace
 
 cPlayState::cPlayState()
 : m_pMotionTex(0)
-<<<<<<< HEAD
-, texs()
-=======
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
  {}
 cPlayState::~cPlayState() {}
 
@@ -63,7 +59,7 @@ bool cPlayState::OnEnter(CORE::cGame* game)
         CreateMotionBlurTexture(*m_pMotionTex, 512, 512, 0);
     }
 
-    texs.push_back(cTexture("art/bg.jpg"));
+    texs.push_back(cTexture("art/bg.png"));
     texs.back().RegisterGL();
 
     texs.push_back(cTexture("art/Particle.png"));
@@ -101,14 +97,11 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     rot += percent_tick*0.1f;
     rot = fmod(rot, 360.0f);
 
-<<<<<<< HEAD
     const int width = m_pMotionTex->GetTextureWidth();
     const int height = m_pMotionTex->GetTextureHeight();
 
-=======
     glEnable(GL_ALPHA_TEST) ;
     glAlphaFunc(GL_GREATER, 0.1f);
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
     glEnable(GL_BLEND);
     glDisable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA,
@@ -119,7 +112,7 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     /* Begin Main Drawing Procedure */
 
     batch.Begin();
-        batch.SetColor(0.2f, 0.2f, 0.2f, 1.0f);
+//        batch.SetColor(0.2f, 0.2f, 0.2f, 1.0f);
         batch.DrawTexture(texs[0], 0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HEIGHT);
         batch.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 //        batch.DrawTexturePos2Dim2Origin2Scale2Rot(reg, 50.0f, 0.0f, 200.0f, 100.0f, 100.0f, 50.0f, 1.0f, 1.0f, rot);
@@ -128,41 +121,29 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 //    glBlendFunc(GL_DST_COLOR, GL_ONE);
     glBlendFunc(GL_DST_COLOR,GL_SRC_COLOR); // 2X Multiplicative
-//    glBlendFunc(GL_ZERO, GL_SRC_COLOR); // Multiplicative
+////    glBlendFunc(GL_ZERO, GL_SRC_COLOR); // Multiplicative
 //    glBlendFunc(GL_ONE, GL_ONE); // Additive -> Wrong for Particle.png
-
-<<<<<<< HEAD
-=======
-    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*p_tex, 0.0, 0.0f, 400.0f, 400.0f, 200.0f, 200.0f, 1.0f, 1.0f, rot);
-
-    glColor4f(1.0f, 1.0f, 1.0f, 0.93f);
-    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 
 //    glBlendFunc(GL_DST_COLOR, GL_ZERO); // Additive -> Wrong for Particle.png
 //    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 ////    glBlendEquation(GL_MAX);
-//    ImmediateRenderTexturePos2Dim2(texs[1], 0, -300.0f, 1000.0f, 1000.0f);
-
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     ImmediateRenderTexturePos2Dim2(texs[1], posx, -300.0f, 1000.0f, 1000.0f);
 
-<<<<<<< HEAD
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+//    ImmediateRenderTexturePos2Dim2(texs[0], posx, -300.0f, 1000.0f, 1000.0f);
 
 
-    glBlendFunc(GL_SRC_ALPHA,
-			GL_ONE_MINUS_SRC_ALPHA);
-=======
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 //    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 //    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
 //
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 
     /* End Main Drawing Procedure */
 
-    glColor4f(1.0f, 1.0f, 1.0f, 0.8f);
+    glColor4f(1.0f, 1.0f, 1.0f, 0.95f);//MATH::clampf(exp2f(-9.0f/percent_tick), 0.0f, 0.999f));
 //    RenderFullViewportTexture(*m_pMotionTex, width, height);
 //    CopyBackbufferToTexture(*m_pMotionTex, width, height);
     RenderFullViewportTexture(*m_pMotionTex, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -195,8 +176,4 @@ void cPlayState::HandleInput(CORE::cGame* game)
         game->GetStateManager().ReplaceStateUsingTransition(newstate, trans);
     }
     float x, y;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f1d5e78e02ac84cf6e77d558ed3166d2e614a43
 }
