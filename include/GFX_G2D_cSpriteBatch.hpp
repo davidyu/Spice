@@ -27,7 +27,7 @@ namespace GFX
             void Begin();
             void End();
 
-            void DrawTexture(const cTextureWrapper& tex, float x, float y, float w, float h);
+            void DrawTexturePos2Dim2(const cTextureWrapper& tex, float x, float y, float w, float h);
             void DrawTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
                                    , float x_origin, float y_origin
                                    , float x_scale, float y_scale, float rot_degrees);

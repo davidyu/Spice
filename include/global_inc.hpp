@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <cassert>
+using namespace std;
 
 #define GL_GLEXT_PROTOTYPES
 #include <SDL2/SDL.h>
@@ -17,6 +18,9 @@
 
 #include "memory_macros.h"
 #include "CORE_keycodes.hpp"
-//#include "MATH_Math.hpp"
+#include "MATH_Math.hpp"
 
+
+#define COMMA ", "
+//#define FLIPPEDY
 #endif // GLOBAL_INC_H

@@ -24,6 +24,9 @@ bool Input::Initialise()
     m_JoyButtonstates.reserve(m_nJoysticks);
     m_RecentJoyButtons.reserve(m_nJoysticks);
 
+    if (m_nJoysticks<=0)
+        std::cout << "WARNING. There are no joysticks!\n";
+
     for (int i=0; i<m_nJoysticks; ++i) {
         m_pJoysticks.push_back(0);
         m_pJoysticks[i] = SDL_JoystickOpen(i);
@@ -73,13 +76,7 @@ void Input::HandleEvent(const SDL_Event& event)
             m_MouseButtonstates[event.button.button] = 'u';
             m_RecentMouseButtons.push_back(event.button.button);
             break;
-        case SDL_JOYAXISMOTION:
-//            if (event.jaxis.axis == 0) std::cout <<  event.jaxis.value << std::endl;
-            joyid = static_cast<int>(event.jaxis.which); assert(joyid<m_nJoysticks);
-            joyaxis = static_cast<int>(event.jaxis.axis);
 
-            m_JoyAxisExtents[joyid][joyaxis] = static_cast<float>(event.jaxis.value);
-            break;
         case SDL_JOYBUTTONDOWN:
             joyid = static_cast<int>(event.jbutton.which);
 
@@ -91,6 +88,13 @@ void Input::HandleEvent(const SDL_Event& event)
 
             m_JoyButtonstates[joyid][event.jbutton.button] = 'u';
             m_RecentJoyButtons[joyid].push_back(event.jbutton.button);
+            break;
+        case SDL_JOYAXISMOTION:
+//            if (event.jaxis.axis == 0) std::cout <<  event.jaxis.value << std::endl;
+            joyid = static_cast<int>(event.jaxis.which); assert(joyid<m_nJoysticks);
+            joyaxis = static_cast<int>(event.jaxis.axis);
+
+            m_JoyAxisExtents[joyid][joyaxis] = static_cast<float>(event.jaxis.value);
             break;
         default:
             break;

@@ -1,3 +1,5 @@
+GL_GLEXT_PROTOTYPES
+
 #include <SDL2/SDL_opengl.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -88,7 +90,7 @@ bool cGame::SetupSDL()
 
     SDL_GL_MakeCurrent(m_sdl_state->window, m_sdl_state->glctx);
 
-    SDL_GL_SetSwapInterval(1); // 1 for Vsync?
+    SDL_GL_SetSwapInterval(0); // 1 for Vsync?
 
     if (!IMG_Init( IMG_INIT_PNG )){
         printf("IMG_Init: %s\n", IMG_GetError());
@@ -117,10 +119,10 @@ bool cGame::SetupGL()
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
-    glShadeModel(GL_SMOOTH);
+//    glShadeModel(GL_SMOOTH);
     glEnable(GL_TEXTURE_2D);
 
-    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
+//    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);          // Really Nice Perspective
 
     return true;
 }

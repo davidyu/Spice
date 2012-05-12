@@ -57,6 +57,7 @@
 		<Unit filename="include\CORE_keycodes.hpp" />
 		<Unit filename="include\GFX_Color4.hpp" />
 		<Unit filename="include\GFX_G2D_cAnimation.hpp" />
+		<Unit filename="include\GFX_G2D_cAnimationRegistry.hpp" />
 		<Unit filename="include\GFX_G2D_cSpriteBatch.hpp" />
 		<Unit filename="include\GFX_G2D_cTextureRegion.hpp" />
 		<Unit filename="include\GFX_MotionBlur.hpp" />
@@ -71,8 +72,11 @@
 		<Unit filename="include\MATH_Math.hpp" />
 		<Unit filename="include\MATH_MathHelper.hpp" />
 		<Unit filename="include\MATH_Matrix4x4.hpp" />
+		<Unit filename="include\MATH_Primitives.hpp" />
+		<Unit filename="include\MATH_Random.hpp" />
 		<Unit filename="include\MATH_Vec2.hpp" />
 		<Unit filename="include\MATH_Vec3.hpp" />
+		<Unit filename="include\MATH_Vec4.hpp" />
 		<Unit filename="include\STATE_cGameStateManager.hpp" />
 		<Unit filename="include\STATE_cGameTransition.hpp" />
 		<Unit filename="include\STATE_cTransSquareSpin.hpp" />
@@ -87,6 +91,7 @@
 		<Unit filename="src\CORE_cSDLState.cpp" />
 		<Unit filename="src\CORE_cTimer.cpp" />
 		<Unit filename="src\GFX_G2D_cAnimation.cpp" />
+		<Unit filename="src\GFX_G2D_cAnimationRegistry.cpp" />
 		<Unit filename="src\GFX_G2D_cSpriteBatch.cpp" />
 		<Unit filename="src\GFX_G2D_cTextureRegion.cpp" />
 		<Unit filename="src\GFX_MotionBlur.cpp" />

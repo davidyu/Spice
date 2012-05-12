@@ -36,6 +36,13 @@ namespace MATH
 
     inline float lerpf(float min, float max, float percent)
     { return (max-min)*percent + min; }
+
+    inline void swapf(float& a, float& b)
+    {
+        float temp=a;
+        a=b;
+        b=temp;
+    }
     // Trig stuff
     inline float DegToRad(float d)
     { return (d * PI) / 180.0f; }

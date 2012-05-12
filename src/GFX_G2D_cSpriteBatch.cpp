@@ -65,7 +65,7 @@ void cSpriteBatch::End()
 }
 
 
-void cSpriteBatch::DrawTexture(const cTextureWrapper& tex, float x, float y, float w, float h)
+void cSpriteBatch::DrawTexturePos2Dim2(const cTextureWrapper& tex, float x, float y, float w, float h)
 {
     // if (!m_IsDrawing) throw Exception... // TODO
 
@@ -165,6 +165,7 @@ void cSpriteBatch::RenderMesh()
     }
     m_LastTexture->BindGL();
     m_Mesh->Render();
+    m_Index = 0;
 }
 
 void cSpriteBatch::ChangeTexture(const cTextureWrapper& tex)

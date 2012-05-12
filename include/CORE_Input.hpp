@@ -105,7 +105,7 @@ namespace CORE
 
     inline void Input::GetJoyExtentIDWhichExtent2(const int whichJoy, const int whichStick, float& xExtent, float& yExtent)
     {
-        const int offset = (whichStick==0) ? 0 : 2;
+        const int offset = (whichStick*2);
         xExtent = CalculateJoyExtents(m_JoyAxisExtents[whichJoy][offset]);
         yExtent = CalculateJoyExtents(m_JoyAxisExtents[whichJoy][offset+1]);
     }

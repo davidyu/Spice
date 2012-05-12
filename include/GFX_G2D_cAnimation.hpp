@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "MATH_MathHelper.hpp"
+#include "GFX_cTextureWrapper.hpp"
 
 namespace GFX
 {

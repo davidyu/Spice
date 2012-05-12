@@ -5,6 +5,7 @@
 #define CTEXTUREWRAPPER_H
 
 #include <SDL2/SDL_opengl.h>
+#include "global_inc.hpp"
 
 #define INVALID_ID GL_INVALID_VALUE
 
@@ -16,8 +17,11 @@ namespace GFX
         cTextureWrapper() : m_TextureWidth(0), m_TextureHeight(0)
                           , m_BytesPerPixel(0), m_TextureFormat(0)
                           , m_u(0.0f), m_v(0.0f), m_u2(1.0f), m_v2(1.0f)
-                          , m_TextureID(0) {}
+                          , m_TextureID(0)
+                          {
+                          }
         void        BindGL() const;
+        void        FlipTexture(bool flipx, bool flipy);
         const int GetTextureWidth() const;
         const int GetTextureHeight() const;
         const GLint GetBytesPerPixel() const;
@@ -49,6 +53,14 @@ namespace GFX
     inline void cTextureWrapper::BindGL() const
     { glBindTexture(GL_TEXTURE_2D, m_TextureID); }
 
+    inline void cTextureWrapper::FlipTexture(bool flipx, bool flipy)
+    {
+        if (flipx)
+            MATH::swapf(m_u, m_u2);
+        if (flipy)
+            MATH::swapf(m_v, m_v2);
+    }
+
     inline const int cTextureWrapper::GetTextureWidth() const
     { return m_TextureWidth; }
 
@@ -70,25 +82,32 @@ namespace GFX
         v = m_v;
         u2 = m_u2;
         v2 = m_v2;
+
     }
 
     inline const float cTextureWrapper::GetU() const
     { return m_u; }
 
     inline const float cTextureWrapper::GetV() const
-    { return m_v; }
+    {
+        return m_v;
+    }
 
     inline const float cTextureWrapper::GetU2() const
     { return m_u2; }
 
     inline const float cTextureWrapper::GetV2() const
-    { return m_v2; }
+    {
+        return m_v2;
+    }
 
     inline const float cTextureWrapper::GetDeltaU() const
     { return m_u2 - m_u;}
 
     inline const float cTextureWrapper::GetDeltaV() const
-    { return m_v2 - m_v;}
+    {
+        return m_v2 - m_v;
+    }
 
     inline void cTextureWrapper::SetUV(float u, float v, float u2, float v2)
     {

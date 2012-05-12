@@ -109,6 +109,7 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 //    glViewport(0, 0, width, height);
+
     /* Begin Main Drawing Procedure */
 
     batch.Begin();
@@ -125,25 +126,21 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 //    glBlendFunc(GL_ONE, GL_ONE); // Additive -> Wrong for Particle.png
 
 //    glBlendFunc(GL_DST_COLOR, GL_ZERO); // Additive -> Wrong for Particle.png
-//    glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
-////    glBlendEquation(GL_MAX);
+
     ImmediateRenderTexturePos2Dim2(texs[1], posx, -300.0f, 1000.0f, 1000.0f);
 
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-//    ImmediateRenderTexturePos2Dim2(texs[0], posx, -300.0f, 1000.0f, 1000.0f);
 
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-//    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+//    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-//    ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(*m_pMotionTex, 0.0f, 0.0f, 640.0f, 480.0f, 320.0f, 240.0f, 1.0f, -1.0f, 0.0f);
-//
 
     /* End Main Drawing Procedure */
 
-    glColor4f(1.0f, 1.0f, 1.0f, 0.95f);//MATH::clampf(exp2f(-9.0f/percent_tick), 0.0f, 0.999f));
+    glColor4f(1.0f, 1.0f, 1.0f, expf(-5.08e-3f*percent_tick));//MATH::clampf(exp2f(-9.0f/percent_tick), 0.0f, 0.999f));
 //    RenderFullViewportTexture(*m_pMotionTex, width, height);
 //    CopyBackbufferToTexture(*m_pMotionTex, width, height);
     RenderFullViewportTexture(*m_pMotionTex, WINDOW_WIDTH, WINDOW_HEIGHT);

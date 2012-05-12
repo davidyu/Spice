@@ -21,7 +21,6 @@ cTexture::cTexture(const string& str_filepath)
 	m_is_transparent = m_pImage->IsTransparent();
     SetTextureWidth(m_pImage->GetWidth());
 	SetTextureHeight(m_pImage->GetHeight());
-	SetUV(0.0f, 0.0f, 1.0f, 1.0f);
 }
 
 //

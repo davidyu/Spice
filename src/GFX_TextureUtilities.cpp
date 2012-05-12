@@ -155,8 +155,7 @@ namespace GFX
             glMatrixMode(GL_PROJECTION);
             glPushMatrix();
                 glLoadIdentity();
-                glOrtho(0.0, (GLdouble)viewportWidth, (GLdouble)viewportHeight, 0.0, -10.0, 10.0);
-
+                glOrtho(0.0, (GLdouble)viewportWidth, 0.0, (GLdouble)viewportHeight, -10.0, 10.0);
                 glMatrixMode(GL_MODELVIEW);
                 glLoadIdentity();
 

@@ -44,10 +44,10 @@ void cSDLState::init()
     gl_depth_size = 16;
     gl_stencil_size = 0;
     gl_double_buffer = 1;
-    gl_accum_red_size = 16;
-    gl_accum_green_size = 16;
-    gl_accum_blue_size = 16;
-    gl_accum_alpha_size = 16;
+    gl_accum_red_size = 0;
+    gl_accum_green_size = 0;
+    gl_accum_blue_size = 0;
+    gl_accum_alpha_size = 0;
     gl_stereo = 0;
     gl_multisamplebuffers = 0;
     gl_multisamplesamples = 0;

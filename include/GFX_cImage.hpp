@@ -15,7 +15,7 @@ namespace GFX
     {
     public:
         cImage(const string& str_filepath);
-        virtual ~cImage() { if (m_pSurface) { SDL_FreeSurface(m_pSurface); m_pSurface = 0; } }
+        virtual ~cImage() { }
 
         bool IsTransparent() const;
         void ConvertPixelFormat();
