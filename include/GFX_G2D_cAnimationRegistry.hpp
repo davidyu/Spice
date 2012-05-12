@@ -12,23 +12,44 @@ namespace CORE
 
 namespace GFX
 {
-    class cAnimationRegistry
+    namespace G2D
     {
-    public:
-        cAnimationRegistry();
-        virtual ~cAnimationRegistry();
+        class cAnimationRegistry
+        {
+        public:
+            cAnimationRegistry();
+            virtual ~cAnimationRegistry();
 
-        void RegisterAnimation(GFX::G2D::cAnimation& anim);
-        GFX::G2D::cAnimation& GetAnimation(int i);
+            void PushAnimation(GFX::G2D::cAnimation anim);
+            GFX::G2D::cAnimation& GetAnimation(int i);
 
-        void UpdateCurrent(float delta);
-        void Render(CORE::cGame& game, float delta);
+            void UpdateCurrent(float delta);
+            void Render(CORE::cGame& game, float delta);
 
-        void Reset();
-    private:
-        std::vector<GFX::G2D::cAnimation> m_Anims;
-        int m_CurrentIndex;
+            GFX::G2D::cAnimation& operator[](int i)
+            { return m_Anims[i]; }
 
-    };
+            const cTextureWrapper& GetCurrentFrame()
+            { return m_Anims[m_CurrentIndex].GetKeyFrame(m_Statetime, true); }
+
+            int GetCurrentIndex()
+            { return m_CurrentIndex; }
+
+            void SetTicksPerFrame(int tpf)
+            { m_TicksPerFrame = tpf; }
+            void SetCurrentIndex(int i)
+            { m_CurrentIndex = i; }
+            void SetStatetime(float t)
+            { m_Statetime = t; }
+
+            void Reset();
+        private:
+            std::vector<GFX::G2D::cAnimation> m_Anims;
+            int m_CurrentIndex;
+            float m_Statetime;
+            float m_TicksPerFrame;
+
+        };
+    }
 }
 #endif // CANIMATIONREGISTRY_H

@@ -14,7 +14,7 @@ using namespace GFX::G2D;
 
 cSpriteBatch::cSpriteBatch()
 {
-    Initialise(100);
+    Initialise(1000);
 }
 
 cSpriteBatch::cSpriteBatch(int nBatch)

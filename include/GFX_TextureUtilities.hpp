@@ -11,9 +11,9 @@ namespace GFX
     inline unsigned int GetColourInHex(unsigned int col)
     { return (col & 0xffffff00) >> 8; }
 
-    void ImmediateRenderTexturePos2Dim2(cTextureWrapper& tex, float x, float y, float w, float h);
+    void ImmediateRenderTexturePos2Dim2(const cTextureWrapper& tex, float x, float y, float w, float h);
 
-    void ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(cTextureWrapper& tex, float x, float y, float w, float h
+    void ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
                                                , float x_origin, float y_origin
                                                , float x_scale, float y_scale, float rot_degrees);
 

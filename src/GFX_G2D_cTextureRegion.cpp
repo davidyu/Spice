@@ -12,7 +12,7 @@ std::vector<cTextureWrapper> cTextureRegion::SplitTextureHorizontalTexNumXYWH(co
     int x;
 
     for (unsigned int i=0; i<nFrames; ++i) {
-        x = (x_offset*nFrames);
+        x = (x_offset+i*frameWidth);
         texFrames.push_back(cTextureRegion(tex, x, y_offset, frameWidth, frameHeight));
     }
     return texFrames;

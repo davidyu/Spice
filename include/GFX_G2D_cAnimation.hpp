@@ -16,7 +16,7 @@ namespace GFX
         {
         public:
             cAnimation();
-            cAnimation(float ticks_per_frame, std::vector<cTextureWrapper>& frames);
+            cAnimation(float ticks_per_frame, std::vector<cTextureWrapper> frames);
 
             virtual ~cAnimation();
 

@@ -5,7 +5,7 @@
 namespace GFX
 {
 
-    void ImmediateRenderTexturePos2Dim2(cTextureWrapper& tex, float x, float y, float w, float h)
+    void ImmediateRenderTexturePos2Dim2(const cTextureWrapper& tex, float x, float y, float w, float h)
     {
         const float u   = tex.GetU();
         const float v   = tex.GetV();
@@ -27,7 +27,7 @@ namespace GFX
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    void ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(cTextureWrapper& tex, float x, float y, float w, float h
+    void ImmediateRenderTexturePos2Dim2Origin2Scale2Rot(const cTextureWrapper& tex, float x, float y, float w, float h
                                                , float x_origin, float y_origin
                                                , float x_scale, float y_scale, float rot_degrees)
     {

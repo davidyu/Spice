@@ -13,7 +13,7 @@ namespace GFX
         cTextureRegistry() {}
         virtual ~cTextureRegistry() {}
 
-        static void RegisterTexture(std::string str_key, cTextureWrapper& tex);
+        static void RegisterTexture(std::string str_key, GFX::cTextureWrapper& tex);
         static cTextureWrapper& GetTexture(std::string str_key);
 
         static std::unordered_map<std::string, cTextureWrapper> textures_map;

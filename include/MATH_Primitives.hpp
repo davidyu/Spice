@@ -16,6 +16,8 @@ namespace MATH
         inline const float Right() const { return m_Topleft.x+m_Dim.x; }
         inline const float Bottom() const { return m_Topleft.y+m_Dim.y; }
         inline const float Top() const { return m_Topleft.y; }
+        inline const float Width() const { return m_Dim.x; }
+        inline const float Height() const { return m_Dim.y; }
 
         inline bool IsCollidedRect(const cRectf& rect)
         {
@@ -24,6 +26,11 @@ namespace MATH
                   ||(Top()>rect.Bottom())
                   ||(Bottom()<rect.Top())));
         }
+        static cRectf GetShiftedRect(const cRectf& r, const Vec2f& v)
+        {
+            return cRectf(v.x+r.Left(), v.y+r.Top(), v.y+r.Width(), v.x+r.Height());
+        }
+
 
     private:
         Vec2f m_Topleft, m_Dim;
