@@ -24,19 +24,17 @@ namespace MATH
             return Vec2f(0.0f, 0.0f);
         }
 
-        if (xIntervalDistance<yIntervalDistance) {
-            isAxisHorizontal = true;
-            if (r1.Left()>r2.Left()) {
+        if (fabs(xIntervalDistance)<fabs(yIntervalDistance)) {
+            if (r1.Left()<r2.Left()) {
                 return Vec2f(-fabs(xIntervalDistance), 0.0f);
             } else {
                 return Vec2f(fabs(xIntervalDistance), 0.0f);
             }
         } else {
-            isAxisHorizontal = false;
-            if (r1.Top()>r2.Top()) {
-                return Vec2f(0.0f, -fabs(xIntervalDistance));
+            if (r1.Top()<r2.Top()) {
+                return Vec2f(0.0f, -fabs(yIntervalDistance));
             } else {
-                return Vec2f(0.0f, fabs(xIntervalDistance));
+                return Vec2f(0.0f, fabs(yIntervalDistance));
             }
         }
 

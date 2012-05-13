@@ -28,7 +28,7 @@ namespace MATH
         }
         static cRectf GetShiftedRect(const cRectf& r, const Vec2f& v)
         {
-            return cRectf(v.x+r.Left(), v.y+r.Top(), v.y+r.Width(), v.x+r.Height());
+            return cRectf(v.x+r.Left(), v.y+r.Top(), r.Width(), r.Height());
         }
 
 
