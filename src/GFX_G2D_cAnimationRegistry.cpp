@@ -28,6 +28,7 @@ void cAnimationRegistry::PushAnimation(GFX::G2D::cAnimation anim)
 void cAnimationRegistry::UpdateCurrent(float delta)
 {
     m_Statetime += delta;
+    if (m_Statetime > 1000000.0f) m_Statetime = 0.0f;
 }
 
 GFX::G2D::cAnimation& cAnimationRegistry::GetAnimation(int i)
