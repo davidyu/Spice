@@ -12,7 +12,7 @@ cAnimation::cAnimation()
 }
 cAnimation::cAnimation(float ticks_per_frame, std::vector<cTextureWrapper> frames)
 {
-    m_frames = frames;
+    m_Frames = frames;
     SetTicksPerFrame(ticks_per_frame);
 }
 
@@ -23,16 +23,16 @@ cAnimation::~cAnimation()
 
 void cAnimation::ClearAll()
 {
-    m_frames.clear();
+    m_Frames.clear();
 }
 void cAnimation::PushFrame(const GFX::cTextureWrapper& frame)
 {
-    m_frames.push_back(frame);
-    m_total_ticks += m_ticks_per_frame;
+    m_Frames.push_back(frame);
+    m_TotalTicks += m_TicksPerFrame;
 }
 
 void cAnimation::SetTicksPerFrame(float tpf)
 {
-    m_ticks_per_frame = tpf;
-    m_total_ticks = m_ticks_per_frame * m_frames.size();
+    m_TicksPerFrame = tpf;
+    m_TotalTicks = m_TicksPerFrame * m_Frames.size();
 }

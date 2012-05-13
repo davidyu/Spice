@@ -24,26 +24,31 @@ namespace GFX
             void PushFrame(const cTextureWrapper& frame);
 
             const cTextureWrapper& GetKeyFrame(float statetime, bool is_looping) const;
+            const cTextureWrapper& operator[](int i) const;
 
             // Setters
             void SetTicksPerFrame(float tpf);
 
         private:
-            std::vector<cTextureWrapper> m_frames;
-            float m_ticks_per_frame;
-            float m_total_ticks;
+            std::vector<cTextureWrapper> m_Frames;
+            float m_TicksPerFrame;
+            float m_TotalTicks;
         };  // End class cAnimation
 
         inline const cTextureWrapper& cAnimation::GetKeyFrame(float statetime, bool is_looping) const
         {
-            int frame_index = static_cast<int>(statetime/m_ticks_per_frame);
+            int frame_index = static_cast<int>(statetime/m_TicksPerFrame);
 
             if (is_looping) {
-                frame_index %= m_frames.size();
+                frame_index %= m_Frames.size();
             } else {
-                frame_index = MATH::minf(frame_index, m_frames.size()-1);
+                frame_index = MATH::minf(frame_index, m_Frames.size()-1);
             }
-            return m_frames[frame_index];
+            return m_Frames[frame_index];
+        }
+        inline const cTextureWrapper& cAnimation::operator[](int i) const
+        {
+            return m_Frames[i];
         }
     }   // End namespace G2D
 }   // End namespace GFX
