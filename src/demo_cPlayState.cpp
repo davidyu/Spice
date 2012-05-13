@@ -114,8 +114,8 @@ void cPlayState::Render(CORE::cGame* game, float percent_tick)
 
     batch.Begin();
 //        batch.SetColor(0.2f, 0.2f, 0.2f, 1.0f);
-        batch.DrawTexture(texs[0], 0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HEIGHT);
-        batch.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+        //batch.DrawTexture(texs[0], 0.0f, 0.0f, WINDOW_WIDTH, WINDOW_HEIGHT);
+        //batch.SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 //        batch.DrawTexturePos2Dim2Origin2Scale2Rot(reg, 50.0f, 0.0f, 200.0f, 100.0f, 100.0f, 50.0f, 1.0f, 1.0f, rot);
     batch.End();
 
