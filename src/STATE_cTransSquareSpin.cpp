@@ -35,14 +35,14 @@ cTransSquareSpin::~cTransSquareSpin()
 
 bool cTransSquareSpin::OnEnter(CORE::cGame* game)
 {
-    glViewport(0, 0, game->GetSDLState().window_w, game->GetSDLState().window_h);
-    glMatrixMode(GL_PROJECTION);								// Select The Projection Matrix
-    glLoadIdentity();											// Reset The Projection Matrix
-    // Set Up Ortho Mode To Fit 1/4 The Screen (Size Of A Viewport)
-    glOrtho(0, game->GetSDLState().window_w, game->GetSDLState().window_h, 0, -10.0, 10.0);
-
-    glMatrixMode(GL_MODELVIEW);								// Select The Projection Matrix
-    glLoadIdentity();
+//    glViewport(0, 0, game->GetSDLState().window_w, game->GetSDLState().window_h);
+//    glMatrixMode(GL_PROJECTION);								// Select The Projection Matrix
+//    glLoadIdentity();											// Reset The Projection Matrix
+//    // Set Up Ortho Mode To Fit 1/4 The Screen (Size Of A Viewport)
+//    glOrtho(0, game->GetSDLState().window_w, game->GetSDLState().window_h, 0, -10.0, 10.0);
+//
+//    glMatrixMode(GL_MODELVIEW);								// Select The Projection Matrix
+//    glLoadIdentity();
 
     m_PercentDone = 0.0f;
 }
