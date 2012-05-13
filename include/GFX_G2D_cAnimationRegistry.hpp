@@ -24,6 +24,7 @@ namespace GFX
             GFX::G2D::cAnimation& GetAnimation(int i);
 
             void UpdateCurrent(float delta);
+            void ResetStatetime() { m_Statetime=0.0f;}
             void Render(CORE::cGame& game, float delta);
 
             GFX::G2D::cAnimation& operator[](int i)
@@ -34,7 +35,8 @@ namespace GFX
 
             int GetCurrentIndex()
             { return m_CurrentIndex; }
-
+            float GetStatetime()
+            { return m_Statetime; }
             void SetTicksPerFrame(int tpf)
             { m_TicksPerFrame = tpf; }
             void SetCurrentIndex(int i)
@@ -45,6 +47,7 @@ namespace GFX
             void Reset();
         private:
             std::vector<GFX::G2D::cAnimation> m_Anims;
+            std::vector<bool> m_Loops;
             int m_CurrentIndex;
             float m_Statetime;
             float m_TicksPerFrame;

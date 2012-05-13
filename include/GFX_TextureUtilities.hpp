@@ -9,7 +9,7 @@ namespace GFX
     class cTextureWrapper;
 
     inline unsigned int GetColourInHex(unsigned int col)
-    { return (col & 0xffffff00) >> 8; }
+    { return ((col ) >> 8); }
 
     void ImmediateRenderTexturePos2Dim2(const cTextureWrapper& tex, float x, float y, float w, float h);
 
