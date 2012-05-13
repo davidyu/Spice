@@ -2,6 +2,7 @@
 #define CCAMERABASE_H
 
 #include "MATH_LinearAlgebra.hpp"
+#include "MATH_Primitives.hpp"
 
 using namespace MATH;
 
@@ -14,29 +15,30 @@ namespace GFX
         virtual ~cCameraBase();
 
         // Apply the projection and view matricies
-        void ApplyMatricies();
+        void ApplyMatricies() {};
         void Translatef(float x, float y, float z);
-        void Unproject(const Vec3f& vec);
-        void UnprojectCustom(const Vec3f& vec, float viewport_x, float viewport_y, float viewport_w, float viewport_h);
+        void Unproject(const Vec3f& vec) {};
+        void UnprojectCustom(const Vec3f& vec, float viewport_x, float viewport_y, float viewport_w, float viewport_h) {};
 
-        const Vec3f& GetPos() const     { return m_pos; }
-        float GetAspectRatio() const    { return m_aspect_ratio; }
-        float GetNear() const           { return m_near; }
-        float GetFar()  const           { return m_far; }
-        float GetViewportWidth() const  { return m_viewport_w; }
-        float GetViewportHeight() const { return m_viewport_h; }
+        const Vec3f& GetPos() const     { return m_Pos;  }
+        float GetAspectRatio() const    { return m_Aspect_Ratio; }
+        float GetNear() const           { return m_Near; }
+        float GetFar()  const           { return m_Far;  }
+        float GetViewportWidth() const  { return m_Viewport_W; }
+        float GetViewportHeight() const { return m_Viewport_H; }
+
 
     protected:
-        Vec3f m_pos;
-        Vec3f m_dir;
+        Vec3f m_Pos;
+        Vec3f m_Dir;
 
-        Matrix4x4 m_projection;
-        Matrix4x4 m_view;
-        Matrix4x4 m_combined;
+        Matrix4x4 m_Projection;
+        Matrix4x4 m_View;
+        Matrix4x4 m_Combined;
 
-        float m_near, m_far;
-        float m_viewport_w, m_viewport_h;
-        float m_aspect_ratio;
+        float m_Near, m_Far;
+        float m_Viewport_W, m_Viewport_H;
+        float m_Aspect_Ratio;
 
     private:
 

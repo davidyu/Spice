@@ -8,7 +8,11 @@ cOrthoCamera::cOrthoCamera()
 
 cOrthoCamera::cOrthoCamera(cRectf& vp)
              :m_Viewport(vp)
-{}
+{
+    cCameraBase::m_Pos = Vec3f(vp.Top(), vp.Left(), 1.0f);
+    cCameraBase::m_Viewport_W = vp.Width();
+    cCameraBase::m_Viewport_H = vp.Height();
+}
 
 cOrthoCamera::~cOrthoCamera() {}
 

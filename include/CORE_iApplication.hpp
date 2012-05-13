@@ -3,7 +3,6 @@
 
 namespace CORE
 {
-
     class iApplication
     {
     public:

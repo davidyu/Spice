@@ -525,3 +525,274 @@
 	"GFX_cTextureWrapper.hpp"
 	"MATH_Math.hpp"
 
+1336775383 source:c:\users\lewen yu\documents\projects\spice\main.cpp
+	<windows.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	<iostream>
+	"CORE_cGame.hpp"
+	"STATE_iGameState.hpp"
+	"demo_cPlayState.hpp"
+	"STATE_cTransSquareSpin.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\core_cgame.hpp
+	"SDL2/SDL.h"
+	"CORE_iApplication.hpp"
+	"CORE_cSDLState.hpp"
+	"CORE_Input.hpp"
+	"CORE_cTimer.hpp"
+	"STATE_cGameStateManager.hpp"
+	"cGenericFactory.hpp"
+
+1336894890 c:\users\lewen yu\documents\projects\spice\include\core_iapplication.hpp
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\core_csdlstate.hpp
+	<SDL2/SDL.h>
+
+1336792681 c:\users\lewen yu\documents\projects\spice\include\core_input.hpp
+	"global_inc.hpp"
+
+1336792681 c:\users\lewen yu\documents\projects\spice\include\global_inc.hpp
+	<vector>
+	<map>
+	<array>
+	<algorithm>
+	<stdio.h>
+	<iostream>
+	<string>
+	<cassert>
+	<SDL2/SDL.h>
+	<SDL2/SDL_opengl.h>
+	"memory_macros.h"
+	"CORE_keycodes.hpp"
+	"MATH_Math.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\memory_macros.h
+	<string.h>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\core_keycodes.hpp
+
+1336876656 c:\users\lewen yu\documents\projects\spice\include\math_math.hpp
+	"MATH_LinearAlgebra.hpp"
+	"MATH_Primitives.hpp"
+	"MATH_Collision2D.hpp"
+	"MATH_Random.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_linearalgebra.hpp
+	"MATH_Vec4.hpp"
+	"MATH_Vec3.hpp"
+	"MATH_Vec2.hpp"
+	"MATH_Matrix4x4.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_vec4.hpp
+	"MATH_MathHelper.hpp"
+
+1336792681 c:\users\lewen yu\documents\projects\spice\include\math_mathhelper.hpp
+	<cmath>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_vec3.hpp
+	"MATH_MathHelper.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_vec2.hpp
+	"MATH_MathHelper.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_matrix4x4.hpp
+	"MATH_MathHelper.hpp"
+
+1336896402 c:\users\lewen yu\documents\projects\spice\include\math_primitives.hpp
+	"MATH_Vec2.hpp"
+
+1336855489 c:\users\lewen yu\documents\projects\spice\include\math_collision2d.hpp
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\math_random.hpp
+	<random>
+	<ctime>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\core_ctimer.hpp
+	<SDL2/SDL.h>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\state_cgamestatemanager.hpp
+	<vector>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\cgenericfactory.hpp
+	<map>
+	<string>
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\state_igamestate.hpp
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\demo_cplaystate.hpp
+	"STATE_iGameState.hpp"
+	"GFX_G2D_cSpriteBatch.hpp"
+	"GFX_cTexture.hpp"
+	"global_inc.hpp"
+
+1336792681 c:\users\lewen yu\documents\projects\spice\include\gfx_g2d_cspritebatch.hpp
+	<SDL2/SDL_opengl.h>
+	"GFX_Color4.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\gfx_color4.hpp
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\gfx_ctexture.hpp
+	<memory>
+	<cassert>
+	<string>
+	"GFX_cTextureWrapper.hpp"
+
+1336792681 c:\users\lewen yu\documents\projects\spice\include\gfx_ctexturewrapper.hpp
+	<SDL2/SDL_opengl.h>
+	"global_inc.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\state_ctranssquarespin.hpp
+	"STATE_cGameTransition.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\state_cgametransition.hpp
+	"STATE_iGameState.hpp"
+	"CORE_cGame.hpp"
+	"memory_macros.h"
+
+1336855480 source:c:\users\lewen yu\documents\projects\spice\src\core_input.cpp
+	"CORE_Input.hpp"
+
+1336893396 source:c:\users\lewen yu\documents\projects\spice\src\core_cgame.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_mixer.h>
+	"CORE_cGame.hpp"
+	"STATE_iGameState.hpp"
+	<cassert>
+	<stdlib.h>
+
+1336792681 source:c:\users\lewen yu\documents\projects\spice\src\core_csdlstate.cpp
+	"CORE_cSDLState.hpp"
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\core_ctimer.cpp
+	"SDL2/SDL.h"
+	"CORE_cTimer.hpp"
+
+1336874919 source:c:\users\lewen yu\documents\projects\spice\src\gfx_g2d_canimation.cpp
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_cTextureWrapper.hpp"
+
+1336874919 c:\users\lewen yu\documents\projects\spice\include\gfx_g2d_canimation.hpp
+	<vector>
+	"MATH_MathHelper.hpp"
+	"GFX_cTextureWrapper.hpp"
+
+1336876656 source:c:\users\lewen yu\documents\projects\spice\src\gfx_g2d_canimationregistry.cpp
+	"GFX_G2D_cAnimationRegistry.hpp"
+	"CORE_cGame.hpp"
+
+1336855489 c:\users\lewen yu\documents\projects\spice\include\gfx_g2d_canimationregistry.hpp
+	"global_inc.hpp"
+	"GFX_G2D_cAnimation.hpp"
+
+1336855489 source:c:\users\lewen yu\documents\projects\spice\src\gfx_g2d_cspritebatch.cpp
+	"GFX_G2D_cSpriteBatch.hpp"
+	"GFX_cTextureWrapper.hpp"
+	"GFX_cTextureMesh.hpp"
+	"MATH_MathHelper.hpp"
+	"memory_macros.h"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\gfx_ctexturemesh.hpp
+	<vector>
+	<SDL2/SDL_opengl.h>
+
+1336855489 source:c:\users\lewen yu\documents\projects\spice\src\gfx_g2d_ctextureregion.cpp
+	"GFX_G2D_cTextureRegion.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\gfx_g2d_ctextureregion.hpp
+	<vector>
+	"GFX_cTextureWrapper.hpp"
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\gfx_motionblur.cpp
+	"GFX_MotionBlur.hpp"
+	"GFX_cTextureWrapper.hpp"
+	"GFX_TextureUtilities.hpp"
+
+1336775383 c:\users\lewen yu\documents\projects\spice\include\gfx_motionblur.hpp
+	"global_inc.hpp"
+	"GFX_TextureUtilities.hpp"
+
+1336855489 c:\users\lewen yu\documents\projects\spice\include\gfx_textureutilities.hpp
+	"global_inc.hpp"
+
+1336855489 source:c:\users\lewen yu\documents\projects\spice\src\gfx_textureutilities.cpp
+	"GFX_TextureUtilities.hpp"
+	"GFX_cTextureWrapper.hpp"
+	"MATH_Math.hpp"
+
+1336895597 source:c:\users\lewen yu\documents\projects\spice\src\gfx_ccamerabase.cpp
+	"GFX_cCameraBase.hpp"
+
+1336896997 c:\users\lewen yu\documents\projects\spice\include\gfx_ccamerabase.hpp
+	"MATH_LinearAlgebra.hpp"
+	"MATH_Primitives.hpp"
+
+1336880954 source:c:\users\lewen yu\documents\projects\spice\src\gfx_cimage.cpp
+	"GFX_cImage.hpp"
+	<iostream>
+	<SDL2/SDL_image.h>
+
+1336880035 c:\users\lewen yu\documents\projects\spice\include\gfx_cimage.hpp
+	"global_inc.hpp"
+
+1336892946 source:c:\users\lewen yu\documents\projects\spice\src\gfx_corthocamera.cpp
+	"GFX_cOrthoCamera.hpp"
+
+1336893165 c:\users\lewen yu\documents\projects\spice\include\gfx_corthocamera.hpp
+	"GFX_cCameraBase.hpp"
+	"MATH_LinearAlgebra.hpp"
+
+1336792681 source:c:\users\lewen yu\documents\projects\spice\src\gfx_ctexture.cpp
+	"GFX_cTexture.hpp"
+	"GFX_cImage.hpp"
+	<GL/glu.h>
+	<iostream>
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\gfx_ctexturemesh.cpp
+	<SDL2/SDL_opengl.h>
+	"GFX_cTextureMesh.hpp"
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\gfx_ctextureregistry.cpp
+	"GFX_cTextureRegistry.hpp"
+	"GFX_cTextureWrapper.hpp"
+
+1336855489 c:\users\lewen yu\documents\projects\spice\include\gfx_ctextureregistry.hpp
+	<unordered_map>
+	<string>
+	"GFX_cTextureWrapper.hpp"
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\math_matrix4x4.cpp
+	"MATH_Matrix4x4.hpp"
+
+1336775383 source:c:\users\lewen yu\documents\projects\spice\src\state_cgamestatemanager.cpp
+	<cassert>
+	"memory_macros.h"
+	"STATE_cGameStateManager.hpp"
+	"STATE_iGameState.hpp"
+	"STATE_cGameTransition.hpp"
+	"CORE_cGame.hpp"
+
+1336792672 source:c:\users\lewen yu\documents\projects\spice\src\state_ctranssquarespin.cpp
+	"STATE_cTransSquareSpin.hpp"
+	<GL/glu.h>
+	"CORE_cGame.hpp"
+	"MATH_Math.hpp"
+
+1336892487 source:c:\users\lewen yu\documents\projects\spice\src\demo_cplaystate.cpp
+	<SDL2/SDL_opengl.h>
+	<SDL2/SDL_mixer.h>
+	"demo_cPlayState.hpp"
+	"STATE_cGameTransition.hpp"
+	"CORE_cGame.hpp"
+	"GFX_cImage.hpp"
+	"GFX_cTexture.hpp"
+	"GFX_G2D_cTextureRegion.hpp"
+	"GFX_G2D_cSpriteBatch.hpp"
+	"GFX_G2D_cAnimation.hpp"
+	"GFX_cTextureRegistry.hpp"
+	"GFX_TextureUtilities.hpp"
+	"GFX_MotionBlur.hpp"
+	"global_inc.hpp"
+	<iostream>
+

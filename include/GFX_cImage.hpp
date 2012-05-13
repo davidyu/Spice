@@ -21,7 +21,7 @@ namespace GFX
         void ConvertPixelFormat();
         const GLint GetWidth() const    { CheckImage(); return m_pSurface->w; }
         const GLint GetHeight() const   { CheckImage(); return m_pSurface->h; }
-        const unsigned int GetPixel(int x, int y) const { return static_cast<unsigned int*>(m_pSurface->pixels)[y*(m_pSurface->pitch/sizeof(unsigned int)) + x]; }
+        const unsigned int GetPixel(int x, int y) const;
         const void* GetPixels() const   { CheckImage(); return m_pSurface->pixels; }
         const GLint GetBytesPerPixel() const { return m_nColors; }
         const GLenum GetTextureFormat() const { return m_TextureFormat; }
