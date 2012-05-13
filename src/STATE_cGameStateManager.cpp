@@ -84,9 +84,8 @@ void cGameStateManager::PushState(iGameState* new_state)
 
 void cGameStateManager::PopStateUsingTransition(cGameTransition* transition)
 {
-    assert(transition&&!m_States.size()>=2); // Need at least old and new state on stack to use transition effect
+    assert(transition&&m_States.size()>=2); // Need at least old and new state on stack to use transition effect
 
-    m_States.back()->OnExit(m_Game);  // Leave old state
     transition->SetOldAndNewState(m_States.back(), m_States.back());
     m_States.pop_back();
     m_States.back()->Pause(m_Game);   // Pause new state

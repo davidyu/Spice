@@ -4,6 +4,7 @@
 #include "STATE_iGameState.hpp"
 #include "GFX_G2D_cSpriteBatch.hpp"
 #include "GFX_cTexture.hpp"
+
 //
 #include "global_inc.hpp"
 
