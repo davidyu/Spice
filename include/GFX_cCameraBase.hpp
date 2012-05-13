@@ -16,7 +16,9 @@ namespace GFX
 
         // Apply the projection and view matricies
         void ApplyMatricies() {};
+        inline void LoadIdentity() { m_Pos = Vec3f(0.0f,0.0f,0.0f); }
         void Translatef(float x, float y, float z);
+        void TranslateTof(float x, float y, float z);
         void Unproject(const Vec3f& vec) {};
         void UnprojectCustom(const Vec3f& vec, float viewport_x, float viewport_y, float viewport_w, float viewport_h) {};
 

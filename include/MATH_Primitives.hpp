@@ -16,7 +16,7 @@ namespace MATH
         inline cRectf(const cRectf& r) : m_Topleft(r.Left(), r.Top()), m_Dim(r.Width(), r.Height()) {}
 
         inline const float Left() const { return m_Topleft.x; }
-        inline const float Right() const { return m_Topleft.x+m_Dim.x; }
+        inline const float Right() const { return (m_Topleft.x+m_Dim.x); }
         inline const float Bottom() const { return m_Topleft.y+m_Dim.y; }
         inline const float Top() const { return m_Topleft.y; }
         inline const float Width() const { return m_Dim.x; }

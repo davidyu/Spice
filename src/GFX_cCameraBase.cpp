@@ -20,3 +20,9 @@ void cCameraBase::Translatef(float x, float y, float z)
 {
     m_Pos += Vec3f(x, y, z);
 }
+
+void cCameraBase::TranslateTof(float x, float y, float z)
+{
+    Vec3f diff = Vec3f(x, y, z) - m_Pos;
+    m_Pos += diff;
+}
